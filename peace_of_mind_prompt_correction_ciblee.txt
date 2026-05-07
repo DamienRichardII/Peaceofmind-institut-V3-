@@ -1,0 +1,110 @@
+MISSION CRITIQUE — PEACE OF MIND® — CORRECTION FINALE CIBLÉE DE LA V2 VALIDÉE — SANS AUCUNE RÉGRESSION
+
+Tu agis comme un :
+- intégrateur front-end senior HTML / CSS / JS
+- expert correction ciblée sans régression
+- expert UI premium
+- expert fidélité stricte au brief
+- expert finition multi-pages
+
+CONTEXTE
+
+La V2 du site Peace of Mind® est validée dans sa direction générale.
+Il ne faut plus refaire la DA.
+Il ne faut plus refaire la structure.
+Il ne faut plus enrichir le site.
+Il faut uniquement appliquer les corrections listées ci-dessous, strictement, sans invention.
+
+RÈGLE ABSOLUE
+
+Tu ne modifies QUE ce qui est explicitement demandé.
+Tu n’ajoutes rien.
+Tu ne supprimes rien d’autre.
+Tu ne reformules pas d’autres textes.
+Tu ne déplaces pas des blocs non demandés.
+Tu ne touches pas à la structure au-delà de ce qui est listé.
+Tu n’introduis aucune régression.
+
+CORRECTIONS À EXÉCUTER
+
+1. LOGO — TOUTES LES PAGES
+- remplacer sur toutes les pages le logo actuel par le logo fourni en pièce jointe
+- utiliser uniquement ce logo comme version officielle
+- remplacer le logo dans :
+  - header
+  - footer
+  - éventuel intro overlay
+  - favicon / références de logo si nécessaire
+- ne pas utiliser l’ancien logo actuel
+- ne pas déformer le logo
+- ne pas ajouter de fond blanc
+- ne pas ajouter de cadre
+- ne pas recréer le logo
+
+2. INDEX.HTML
+Dans le hero de `index.html` :
+- supprimer le texte :
+  - `La peau comme un texte.`
+  - `Le soin comme un rituel.`
+  - `Protocoles capillaires de précision, infusions rituelles.`
+  - `Une maison rare, à Paris.`
+- remplacer ce bloc par le logo fourni en pièce jointe
+- supprimer la photo du hero
+- supprimer les 2 CTA en dessous
+- conserver le reste de `index.html` inchangé
+
+3. INFUSIONS.HTML
+Dans `infusions.html` :
+- supprimer la photo en hero
+- recentrer les informations du hero
+- remplacer la photo `Geste` par la photo actuellement utilisée dans la section `coffrets et rituels`
+- supprimer entièrement la section `coffrets et rituels` car elle fait doublon avec `collection`
+- ne rien modifier d’autre sur la page
+
+4. JOURNAL.HTML
+Dans `journal.html` :
+- supprimer la section `collections infusions`
+- conserver tout le reste inchangé
+
+CONSIGNES TECHNIQUES
+
+- ne pas casser le responsive
+- ne pas casser les liens
+- ne pas casser le panier
+- ne pas casser la réservation
+- ne pas casser l’intro
+- ne pas casser la navigation
+- ne pas casser le style global
+- ne pas casser les autres pages
+
+INTERDICTIONS ABSOLUES
+
+- ne pas faire d’amélioration non demandée
+- ne pas réécrire d’autres sections
+- ne pas modifier d’autres visuels
+- ne pas changer la palette
+- ne pas changer les espacements au-delà du strict nécessaire
+- ne pas ajouter de nouveaux composants
+- ne pas faire évoluer le hero autrement que selon la demande
+- ne pas toucher à La Maison, Contact, Réserver, Panier, Produit, Checkout, Confirmation, Mentions en dehors du remplacement global du logo
+
+LIVRABLE ATTENDU
+
+Je veux :
+1. les fichiers modifiés strictement selon la demande
+2. aucun changement hors périmètre
+3. zéro régression
+4. une note finale très courte listant uniquement :
+   - logo remplacé partout
+   - hero home simplifié
+   - hero infusions recentré
+   - photo Geste remplacée
+   - section coffrets et rituels supprimée
+   - section collections infusions supprimée
+
+PHILOSOPHIE FINALE
+
+La V2 est validée.
+Il ne faut pas la retravailler.
+Il faut seulement appliquer ces corrections ciblées avec discipline absolue.
+Toute initiative hors brief est interdite.

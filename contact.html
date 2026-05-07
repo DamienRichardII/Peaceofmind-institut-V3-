@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — Peace of Mind Institut</title>
+  <meta name="description" content="Contactez Peace of Mind Institut — questions, disponibilités, situations particulières. Une réponse sous 24h ouvrées." />
+  <link rel="icon" href="assets/logo-peace-of-mind-final.png" type="image/png" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+
+  <div class="toast" id="toast"></div>
+
+  <header class="site-header" id="siteHeader">
+    <a class="brand" href="index.html"><img src="assets/logo-peace-of-mind-final.png" alt="Peace of Mind®" /></a>
+    <nav class="site-nav" id="siteNav">
+      <a href="index.html">Accueil</a>
+      <a href="maison.html">Expertise essentielle</a>
+      <a href="reserver.html">Réserver</a>
+      <a href="contact.html" class="is-active">Contact</a>
+    </nav>
+    <div class="header-actions">
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav">Menu</button>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="page-hero section fade-up">
+      <p class="section-label">Chapitre D — Contact</p>
+      <h1>Parlons<br /><em class="serif-italic">de vous.</em></h1>
+      <p style="margin-top:14px;max-width:520px;color:var(--muted);font-size:0.9rem;line-height:1.75">Une réponse vous est apportée sous 24h ouvrées pour toute demande liée à une situation particulière.</p>
+      <div class="cta-row" style="margin-top:clamp(20px,3vw,32px)">
+        <a class="btn btn-primary" href="reserver.html">Réserver une prestation</a>
+        <a class="btn btn-secondary" href="mentions.html">Confidentialité &amp; données</a>
+      </div>
+    </section>
+
+    <!-- CONTACT GRID -->
+    <section class="section contact-grid fade-up">
+      <div class="contact-visual">
+        <img src="assets/photo-3.jpg" alt="Contact Peace of Mind" loading="lazy" />
+      </div>
+      <div>
+        <p class="section-label">Informations pratiques</p>
+        <h3 style="margin-bottom:20px">Retrouvez-nous.</h3>
+        <ul class="contact-list">
+          <li><strong>Email</strong><a href="mailto:contact@peace-of-mind-signature.fr">contact@peace-of-mind-signature.fr</a></li>
+          <li><strong>Adresse</strong>Gradignan, Bordeaux — adresse exacte communiquée à la confirmation</li>
+          <li><strong>Réponse</strong>Sous 24h ouvrées</li>
+        </ul>
+        <div class="cta-row mt-md">
+          <a class="btn btn-primary" href="reserver.html">Réserver directement</a>
+          <a class="btn btn-secondary" href="mentions.html">RGPD &amp; confidentialité</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FORMULAIRE -->
+    <section class="section frame" style="background:var(--ivory);max-width:100%;margin:0">
+      <div class="container">
+        <div class="section-head fade-up">
+          <p class="section-label">Formulaire de contact</p>
+          <h2>Écrivez-nous.</h2>
+        </div>
+        <form id="contactForm" novalidate style="margin-top:28px">
+          <div class="contact-form-grid">
+            <div class="form-step">
+              <label for="cFirstname">Prénom</label>
+              <input id="cFirstname" name="firstname" type="text" autocomplete="given-name" required placeholder="Votre prénom" />
+            </div>
+            <div class="form-step">
+              <label for="cLastname">Nom</label>
+              <input id="cLastname" name="lastname" type="text" autocomplete="family-name" required placeholder="Votre nom" />
+            </div>
+            <div class="form-step">
+              <label for="cEmail">Email</label>
+              <input id="cEmail" name="email" type="email" autocomplete="email" required placeholder="votre@email.fr" />
+            </div>
+            <div class="form-step">
+              <label for="cSubject">Objet</label>
+              <select id="cSubject" name="subject" required>
+                <option value="">Sélectionner un objet</option>
+                <option>Question sur un soin</option>
+                <option>Contre-indication ou situation médicale</option>
+                <option>Disponibilités et créneaux</option>
+                <option>Formation &amp; Collection</option>
+                <option>Autre</option>
+              </select>
+            </div>
+            <div class="form-step full">
+              <label for="cMessage">Message</label>
+              <textarea id="cMessage" name="message" rows="5" required placeholder="Votre message…"></textarea>
+            </div>
+            <div class="form-step full" style="display:flex;align-items:flex-start;gap:14px">
+              <input type="checkbox" id="cConsent" name="consent" required style="width:17px;height:17px;min-width:17px;margin-top:3px;padding:0;accent-color:var(--accent)" />
+              <label for="cConsent" style="font-size:.82rem;color:var(--muted);line-height:1.65;cursor:pointer;text-transform:none;letter-spacing:0">
+                J'accepte que mes informations soient utilisées pour traiter ma demande, conformément à la <a href="mentions.html" style="color:var(--accent)">politique de confidentialité</a>.
+              </label>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary" style="margin-top:24px">Envoyer le message</button>
+          <p id="contactResult" class="form-result" style="margin-top:12px" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+    <!-- RÉASSURANCE -->
+    <div class="info-strip fade-up">
+      <div class="info-card">
+        <p class="section-label">Discrétion</p>
+        <h3>Votre message reste confidentiel.</h3>
+        <p>Données traitées selon le cadre RGPD — aucune transmission à des tiers.</p>
+      </div>
+      <div class="info-card">
+        <p class="section-label">Réactivité</p>
+        <h3>Une réponse humaine et rapide.</h3>
+        <p>Sous 24h ouvrées — une vraie lecture, pas un accusé automatique.</p>
+      </div>
+      <div class="info-card">
+        <p class="section-label">Sans engagement</p>
+        <h3>Poser une question n'engage à rien.</h3>
+        <p>L'objectif est de vous aider à choisir juste.</p>
+      </div>
+    </div>
+
+  </main>
+
+<footer class="site-footer site-footer--dark site-footer--compact">
+  <div class="container footer-inner">
+    <div class="footer-col footer-brand-col">
+      <img src="assets/logo-peace-of-mind-final.png" alt="Peace of Mind Institut" class="footer-brand-img" />
+      <span class="footer-baseline">Soin · Beauté · Expertise</span>
+      <a class="footer-mini-cta" href="reserver.html">Réserver une prestation</a>
+    </div>
+    <div class="footer-col">
+      <div class="footer-title">Navigation</div>
+      <a href="index.html">Accueil</a>
+      <a href="maison.html">Expertise essentielle</a>
+      <a href="reserver.html">Menu &amp; soins</a>
+      <a href="reserver.html">Réserver</a>
+      <a href="collection.html">Formation &amp; Collection</a>
+      <a href="maison.html#heritage">L&apos;héritage Peace of Mind</a>
+      <a href="archives.html">Archives</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="footer-col">
+      <div class="footer-title">Infos</div>
+      <a href="contact.html">Nous contacter</a>
+      <a href="mentions.html">Mentions légales</a>
+      <a href="mentions.html#confidentialite">Confidentialité</a>
+      <a href="mentions.html#donnees-sante">Données &amp; consentements</a>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© 2026 Peace of Mind Institut — Tous droits réservés.</span>
+    <span>Gradignan, Bordeaux</span>
+  </div>
+</footer>
+
+  <script src="assets/app.js"></script>
+  <script>
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const r = document.getElementById('contactResult');
+      r.textContent = 'Message envoyé. Réponse sous 24h ouvrées.';
+      r.style.color = 'var(--accent)';
+      this.reset();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="fr" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Votre réservation est confirmée — Peace of Mind Institut</title>
+    <style>
+      @media only screen and (max-width: 640px) {
+        .container { width: 100% !important; }
+        .stack { display: block !important; width: 100% !important; }
+        .px-mobile { padding-left: 20px !important; padding-right: 20px !important; }
+        .py-mobile { padding-top: 20px !important; padding-bottom: 20px !important; }
+        .mobile-center { text-align: center !important; }
+        .button { display: block !important; width: 100% !important; }
+        .summary-label,
+        .summary-value { display: block !important; width: 100% !important; }
+        .summary-value { padding-top: 4px !important; }
+      }
+    </style>
+  </head>
+  <body style="margin:0; padding:0; background-color:#FAF6F1;">
+    <div style="display:none; max-height:0; overflow:hidden; opacity:0; mso-hide:all; color:transparent;">
+      Votre créneau a été validé. Retrouvez les détails de votre rendez-vous.
+    </div>
+
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#FAF6F1; margin:0; padding:0; width:100%;">
+      <tr>
+        <td align="center" style="padding:32px 16px;">
+          <table role="presentation" class="container" width="640" cellpadding="0" cellspacing="0" border="0" style="width:640px; max-width:640px; background-color:#FAF6F1;">
+
+            <!-- Header -->
+            <tr>
+              <td style="padding:0 0 18px 0;">
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#F3EDE5; border:1px solid #E6D8C9; border-radius:24px;">
+                  <tr>
+                    <td class="px-mobile py-mobile" align="center" style="padding:28px 32px 22px 32px; text-align:center;">
+                      <img src="{{logo_url}}" alt="Peace of Mind Institut" width="170" style="display:block; width:170px; max-width:100%; height:auto; margin:0 auto 14px auto; border:0;" />
+                      <div style="font-family:Arial, Helvetica, sans-serif; font-size:12px; letter-spacing:1.8px; text-transform:uppercase; color:#7D5A46;">
+                        Confirmation de rendez-vous
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <!-- Main intro -->
+            <tr>
+              <td style="padding:0 0 18px 0;">
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#FFFFFF; border:1px solid #EDE2D6; border-radius:24px;">
+                  <tr>
+                    <td class="px-mobile py-mobile" style="padding:34px 40px 30px 40px;">
+                      <div style="font-family:Georgia, 'Times New Roman', serif; font-size:34px; line-height:1.15; color:#4A2E1E; text-align:left; margin:0 0 16px 0;">
+                        Votre réservation est confirmée.
+                      </div>
+                      <div style="font-family:Arial, Helvetica, sans-serif; font-size:16px; line-height:1.75; color:#2A1A0E; margin:0;">
+                        Bonjour {{firstname}},<br /><br />
+                        Votre demande a été relue et votre créneau est confirmé par Peace of Mind Institut.<br /><br />
+                        Vous trouverez ci-dessous le récapitulatif de votre rendez-vous ainsi que les étapes à compléter si nécessaire avant votre venue.
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <!-- Summary -->
+            <tr>
+              <td style="padding:0 0 18px 0;">
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#F3EDE5; border:1px solid #E6D8C9; border-radius:24px;">
+                  <tr>
+                    <td class="px-mobile py-mobile" style="padding:28px 30px;">
+                      <div style="font-family:Georgia, 'Times New Roman', serif; font-size:26px; line-height:1.2; color:#4A2E1E; margin:0 0 18px 0;">
+                        Récapitulatif du rendez-vous
+                      </div>
+
+                      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                        <tr>
+                          <td class="summary-label" width="42%" style="padding:11px 0; border-top:1px solid #DDCCBB; font-family:Arial, Helvetica, sans-serif; font-size:14px; line-height:1.5; color:#7D5A46;">Prestation</td>
+                          <td class="summary-value" width="58%" style="padding:11px 0; border-top:1px solid #DDCCBB; font-family:Arial, Helvetica, sans-serif; font-size:15px; line-height:1.5; color:#2A1A0E; font-weight:600;">{{service_label}}</td>
+                        </tr>
+                        <tr>
+                          <td class="summary-label" style="padding:11px 0; border-top:1px solid #DDCCBB; font-family:Arial, Helvetica, sans-serif; font-size:14px; line-height:1.5; color:#7D5A46;">Date</td>
+                          <td class="summary-value" style="padding:11px 0; border-top:1px solid #DDCCBB; font-family:Arial, Helvetica, sans-serif; font-size:15px; line-height:1.5; color:#2A1A0E; font-weight:600;">{{date}}</td>
+                        </tr>
+                        <tr>
+                          <td class="summary-label" style="padding:11px 0; border-top:1px solid #DDCCBB; font-family:Arial, Helvetica, sans-serif; font-size:14px; line-height:1.5; color:#7D5A46;">Heure</td>
+                          <td class="summary-value" style="padding:11px 0; border-top:1px solid #DDCCBB; font-family:Arial, Helvetica, sans-serif; font-size:15px; line-height:1.5; color:#2A1A0E; font-weight:600;">{{slot}}</td>
+                        </tr>
+                        <tr>
+                          <td class="summary-label" style="padding:11px 0; border-top:1px solid #DDCCBB; font-family:Arial, Helvetica, sans-serif; font-size:14px; line-height:1.5; color:#7D5A46;">Durée estimée</td>
+                          <td class="summary-value" style="padding:11px 0; border-top:1px solid #DDCCBB; font-family:Arial, Helvetica, sans-serif; font-size:15px; line-height:1.5; color:#2A1A0E; font-weight:600;">{{duration}}</td>
+                        </tr>
+                        <!-- Mask this row if price_estimate is empty -->
+                        <tr>
+                          <td class="summary-label" style="padding:11px 0; border-top:1px solid #DDCCBB; font-family:Arial, Helvetica, sans-serif; font-size:14px; line-height:1.5; color:#7D5A46;">Tarif indicatif</td>
+                          <td class="summary-value" style="padding:11px 0; border-top:1px solid #DDCCBB; font-family:Arial, Helvetica, sans-serif; font-size:15px; line-height:1.5; color:#2A1A0E; font-weight:600;">{{price_estimate}}</td>
+                        </tr>
+                        <tr>
+                          <td class="summary-label" style="padding:11px 0; border-top:1px solid #DDCCBB; border-bottom:1px solid #DDCCBB; font-family:Arial, Helvetica, sans-serif; font-size:14px; line-height:1.5; color:#7D5A46;">Référence</td>
+                          <td class="summary-value" style="padding:11px 0; border-top:1px solid #DDCCBB; border-bottom:1px solid #DDCCBB; font-family:Arial, Helvetica, sans-serif; font-size:15px; line-height:1.5; color:#2A1A0E; font-weight:600;">{{booking_reference}}</td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <!-- Location -->
+            <tr>
+              <td style="padding:0 0 18px 0;">
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#FFFFFF; border:1px solid #EDE2D6; border-radius:24px;">
+                  <tr>
+                    <td class="px-mobile py-mobile" style="padding:28px 30px;">
+                      <div style="font-family:Georgia, 'Times New Roman', serif; font-size:24px; line-height:1.2; color:#4A2E1E; margin:0 0 14px 0;">
+                        Lieu du rendez-vous
+                      </div>
+                      <div style="font-family:Arial, Helvetica, sans-serif; font-size:15px; line-height:1.75; color:#2A1A0E; margin:0 0 10px 0;">
+                        Votre rendez-vous aura lieu à Gradignan, Bordeaux.<br />
+                        L’adresse exacte vous est communiquée dans le cadre de votre confirmation.
+                      </div>
+                      <!-- Keep this block only if appointment_location exists -->
+                      <div style="font-family:Arial, Helvetica, sans-serif; font-size:15px; line-height:1.75; color:#4A2E1E; font-weight:600; margin:0;">
+                        {{appointment_location}}
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <!-- Bank hold -->
+            <!-- CONDITIONNEL : masquer ce bloc entier si bank_hold_url est vide ou null -->
+            <!-- Hide this entire section if bank_hold_url is empty -->
+            <tr>
+              <td style="padding:0 0 18px 0;">
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#F3EDE5; border:1px solid #E6D8C9; border-radius:24px;">
+                  <tr>
+                    <td class="px-mobile py-mobile" style="padding:30px;">
+                      <div style="font-family:Georgia, 'Times New Roman', serif; font-size:24px; line-height:1.2; color:#4A2E1E; margin:0 0 14px 0;">
+                        Empreinte bancaire
+                      </div>
+                      <div style="font-family:Arial, Helvetica, sans-serif; font-size:15px; line-height:1.75; color:#2A1A0E; margin:0 0 20px 0;">
+                        Afin de sécuriser le rendez-vous, une empreinte bancaire peut être demandée. Aucun débit n’est effectué sauf conditions prévues dans la politique d’annulation.
+                      </div>
+                      <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+                        <tr>
+                          <td align="center" bgcolor="#4A2E1E" style="border-radius:999px;">
+                            <a class="button" href="{{bank_hold_url}}" target="_blank" style="display:inline-block; padding:14px 26px; font-family:Arial, Helvetica, sans-serif; font-size:15px; line-height:1.2; color:#FAF6F1; text-decoration:none; font-weight:600; border-radius:999px; background-color:#4A2E1E;">
+                              Valider mon empreinte bancaire
+                            </a>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <!-- Consent -->
+            <!-- CONDITIONNEL : masquer ce bloc entier si consent_form_url est vide ou null -->
+            <!-- Hide this entire section if consent_form_url is empty -->
+            <tr>
+              <td style="padding:0 0 18px 0;">
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#FFFFFF; border:1px solid #EDE2D6; border-radius:24px;">
+                  <tr>
+                    <td class="px-mobile py-mobile" style="padding:30px;">
+                      <div style="font-family:Georgia, 'Times New Roman', serif; font-size:24px; line-height:1.2; color:#4A2E1E; margin:0 0 14px 0;">
+                        Formulaire de consentement
+                      </div>
+                      <div style="font-family:Arial, Helvetica, sans-serif; font-size:15px; line-height:1.75; color:#2A1A0E; margin:0 0 20px 0;">
+                        Merci de consulter et compléter le formulaire de consentement avant votre rendez-vous. Il permet de préparer votre prestation dans les meilleures conditions.
+                      </div>
+                      <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+                        <tr>
+                          <td align="center" bgcolor="#C8A07A" style="border-radius:999px;">
+                            <a class="button" href="{{consent_form_url}}" target="_blank" style="display:inline-block; padding:14px 26px; font-family:Arial, Helvetica, sans-serif; font-size:15px; line-height:1.2; color:#2A1A0E; text-decoration:none; font-weight:600; border-radius:999px; background-color:#C8A07A;">
+                              Compléter mon consentement
+                            </a>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <!-- Reminder -->
+            <tr>
+              <td style="padding:0 0 18px 0;">
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#F3EDE5; border:1px solid #E6D8C9; border-radius:24px;">
+                  <tr>
+                    <td class="px-mobile py-mobile" style="padding:28px 30px;">
+                      <div style="font-family:Georgia, 'Times New Roman', serif; font-size:24px; line-height:1.2; color:#4A2E1E; margin:0 0 14px 0;">
+                        Avant votre venue
+                      </div>
+                      <div style="font-family:Arial, Helvetica, sans-serif; font-size:15px; line-height:1.8; color:#2A1A0E; margin:0;">
+                        Quelques rappels avant votre rendez-vous :<br />
+                        - merci d’arriver quelques minutes en avance ;<br />
+                        - en cas d’empêchement, merci de prévenir l’institut dès que possible ;<br />
+                        - toute annulation ou modification reste soumise aux conditions prévues ;<br />
+                        - vos informations sont traitées de manière confidentielle.
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <!-- Footer -->
+            <tr>
+              <td style="padding:8px 0 0 0;">
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                  <tr>
+                    <td class="px-mobile" style="padding:0 8px; text-align:center;">
+                      <div style="font-family:Arial, Helvetica, sans-serif; font-size:14px; line-height:1.8; color:#7D5A46;">
+                        <span style="font-weight:600; color:#4A2E1E;">Peace of Mind Institut</span><br />
+                        Gradignan, Bordeaux<br />
+                        {{contact_email}}
+                      </div>
+                      <div style="font-family:Arial, Helvetica, sans-serif; font-size:12px; line-height:1.7; color:#7D5A46; padding-top:14px;">
+                        Cet email vous a été envoyé dans le cadre de votre réservation.<br />
+                        Vos informations sont traitées avec discrétion et confidentialité.
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+          </table>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>
