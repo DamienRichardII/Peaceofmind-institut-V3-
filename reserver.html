@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Réserver — Peace of Mind Institut</title>
-  <meta name="description" content="Réserver une prestation Peace of Mind Institut — Questionnaire médical sécurisé, soins sur-mesure, consentement en ligne. Gradignan, Bordeaux." />
+  <meta name="description" content="Réserver une prestation Peace of Mind Institut — Soins sur-mesure, selection of treatment. Consentement en ligne. Gradignan, Bordeaux." />
   <link rel="icon" href="assets/logo-peace-of-mind-final.png" type="image/png" />
   <link rel="stylesheet" href="assets/styles.css" />
 </head>
@@ -12,25 +12,30 @@
 
   <div class="toast" id="toast"></div>
 
-  <header class="site-header" id="siteHeader">
-    <a class="brand" href="index.html"><img src="assets/logo-peace-of-mind-final.png" alt="Peace of Mind®" /></a>
+    <header class="site-header" id="siteHeader">
+    <a class="brand" href="index.html">
+      <img src="assets/logo-peace-of-mind-final.png" alt="Peace of Mind®" />
+    </a>
     <nav class="site-nav" id="siteNav">
       <a href="index.html">Accueil</a>
-      <a href="maison.html">Expertise essentielle</a>
-      <a href="reserver.html" class="is-active">Réserver</a>
+      <a href="maison.html">Expertise</a>
+      <a href="reserver.html" class="is-active">Menu</a>
+      <a href="collection.html">Collection</a>
+      <a href="archives.html">Archives</a>
       <a href="contact.html">Contact</a>
     </nav>
     <div class="header-actions">
+      <a class="header-cta" href="reserver.html">Réserver</a>
       <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav">Menu</button>
     </div>
   </header>
 
   <main>
 
-    <section class="page-hero section fade-up">
-      <p class="section-label">Chapitre IV — Réserver</p>
-      <h1>Réserver<br /><em class="serif-italic">une prestation.</em></h1>
-      <p style="margin-top:16px;max-width:560px;color:var(--muted);font-size:0.92rem;line-height:1.75">Votre parcours de réservation commence par un questionnaire médical sécurisé. Il permet d&apos;adapter le soin avec précision. Chaque demande est relue avec attention.</p>
+    <section class="page-hero section fade-up reservation-hero">
+      <p class="section-label">Chapitre III — Selection of Treatment</p>
+      <h1>Beauty &amp; Care Menu<br /><em class="serif-italic">Selection of treatment.</em></h1>
+      <p class="page-hero-lead">Chaque prestation commence par un questionnaire de renseignements. Il nous permet de préparer votre soin avec précision. Chaque demande est relue avec attention.</p>
     </section>
 
     <!-- ANCHOR: QUEL SOIN -->
@@ -43,7 +48,7 @@
         <!-- FORMULAIRE MULTI-ÉTAPES -->
         <div>
           <div class="booking-progress" id="bookingProgress">
-            <div class="step-dot is-active" data-step="1"><div class="step-dot__circle">1</div><div class="step-dot__label">Santé</div></div>
+            <div class="step-dot is-active" data-step="1"><div class="step-dot__circle">1</div><div class="step-dot__label">Questionnaire</div></div>
             <div class="step-dot" data-step="2"><div class="step-dot__circle">2</div><div class="step-dot__label">Soin</div></div>
             <div class="step-dot" data-step="3"><div class="step-dot__circle">3</div><div class="step-dot__label">Date</div></div>
             <div class="step-dot" data-step="4"><div class="step-dot__circle">4</div><div class="step-dot__label">Vous</div></div>
@@ -53,35 +58,36 @@
 
           <form id="bookingForm" novalidate>
 
-            <!-- ÉTAPE 1 — QUESTIONNAIRE MÉDICAL -->
+            <!-- ÉTAPE 1 — QUESTIONNAIRE DE RENSEIGNEMENTS -->
             <div class="form-panel is-active" id="step1">
-              <p class="section-label">Étape 1 — Questionnaire médical sécurisé</p>
-              <h3 style="margin-bottom:16px">Votre santé,<br /><em class="serif-italic">notre priorité.</em></h3>
-              <div class="medical-intro-box">
-                <p>Avant toute réservation, un questionnaire médical sécurisé permet d&apos;adapter le soin avec précision. Il doit être rempli avec sincérité afin de garantir un accompagnement juste, sûr et personnalisé. Ces informations ne constituent pas un diagnostic médical.</p>
+              <p class="section-label">Étape 1 — Questionnaire de renseignements</p>
+              <h3 style="margin-bottom:16px">Votre bien-être.<br /><em class="serif-italic">Votre priorité.</em></h3>
+              <div class="secure-notice">
+                <p>Un questionnaire de renseignements, rempli avec sincérité, nous permet de préparer votre prestation avec précision et d&apos;adapter chaque geste à votre situation. Ces informations ne constituent pas un diagnostic médical.</p>
               </div>
 
               <div style="display:flex;flex-direction:column;gap:16px">
                 <div>
-                  <label for="bMotif">Motif de la demande</label>
-                  <textarea id="bMotif" name="motif" rows="2" placeholder="Pourquoi souhaitez-vous cette prestation ?"></textarea>
-                </div>
-                <div>
                   <label for="bObjectif">Objectif recherché</label>
                   <textarea id="bObjectif" name="objectif" rows="2" placeholder="Quel résultat attendez-vous ?"></textarea>
+                </div>
+                <div>
+                  <label for="bMotif">Motif de la demande — soin &amp; onglerie</label>
+                  <textarea id="bMotif" name="motif" rows="2" placeholder="Pourquoi souhaitez-vous cette prestation ?"></textarea>
                 </div>
                 <div>
                   <label for="bZone">Zone concernée</label>
                   <input id="bZone" name="zone" type="text" placeholder="Ex : ongles, sourcils, cuir chevelu, peau…" />
                 </div>
                 <div>
-                  <label for="bSensibilite">Niveau de sensibilité</label>
+                  <label for="bSensibilite">Niveau de sensibilité — peau &amp; ongles</label>
                   <select id="bSensibilite" name="sensibilite" onchange="checkMedicalAlert()">
                     <option value="">Sélectionner</option>
+                    <option value="nc">Je ne sais pas</option>
                     <option value="faible">Faible — peau peu réactive</option>
                     <option value="modere">Modéré — légères réactions occasionnelles</option>
                     <option value="eleve">Élevé — peau sensible / réactive</option>
-                    <option value="nc">Je ne sais pas</option>
+                    <option value="tres-reactif">Très réactif / fragile</option>
                   </select>
                 </div>
                 <div>
@@ -93,11 +99,11 @@
                   <textarea id="bAllergies" name="allergies" rows="2" placeholder="Composants cosmétiques, latex, autre…" oninput="checkMedicalAlert()"></textarea>
                 </div>
                 <div>
-                  <label for="bTraitement">Traitement médical en cours</label>
+                  <label for="bTraitement">Traitement en cours &amp; situation actuelle</label>
                   <textarea id="bTraitement" name="traitement" rows="2" placeholder="Si oui, précisez (nom du traitement si vous le souhaitez)" oninput="checkMedicalAlert()"></textarea>
                 </div>
                 <div>
-                  <label for="bAttentes">Attentes précises</label>
+                  <label for="bAttentes">Autres précisions &amp; questions</label>
                   <textarea id="bAttentes" name="attentes" rows="2" placeholder="Tout ce qui peut nous aider à préparer votre prestation…"></textarea>
                 </div>
               </div>
@@ -527,8 +533,8 @@
             <!-- ÉTAPE 3 — DATE / ANCHOR: choisir-son-moment -->
             <div class="form-panel" id="step3">
               <div id="choisir-son-moment"></div>
-              <p class="section-label">Étape 3 — Choisir son moment</p>
-              <h3 style="margin-bottom:20px">Quand souhaitez-vous<br /><em class="serif-italic">venir ?</em></h3>
+              <p class="section-label">Étape 3 — Date &amp; créneau</p>
+              <h3 style="margin-bottom:20px">Choisir un moment<br /><em class="serif-italic">qui vous convient.</em></h3>
               <div>
                 <label for="bookDate">Date souhaitée</label>
                 <input type="date" id="bookDate" name="date" required style="max-width:280px" />
@@ -562,7 +568,7 @@
             <!-- ÉTAPE 4 — COORDONNÉES -->
             <div class="form-panel" id="step4">
               <p class="section-label">Étape 4 — Vos coordonnées</p>
-              <h3 style="margin-bottom:20px">Qui êtes-vous ?</h3>
+              <h3 style="margin-bottom:20px">Pour vous<br /><em class="serif-italic">recontacter.</em></h3>
               <div class="form-grid">
                 <div><label for="bFirstname">Prénom</label><input id="bFirstname" name="firstname" type="text" required placeholder="Prénom" /></div>
                 <div><label for="bLastname">Nom</label><input id="bLastname" name="lastname" type="text" required placeholder="Nom" /></div>
@@ -595,10 +601,10 @@
 
             <!-- ÉTAPE 5 — CONSENTEMENT EN LIGNE -->
             <div class="form-panel" id="step5">
-              <p class="section-label">Étape 5 — Consentement en ligne</p>
-              <h3 style="margin-bottom:16px">Consentement<br /><em class="serif-italic">éclairé et sécurisé.</em></h3>
+              <p class="section-label">Étape 5 — Consentement</p>
+              <h3 style="margin-bottom:16px">Préparer votre rendez-vous<br /><em class="serif-italic">en confiance.</em></h3>
               <div class="medical-intro-box">
-                <p>Vos informations sont utilisées exclusivement pour préparer votre prestation. Elles ne constituent pas un diagnostic médical et permettent à l&apos;institut d&apos;adapter le soin avec précision.</p>
+                <p>Vos informations sont utilisées exclusivement pour préparer votre prestation et permettent à l&apos;institut d&apos;adapter le soin avec précision. Ces informations ne constituent pas un diagnostic médical.</p>
               </div>
 
               <div style="display:flex;flex-direction:column;gap:14px;margin-top:20px">
@@ -606,7 +612,7 @@
 
                 <label style="display:flex;align-items:flex-start;gap:12px;font-size:0.82rem;cursor:pointer;text-transform:none;letter-spacing:0;line-height:1.6">
                   <input type="checkbox" id="consentMedical" name="consent_medical" required style="accent-color:var(--accent);width:16px;height:16px;min-width:16px;margin-top:2px" />
-                  Je confirme avoir rempli le questionnaire médical avec sincérité.
+                  Je confirme avoir rempli le questionnaire de renseignements avec sincérité.
                 </label>
 
                 <label style="display:flex;align-items:flex-start;gap:12px;font-size:0.82rem;cursor:pointer;text-transform:none;letter-spacing:0;line-height:1.6">
@@ -642,7 +648,7 @@
             <!-- ÉTAPE 6 — CONFIRMATION -->
             <div class="form-panel" id="step6">
               <p class="section-label">Étape 6 — Confirmation</p>
-              <h3 style="margin-bottom:16px">Votre demande<br /><em class="serif-italic">en un regard.</em></h3>
+              <h3 style="margin-bottom:16px">Votre demande est prête<br /><em class="serif-italic">à être transmise.</em></h3>
               <div style="background:var(--ivory);border:1px solid var(--nude);padding:20px;margin-bottom:20px;font-size:0.85rem">
                 <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(217,204,192,0.4)"><span style="color:var(--muted)">Prestation</span><span id="confService">—</span></div>
                 <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(217,204,192,0.4)"><span style="color:var(--muted)">Date</span><span id="confDate">—</span></div>
@@ -663,14 +669,14 @@
 
         <!-- ASIDE RÉCAPITULATIF -->
         <aside class="booking-summary">
-          <h4>Votre réservation</h4>
+          <h4>Votre demande</h4>
           <div class="summary-line"><span class="summary-label">Prestation</span><span class="summary-value" id="summaryService">—</span></div>
           <div class="summary-line"><span class="summary-label">Date</span><span class="summary-value" id="summaryDate">—</span></div>
           <div class="summary-line"><span class="summary-label">Créneau</span><span class="summary-value" id="summarySlot">—</span></div>
           <div class="summary-line"><span class="summary-label">Durée</span><span class="summary-value" id="summaryDuration">—</span></div>
           <div class="summary-line" style="border-top:1px solid var(--nude);margin-top:8px;padding-top:8px"><span class="summary-label">Estimation</span><span class="summary-value" id="summaryPrice">—</span></div>
           <div style="margin-top:20px;border-top:1px solid var(--nude);padding-top:16px">
-            <p style="font-size:0.75rem;color:var(--muted)">Réservation sécurisée. Données conformes au RGPD. Questionnaire médical inclus.</p>
+            <p style="font-size:0.75rem;color:var(--muted)">Réservation sécurisée. Données conformes au RGPD.</p>
           </div>
           <div style="margin-top:16px;padding-top:16px;border-top:1px solid var(--nude)">
             <p style="font-size:0.72rem;color:var(--muted)">Après confirmation :</p>
@@ -694,14 +700,12 @@
         <span class="footer-baseline">Soin · Beauté · Expertise</span>
         <a class="footer-mini-cta" href="reserver.html">Réserver une prestation</a>
       </div>
-      <div class="footer-col">
+            <div class="footer-col">
         <div class="footer-title">Navigation</div>
         <a href="index.html">Accueil</a>
-        <a href="maison.html">Expertise essentielle</a>
-        <a href="reserver.html">Menu &amp; soins</a>
-        <a href="reserver.html">Réserver</a>
-        <a href="collection.html">Formation &amp; Collection</a>
-        <a href="maison.html#heritage">L&apos;héritage Peace of Mind</a>
+        <a href="maison.html">Expertise</a>
+        <a href="reserver.html">Menu</a>
+        <a href="collection.html">Collection</a>
         <a href="archives.html">Archives</a>
         <a href="contact.html">Contact</a>
       </div>
@@ -881,7 +885,7 @@
       const allergies   = document.getElementById('bAllergies').value.trim();
       const traitement  = document.getElementById('bTraitement').value.trim();
       const alert = document.getElementById('medicalAlert');
-      const needsReview = sensibilite === 'eleve' || antecedents.length > 3 || allergies.length > 3 || traitement.length > 3;
+      const needsReview = sensibilite === 'eleve' || sensibilite === 'tres-reactif' || antecedents.length > 3 || allergies.length > 3 || traitement.length > 3;
       alert.classList.toggle('is-visible', needsReview);
       window._medicalReviewRequired = needsReview;
     }
@@ -988,8 +992,8 @@
 
     function buildBookingPayload() {
       const healthAnswers = {
-        motif:       document.getElementById('bMotif').value || null,
         objectif:    document.getElementById('bObjectif').value || null,
+        motif:       document.getElementById('bMotif').value || null,
         zone:        document.getElementById('bZone').value || null,
         sensibilite: document.getElementById('bSensibilite').value || null,
         antecedents: document.getElementById('bAntecedents').value || null,
@@ -1000,6 +1004,8 @@
       return {
         service:                  document.querySelector('input[name="service"]:checked')?.value || null,
         service_label:            serviceLabels[document.querySelector('input[name="service"]:checked')?.value] || null,
+        service_price:            servicePrices[document.querySelector('input[name="service"]:checked')?.value] || null,
+        service_duration:         serviceDurations[document.querySelector('input[name="service"]:checked')?.value] || null,
         date:                     document.getElementById('bookDate').value || null,
         slot:                     document.querySelector('input[name="slot"]:checked')?.value || null,
         firstname:                document.getElementById('bFirstname').value || null,

@@ -2600,3 +2600,335 @@ legend {
   line-height: 1.7;
   margin: 0;
 }
+
+/* ─── HOME ENTRY GRID (Maiwenn feedback) ───────────────────── */
+.home-entry-section {
+  background: var(--cream);
+}
+
+.home-entry-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  width: 100%;
+}
+
+.home-entry-card {
+  position: relative;
+  min-height: clamp(360px, 54vh, 620px);
+  overflow: hidden;
+  display: block;
+  background: var(--brun);
+  text-decoration: none;
+}
+
+.home-entry-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  inset: 0;
+  transition: transform 0.8s ease;
+}
+
+.home-entry-card:hover img {
+  transform: scale(1.045);
+}
+
+.home-entry-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to top, rgba(42, 26, 14, 0.76), rgba(42, 26, 14, 0.12) 62%, rgba(42, 26, 14, 0.04));
+  z-index: 1;
+}
+
+.home-entry-card__overlay {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  min-height: inherit;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: clamp(22px, 3vw, 38px);
+  color: var(--cream);
+}
+
+.home-entry-card__eyebrow {
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(250, 246, 241, 0.72);
+  margin-bottom: 10px;
+  font-family: var(--sans);
+  font-weight: 500;
+}
+
+.home-entry-card h3 {
+  color: var(--cream);
+  font-family: var(--serif);
+  font-size: clamp(1.28rem, 2.4vw, 2rem);
+  font-weight: 400;
+  line-height: 1.12;
+  margin: 0;
+}
+
+@media (max-width: 1100px) {
+  .home-entry-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .home-entry-card {
+    min-height: 420px;
+  }
+}
+
+@media (max-width: 640px) {
+  .home-entry-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .home-entry-card {
+    min-height: 340px;
+  }
+}
+
+/* ─── MAISON — FEEDBACK MAIWENN (page expertise) ───────────── */
+.expertise-guide-section {
+  background: var(--ivory);
+  border-top: 1px solid var(--nude);
+  border-bottom: 1px solid var(--nude);
+  max-width: 100%;
+}
+
+.expertise-guide-section .section-head,
+.expertise-guide-section .expertise-guide-grid {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.expertise-guide-grid {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.pigmentation-section {
+  border-bottom: 1px solid var(--nude);
+}
+
+.final-cta-section {
+  max-width: 100%;
+  background: var(--brun);
+  color: var(--cream);
+  padding: 0;
+}
+
+.final-cta-card {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: clamp(44px, 7vw, 84px) var(--gutter);
+}
+
+.final-cta-card h2,
+.final-cta-card .section-label {
+  color: var(--cream);
+}
+
+.final-cta-card .final-cta-note {
+  color: rgba(250, 246, 241, 0.58);
+  font-size: 0.78rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.final-cta-card .btn-primary {
+  background: var(--cream);
+  color: var(--brun);
+  border-color: var(--cream);
+}
+
+.final-cta-card .btn-primary:hover {
+  background: transparent;
+  color: var(--cream);
+  border-color: rgba(250, 246, 241, 0.48);
+}
+
+@media (max-width: 900px) {
+  .expertise-guide-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── RESERVATION HERO ───────────────────────────────────────── */
+.reservation-hero .page-hero-lead {
+  margin-top: 16px;
+  max-width: 560px;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.75;
+}
+
+/* ── SECURE NOTICE (step 1 — questionnaire de renseignements) ── */
+.secure-notice {
+  background: var(--ivory);
+  border: 1px solid var(--nude);
+  border-left: 3px solid var(--brun-soft);
+  padding: 16px 20px;
+  margin-bottom: 20px;
+  font-size: 0.84rem;
+  color: var(--brun-soft);
+  line-height: 1.6;
+}
+
+/* ── COLLECTION PAGE ─────────────────────────────────────────── */
+.page-hero--collection {
+  min-height: min(72svh, 720px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.collection-intro-section {
+  border-top: 1px solid var(--nude);
+  border-bottom: 1px solid var(--nude);
+}
+
+.limited-collection-section {
+  background: var(--ivory);
+}
+
+.collection-feature {
+  display: grid;
+  grid-template-columns: 1fr 0.9fr;
+  gap: clamp(32px, 6vw, 96px);
+  align-items: center;
+}
+
+.collection-feature__content {
+  max-width: 720px;
+}
+
+.collection-feature__content p {
+  color: var(--brun-soft);
+  line-height: 1.75;
+  margin-top: 18px;
+}
+
+.collection-release-note {
+  color: var(--brun) !important;
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border-top: 1px solid var(--nude);
+  padding-top: 18px;
+  margin-top: 28px !important;
+}
+
+.collection-feature__media {
+  position: relative;
+  min-height: clamp(360px, 52vw, 620px);
+  overflow: hidden;
+  background: var(--brun);
+}
+
+.collection-feature__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  inset: 0;
+}
+
+.training-section {
+  border-top: 1px solid var(--nude);
+  border-bottom: 1px solid var(--nude);
+}
+
+.collection-final-cta {
+  background: var(--brun);
+  color: var(--cream);
+}
+
+.collection-final-cta .final-cta-card {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: clamp(44px, 7vw, 78px) var(--gutter);
+}
+
+.collection-final-cta h2,
+.collection-final-cta .section-label {
+  color: var(--cream);
+}
+
+.collection-final-cta .btn-primary {
+  background: var(--cream);
+  color: var(--brun);
+  border-color: var(--cream);
+}
+
+.collection-final-cta .btn-primary:hover {
+  background: transparent;
+  color: var(--cream);
+  border-color: rgba(250, 246, 241, 0.48);
+}
+
+@media (max-width: 900px) {
+  .page-hero--collection {
+    min-height: auto;
+    padding-top: calc(64px + 54px);
+  }
+
+  .collection-feature {
+    grid-template-columns: 1fr;
+  }
+
+  .collection-feature__media {
+    min-height: 360px;
+  }
+}
+
+/* ── COLLECTION PHOTO PLACEHOLDER ───────────────────────────── */
+.collection-feature__media--placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--nude);
+}
+
+.photo-a-venir {
+  font-family: var(--serif);
+  font-size: clamp(0.75rem, 1.2vw, 0.88rem);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--brun-soft);
+  opacity: 0.55;
+}
+
+/* ── HEADER CTA ─────────────────────────────────────────────── */
+.header-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 9px 16px;
+  border: 1px solid var(--brun);
+  background: var(--brun);
+  color: var(--cream);
+  font-size: 0.66rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  transition: background var(--transition), color var(--transition), border-color var(--transition);
+  white-space: nowrap;
+}
+
+.header-cta:hover {
+  background: transparent;
+  color: var(--brun);
+  border-color: var(--brun);
+}
+
+@media (max-width: 760px) {
+  .header-cta {
+    display: none;
+  }
+}
