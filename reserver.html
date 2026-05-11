@@ -965,7 +965,7 @@
         const alertBox = document.getElementById('confAlertBox');
         if (window._medicalReviewRequired) {
           alertBox.style.display = 'block';
-          alertBox.innerHTML = '<span style="font-size:0.78rem;color:var(--accent-warm);">⚠ Votre demande nécessite une relecture spécifique par l'institut avant validation.</span>';
+          alertBox.innerHTML = `<span style="font-size:0.78rem;color:var(--accent-warm);">⚠ Votre demande nécessite une relecture spécifique par l'institut avant validation.</span>`;
         }
       }
       updateSummary();
