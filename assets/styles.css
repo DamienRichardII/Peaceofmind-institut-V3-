@@ -2949,3 +2949,180 @@ legend {
     grid-template-columns: 1fr;
   }
 }
+
+/* ── ARCHIVES PAGE ───────────────────────────────────────────── */
+.archives-story-section {
+  background: var(--ivory);
+  border-top: 1px solid var(--nude);
+}
+
+.archives-story-section .section-head {
+  max-width: 980px;
+  margin: 0 auto clamp(32px, 5vw, 64px);
+  text-align: center;
+}
+
+.archives-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(14px, 2vw, 24px);
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.archive-card {
+  position: relative;
+  min-height: clamp(360px, 44vw, 560px);
+  overflow: hidden;
+  background: var(--ivory);
+  border: 1px solid rgba(217, 204, 192, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.archive-card img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  background: var(--ivory);
+  transition: transform 0.8s ease;
+}
+
+.archive-card:hover img {
+  transform: scale(1.015);
+}
+
+.archive-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(42, 26, 14, 0.62), rgba(42, 26, 14, 0.14) 58%, rgba(42, 26, 14, 0.02));
+  z-index: 1;
+}
+
+.archive-card__overlay {
+  position: relative;
+  z-index: 2;
+  min-height: inherit;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: clamp(20px, 3vw, 34px);
+  color: var(--cream);
+}
+
+.archive-card__eyebrow {
+  font-size: 0.66rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(250, 246, 241, 0.72);
+  margin-bottom: 10px;
+}
+
+.archive-card h3 {
+  color: var(--cream);
+  font-size: clamp(1.1rem, 1.8vw, 1.65rem);
+  line-height: 1.15;
+}
+
+.archives-after-note {
+  max-width: 760px;
+  margin: clamp(32px, 5vw, 64px) auto 0;
+  text-align: center;
+  color: var(--brun-soft);
+}
+
+@media (max-width: 1100px) {
+  .archives-gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 680px) {
+  .archives-gallery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .archive-card {
+    min-height: 420px;
+  }
+}
+
+/* ── HARMONISATION TYPOGRAPHIQUE GLOBALE (Partie 8) ────────────────── */
+/* Référence : maison.html / page Expertise */
+
+/* Labels uppercase uniformes sur toutes les pages */
+.section-label {
+  font-family: var(--sans) !important;
+  font-size: 0.68rem !important;
+  letter-spacing: 0.18em !important;
+  text-transform: uppercase !important;
+  color: var(--brun-soft) !important;
+}
+
+/* Titres h1 premium — cohérence globale */
+h1 {
+  font-family: var(--serif);
+  font-size: clamp(2.6rem, 5.5vw, 5rem);
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  color: var(--brun);
+}
+
+/* Titres h2 */
+h2 {
+  font-family: var(--serif);
+  font-size: clamp(1.7rem, 3.2vw, 2.8rem);
+  line-height: 1.12;
+  color: var(--brun);
+}
+
+/* Titres h3 */
+h3 {
+  font-family: var(--serif);
+  font-size: clamp(1.3rem, 2.2vw, 1.9rem);
+  line-height: 1.2;
+  color: var(--brun);
+}
+
+/* Titres h4 */
+h4 {
+  font-family: var(--sans);
+  font-size: clamp(0.88rem, 1.2vw, 1rem);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--brun);
+}
+
+/* Paragraphes corps */
+p {
+  font-family: var(--sans);
+  font-size: clamp(0.9rem, 1.15vw, 1.02rem);
+  line-height: 1.78;
+  color: var(--brun-soft);
+}
+
+/* Italique serif signature */
+em.serif-italic {
+  font-family: var(--serif);
+  font-style: italic;
+}
+
+/* Vidéo collection */
+.collection-feature__media--video {
+  position: relative;
+  overflow: hidden;
+  background: var(--brun);
+  aspect-ratio: 4/5;
+}
+.collection-feature__media--video video {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+}
