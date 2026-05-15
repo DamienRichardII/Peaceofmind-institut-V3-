@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Réserver — Peace of Mind Institut</title>
-  <meta name="description" content="Réserver une prestation Peace of Mind Institut — Soins sur-mesure, selection of treatment. Consentement en ligne. Gradignan, Bordeaux." />
+  <meta name="description" content="Réserver une prestation Peace of Mind Institut — Soins sur-mesure, selection of treatments. Consentement en ligne. Gradignan, Bordeaux." />
   <link rel="icon" href="assets/logo-peace-of-mind-final.png" type="image/png" />
   <link rel="stylesheet" href="assets/styles.css" />
 </head>
@@ -23,6 +23,7 @@
       <a href="collection.html">Collection</a>
       <a href="archives.html">Archives</a>
       <a href="contact.html">Contact</a>
+      <a href="members.html">Members Only</a>
     </nav>
     <div class="header-actions">
       <a class="header-cta" href="reserver.html">Réserver</a>
@@ -33,9 +34,9 @@
   <main>
 
     <section class="page-hero section fade-up reservation-hero">
-      <p class="section-label">Chapitre III — Selection of Treatment</p>
-      <h1>Beauty &amp; Care Menu<br /><em class="serif-italic">Selection of treatment.</em></h1>
-      <p class="page-hero-lead">Chaque prestation commence par un questionnaire de renseignements. Il nous permet de préparer votre soin avec précision. Chaque demande est relue avec attention.</p>
+      <p class="section-label">Chapitre III — Selection of Treatments</p>
+      <h1>Beauty &amp; Care Menu<br /><em class="serif-italic">Selection of treatments.</em></h1>
+      <p class="page-hero-lead">Votre parcours de réservation commence par un questionnaire de renseignements rempli avec sincérité, afin de préparer une expérience personnalisée.</p>
     </section>
 
     <!-- ANCHOR: QUEL SOIN -->
@@ -61,9 +62,9 @@
             <!-- ÉTAPE 1 — QUESTIONNAIRE DE RENSEIGNEMENTS -->
             <div class="form-panel is-active" id="step1">
               <p class="section-label">Étape 1 — Questionnaire de renseignements</p>
-              <h3 style="margin-bottom:16px">Votre bien-être.<br /><em class="serif-italic">Votre priorité.</em></h3>
+              <h3 style="margin-bottom:16px">Votre bien-être.<br /><em class="serif-italic">Notre priorité.</em></h3>
               <div class="secure-notice">
-                <p>Un questionnaire de renseignements, rempli avec sincérité, nous permet de préparer votre prestation avec précision et d&apos;adapter chaque geste à votre situation. Ces informations ne constituent pas un diagnostic médical.</p>
+                <p>Un questionnaire de renseignements, rempli avec sincérité, nous permet de préparer votre prestation avec précision et d&apos;adapter chaque geste à votre situation, sans se substituer à un avis médical.</p>
               </div>
 
               <div style="display:flex;flex-direction:column;gap:16px">
@@ -81,7 +82,7 @@
                 </div>
                 <div>
                   <label for="bSensibilite">Niveau de sensibilité — peau &amp; ongles</label>
-                  <select id="bSensibilite" name="sensibilite" onchange="checkMedicalAlert()">
+                  <select id="bSensibilite" name="sensibilite" onchange="checkCareAlert()">
                     <option value="">Sélectionner</option>
                     <option value="nc">Je ne sais pas</option>
                     <option value="faible">Faible — peau peu réactive</option>
@@ -92,15 +93,15 @@
                 </div>
                 <div>
                   <label for="bAntecedents">Antécédents ou situation particulière</label>
-                  <textarea id="bAntecedents" name="antecedents" rows="2" placeholder="Eczéma, alopécie, reconstruction, autre…" oninput="checkMedicalAlert()"></textarea>
+                  <textarea id="bAntecedents" name="antecedents" rows="2" placeholder="Eczéma, alopécie, reconstruction, autre…" oninput="checkCareAlert()"></textarea>
                 </div>
                 <div>
                   <label for="bAllergies">Allergies connues</label>
-                  <textarea id="bAllergies" name="allergies" rows="2" placeholder="Composants cosmétiques, latex, autre…" oninput="checkMedicalAlert()"></textarea>
+                  <textarea id="bAllergies" name="allergies" rows="2" placeholder="Composants cosmétiques, latex, autre…" oninput="checkCareAlert()"></textarea>
                 </div>
                 <div>
                   <label for="bTraitement">Traitement en cours &amp; situation actuelle</label>
-                  <textarea id="bTraitement" name="traitement" rows="2" placeholder="Si oui, précisez (nom du traitement si vous le souhaitez)" oninput="checkMedicalAlert()"></textarea>
+                  <textarea id="bTraitement" name="traitement" rows="2" placeholder="Nom du traitement si vous souhaitez le préciser, grossesse, allaitement en cours ou situation particulière." oninput="checkCareAlert()"></textarea>
                 </div>
                 <div>
                   <label for="bAttentes">Autres précisions &amp; questions</label>
@@ -108,7 +109,7 @@
                 </div>
               </div>
 
-              <div class="medical-alert" id="medicalAlert">
+              <div class="care-alert" id="careAlert">
                 ⚠ Votre demande nécessitera une relecture spécifique par l&apos;institut avant validation. Ce n&apos;est pas un obstacle — c&apos;est simplement notre façon de prendre soin de vous avec précision.
               </div>
 
@@ -128,67 +129,73 @@
 
                 <div class="s2-group" data-s2cat="soins">
                   <p style="font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--brun);font-family:var(--sans);font-weight:600;padding:12px 0 6px;border-bottom:1.5px solid var(--nude);margin-top:clamp(20px,3vw,32px);margin-bottom:8px">Soins profonds · Visage</p>
-                  <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="soin_microneedling_face">
-                    <input type="radio" name="service" value="soin_microneedling_face" style="margin-top:3px;accent-color:var(--accent)" />
+                  <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="soin_nanotherapy_face">
+                    <input type="radio" name="service" value="soin_nanotherapy_face" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Nano therapy visage</strong>
-                      <span style="font-size:0.78rem;color:var(--muted)">Soin régénérant, traitant, multi-soins reconnu comme l'un des soins n°1 mondial. · 45 min · 80 €</span>
+                      <span class="service-description" style="font-size:0.78rem;color:var(--muted);display:block">Soin régénérant, traitant, multi-soins reconnu comme l'un des soins n°1 mondial.</span>
+                      <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">45 min · 80 €</span>
                     </div>
                   </label>
-                  <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="soin_microneedling_face_neck">
-                    <input type="radio" name="service" value="soin_microneedling_face_neck" style="margin-top:3px;accent-color:var(--accent)" />
+                  <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="soin_nanotherapy_face_neck">
+                    <input type="radio" name="service" value="soin_nanotherapy_face_neck" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Nano therapy visage et cou</strong>
-                      <span style="font-size:0.78rem;color:var(--muted)">Soin régénérant, traitant, multi-soins reconnu comme l'un des soins n°1 mondial. · 1h · 100 €</span>
+                      <span class="service-description" style="font-size:0.78rem;color:var(--muted);display:block">Soin régénérant, traitant, multi-soins reconnu comme l'un des soins n°1 mondial.</span>
+                      <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">1h · 100 €</span>
                     </div>
                   </label>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="soin_peeling_acne">
                     <input type="radio" name="service" value="soin_peeling_acne" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Peeling : No more acne</strong>
-                      <span style="font-size:0.78rem;color:var(--muted)">À base d’acide glycolique · 40 min · 80 €</span>
+                      <span class="service-description" style="font-size:0.78rem;color:var(--muted);display:block">À base d’acide glycolique</span>
+                      <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">40 min · 80 €</span>
                     </div>
                   </label>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="soin_peeling_glow">
                     <input type="radio" name="service" value="soin_peeling_glow" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Peeling : Glow peel</strong>
-                      <span style="font-size:0.78rem;color:var(--muted)">40 min · 100 €</span>
+                      <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">40 min · 100 €</span>
                     </div>
                   </label>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="soin_peeling_melano">
                     <input type="radio" name="service" value="soin_peeling_melano" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Peeling : Melano peel</strong>
-                      <span style="font-size:0.78rem;color:var(--muted)">Lutte contre l’hyperpigmentation · 40 min · 100 €</span>
+                      <span class="service-description" style="font-size:0.78rem;color:var(--muted);display:block">Lutte contre l’hyperpigmentation</span>
+                      <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">40 min · 100 €</span>
                     </div>
                   </label>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="soin_peeling_rice">
                     <input type="radio" name="service" value="soin_peeling_rice" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Peeling : Rice peel</strong>
-                      <span style="font-size:0.78rem;color:var(--muted)">40 min · 120 €</span>
+                      <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">40 min · 120 €</span>
                     </div>
                   </label>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="soin_aquagold">
                     <input type="radio" name="service" value="soin_aquagold" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Aqua gold</strong>
-                      <span style="font-size:0.78rem;color:var(--muted)">50 min · 120 €</span>
+                      <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">50 min · 120 €</span>
                     </div>
                   </label>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="soin_newskin">
                     <input type="radio" name="service" value="soin_newskin" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">New skin</strong>
-                      <span style="font-size:0.78rem;color:var(--muted)">Soin profond + jelly mask · 1h20 · 150 €</span>
+                      <span class="service-description" style="font-size:0.78rem;color:var(--muted);display:block">Soin profond + jelly mask</span>
+                      <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">1h20 · 150 €</span>
                     </div>
                   </label>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="soin_plasmalift_face">
                     <input type="radio" name="service" value="soin_plasmalift_face" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Plasma lift</strong>
-                      <span style="font-size:0.78rem;color:var(--muted)">Technique non invasive · 1h · 190 €</span>
+                      <span class="service-description" style="font-size:0.78rem;color:var(--muted);display:block">Technique non invasive</span>
+                      <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">1h · 190 €</span>
                     </div>
                   </label>
                 </div>
@@ -199,35 +206,39 @@
                     <input type="radio" name="service" value="corps_jellyv" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Jelly V • Soin pubis</strong>
-                      <span style="font-size:0.78rem;color:var(--muted)">Poils incarnés &amp; hyperpigmentation · 45 min · 85 €</span>
+                      <span class="service-description" style="font-size:0.78rem;color:var(--muted);display:block">Poils incarnés &amp; hyperpigmentation</span>
+                      <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">45 min · 85 €</span>
                     </div>
                   </label>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="corps_jellyb">
                     <input type="radio" name="service" value="corps_jellyb" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Jelly B • Soin fessier</strong>
-                      <span style="font-size:0.78rem;color:var(--muted)">Boutons, cellulite &amp; hyperpigmentation · 45 min · 90 €</span>
+                      <span class="service-description" style="font-size:0.78rem;color:var(--muted);display:block">Boutons, cellulite &amp; hyperpigmentation</span>
+                      <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">45 min · 90 €</span>
                     </div>
                   </label>
-                  <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="corps_torsoneedling">
-                    <input type="radio" name="service" value="corps_torsoneedling" style="margin-top:3px;accent-color:var(--accent)" />
+                  <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="corps_nanotherapy">
+                    <input type="radio" name="service" value="corps_nanotherapy" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Nano therapy corps</strong>
-                      <span style="font-size:0.78rem;color:var(--muted)">Zones du dos ou du torse. · 1h · 100 €</span>
+                      <span class="service-description" style="font-size:0.78rem;color:var(--muted);display:block">Zones du dos ou du torse.</span>
+                      <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">1h · 100 €</span>
                     </div>
                   </label>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="corps_aquagold">
                     <input type="radio" name="service" value="corps_aquagold" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Aqua gold corps</strong>
-                      <span style="font-size:0.78rem;color:var(--muted)">Nano therapy + feuilles d’or · 1h · À partir de 120 €</span>
+                      <span class="service-description" style="font-size:0.78rem;color:var(--muted);display:block">Nano therapy + feuilles d’or</span>
+                      <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">1h · À partir de 120 €</span>
                     </div>
                   </label>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="corps_plasmalift">
                     <input type="radio" name="service" value="corps_plasmalift" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Plasma lift corps</strong>
-                      <span style="font-size:0.78rem;color:var(--muted)">1h · À partir de 190 €</span>
+                      <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">1h · À partir de 190 €</span>
                     </div>
                   </label>
                 </div>
@@ -238,39 +249,43 @@
                     <input type="radio" name="service" value="blanchiment_1" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Blanchiment dentaire · 1 séance</strong>
-                      <span style="font-size:0.78rem;color:var(--muted)">Soin esthétique du sourire · 1h · 140 €</span>
+                      <span class="service-description" style="font-size:0.78rem;color:var(--muted);display:block">Soin esthétique du sourire</span>
+                      <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">1h · 140 €</span>
                     </div>
                   </label>
                 </div>
 
                 <div class="s2-group" data-s2cat="pigmentation">
-                  <p style="font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--brun);font-family:var(--sans);font-weight:600;padding:12px 0 6px;border-bottom:1.5px solid var(--nude);margin-top:clamp(20px,3vw,32px);margin-bottom:8px">Freckles &amp; Grain de beauté</p>
+                  <p style="font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--brun);font-family:var(--sans);font-weight:600;padding:12px 0 6px;border-bottom:1.5px solid var(--nude);margin-top:clamp(20px,3vw,32px);margin-bottom:8px">Freckles &amp; Grains de beauté</p>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="pig_grain">
                     <input type="radio" name="service" value="pig_grain" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Grain de beauté</strong>
-                      <span style="font-size:0.78rem;color:var(--muted)">30 min · 50 €</span>
+                      <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">30 min · 50 €</span>
                     </div>
                   </label>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="pig_freckles_nez">
                     <input type="radio" name="service" value="pig_freckles_nez" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Freckles NEZ</strong>
-                      <span style="font-size:0.78rem;color:var(--muted)">Pigments vegan — effet naturel · 45 min · 69 €</span>
+                      <span class="service-description" style="font-size:0.78rem;color:var(--muted);display:block">Pigments vegan — effet naturel</span>
+                      <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">45 min · 69 €</span>
                     </div>
                   </label>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="pig_freckles_nez_pom">
                     <input type="radio" name="service" value="pig_freckles_nez_pom" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Freckles NEZ &amp; POMMETTES</strong>
-                      <span style="font-size:0.78rem;color:var(--muted)">1h30 · 90 €</span>
+                      <span class="service-description" style="font-size:0.78rem;color:var(--muted);display:block">Pigmentation vegan — effet naturel</span>
+                      <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">1h30 · 90 €</span>
                     </div>
                   </label>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="pig_freckles_visage">
                     <input type="radio" name="service" value="pig_freckles_visage" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Freckles VISAGE</strong>
-                      <span style="font-size:0.78rem;color:var(--muted)">2h · 120 €</span>
+                      <span class="service-description" style="font-size:0.78rem;color:var(--muted);display:block">Pigmentation vegan — effet naturel</span>
+                      <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">2h · 120 €</span>
                     </div>
                   </label>
                 </div>
@@ -281,241 +296,285 @@
                     <input type="radio" name="service" value="pig_ret_grain" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Retouche grain de beauté</strong>
-                      <span style="font-size:0.78rem;color:var(--muted)">20 min · 25 €</span>
+                      <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">20 min · 25 €</span>
                     </div>
                   </label>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="pig_ret_nez">
                     <input type="radio" name="service" value="pig_ret_nez" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Retouche NEZ</strong>
-                      <span style="font-size:0.78rem;color:var(--muted)">1h · 35 €</span>
+                      <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">1h · 35 €</span>
                     </div>
                   </label>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="pig_ret_nez_pom">
                     <input type="radio" name="service" value="pig_ret_nez_pom" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Retouche NEZ &amp; POMMETTES</strong>
-                      <span style="font-size:0.78rem;color:var(--muted)">40 min · 45 €</span>
+                      <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">40 min · 45 €</span>
                     </div>
                   </label>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="pig_ret_visage">
                     <input type="radio" name="service" value="pig_ret_visage" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Retouche VISAGE</strong>
-                      <span style="font-size:0.78rem;color:var(--muted)">45 min · 60 €</span>
+                      <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">45 min · 60 €</span>
                     </div>
                   </label>
                 </div>
 
                 <div class="s2-group" data-s2cat="ongles">
-                  <p style="font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--brun);font-family:var(--sans);font-weight:600;padding:12px 0 6px;border-bottom:1.5px solid var(--nude);margin-top:clamp(20px,3vw,32px);margin-bottom:8px">Pose complète gel</p>
+                  <p style="font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--brun);font-family:var(--sans);font-weight:600;padding:12px 0 6px;border-bottom:1.5px solid var(--nude);margin-top:clamp(20px,3vw,32px);margin-bottom:8px">Manucure — Pose complète gel</p>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="ongles_pose_sm">
                     <input type="radio" name="service" value="ongles_pose_sm" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Taille S ou M — pose complète</strong>
-                      <span style="font-size:0.78rem;color:var(--muted)">1h50 · 65 €</span>
+                      <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">1h50 · 65 €</span>
                     </div>
                   </label>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="ongles_pose_l">
                     <input type="radio" name="service" value="ongles_pose_l" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Taille L — pose complète</strong>
-                      <span style="font-size:0.78rem;color:var(--muted)">2h · 75 €</span>
+                      <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">2h · 75 €</span>
                     </div>
                   </label>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="ongles_pose_xl">
                     <input type="radio" name="service" value="ongles_pose_xl" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Taille XL &amp;+ — pose complète</strong>
-                      <span style="font-size:0.78rem;color:var(--muted)">2h15 · 85 €</span>
+                      <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">2h15 · 85 €</span>
                     </div>
                   </label>
                 </div>
 
                 <div class="s2-group" data-s2cat="ongles">
-                  <p style="font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--brun);font-family:var(--sans);font-weight:600;padding:12px 0 6px;border-bottom:1.5px solid var(--nude);margin-top:clamp(20px,3vw,32px);margin-bottom:8px">Remplissage gel</p>
+                  <p style="font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--brun);font-family:var(--sans);font-weight:600;padding:12px 0 6px;border-bottom:1.5px solid var(--nude);margin-top:clamp(20px,3vw,32px);margin-bottom:8px">Manucure — Remplissage gel &amp; extension</p>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="ongles_fill_sm">
                     <input type="radio" name="service" value="ongles_fill_sm" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Taille S ou M — remplissage</strong>
-                      <span style="font-size:0.78rem;color:var(--muted)">1h30 · 55 €</span>
+                      <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">1h30 · 55 €</span>
                     </div>
                   </label>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="ongles_fill_l">
                     <input type="radio" name="service" value="ongles_fill_l" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Taille L — remplissage</strong>
-                      <span style="font-size:0.78rem;color:var(--muted)">1h30 · 65 €</span>
+                      <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">1h30 · 65 €</span>
                     </div>
                   </label>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="ongles_fill_xl">
                     <input type="radio" name="service" value="ongles_fill_xl" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Taille XL &amp;+ — remplissage</strong>
-                      <span style="font-size:0.78rem;color:var(--muted)">1h30 · 75 €</span>
+                      <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">1h30 · 75 €</span>
                     </div>
                   </label>
                   <p style="font-size:0.72rem;color:var(--muted);margin-top:8px;padding-top:8px;border-top:1px dashed var(--nude);font-style:italic">Remplissage extérieur ou 3 ongles cassés ou +4 semaines = prix d'une pose complète.</p>
                 </div>
 
                 <div class="s2-group" data-s2cat="ongles">
-                  <p style="font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--brun);font-family:var(--sans);font-weight:600;padding:12px 0 6px;border-bottom:1.5px solid var(--nude);margin-top:clamp(20px,3vw,32px);margin-bottom:8px">Manucure soin &amp; gel</p>
+                  <p style="font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--brun);font-family:var(--sans);font-weight:600;padding:12px 0 6px;border-bottom:1.5px solid var(--nude);margin-top:clamp(20px,3vw,32px);margin-bottom:8px">Manucure — Le gel sans extension &amp; soin</p>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="ongles_gainage">
                     <input type="radio" name="service" value="ongles_gainage" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Gainage gel</strong>
-                      <span style="font-size:0.78rem;color:var(--muted)">Renfort sur ongle naturel long / ongle cassant · 1h15 · 45 €</span>
+                      <span class="service-description" style="font-size:0.78rem;color:var(--muted);display:block">Renfort sur ongle naturel fragile ou cassant.</span>
+                      <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">1h15 · 45 €</span>
                     </div>
                   </label>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="ongles_semi">
                     <input type="radio" name="service" value="ongles_semi" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Semi-permanent</strong>
-                      <span style="font-size:0.78rem;color:var(--muted)">Vernis longue tenue · 35 min · 36 €</span>
+                      <span class="service-description" style="font-size:0.78rem;color:var(--muted);display:block">Vernis longue tenue</span>
+                      <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">35 min · 35 €</span>
                     </div>
                   </label>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="ongles_manicare">
                     <input type="radio" name="service" value="ongles_manicare" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Mani Care • Soin</strong>
-                      <span style="font-size:0.78rem;color:var(--muted)">20 min · 19 €</span>
+                      <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">20 min · 19 €</span>
                     </div>
                   </label>
                 </div>
 
                 <div class="s2-group" data-s2cat="ongles">
-                  <p style="font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--brun);font-family:var(--sans);font-weight:600;padding:12px 0 6px;border-bottom:1.5px solid var(--nude);margin-top:clamp(20px,3vw,32px);margin-bottom:8px">Nail art • options</p>
+                  <p style="font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--brun);font-family:var(--sans);font-weight:600;padding:12px 0 6px;border-bottom:1.5px solid var(--nude);margin-top:clamp(20px,3vw,32px);margin-bottom:8px">Suppléments &amp; Nail art — par ongle **</p>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="na_sticker">
                     <input type="radio" name="service" value="na_sticker" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
-                      <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Sticker ou strass (par ongle)</strong>
-                      <span style="font-size:0.78rem;color:var(--muted)">10 min · 0,50 €</span>
+                      <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Sticker ou strass **</strong>
+                      <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">10 min · 0,50 €</span>
                     </div>
                   </label>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="na_chrome">
                     <input type="radio" name="service" value="na_chrome" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
-                      <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Chrome (par ongle)</strong>
-                      <span style="font-size:0.78rem;color:var(--muted)">15 min · 1 €</span>
+                      <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Chrome **</strong>
+                      <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">15 min · 1 €</span>
                     </div>
                   </label>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="na_cat">
                     <input type="radio" name="service" value="na_cat" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
-                      <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Cat eye (par ongle)</strong>
-                      <span style="font-size:0.78rem;color:var(--muted)">15 min · 1 €</span>
+                      <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Cat eye **</strong>
+                      <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">15 min · 1 €</span>
                     </div>
                   </label>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="na_french">
                     <input type="radio" name="service" value="na_french" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
-                      <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">French (par ongle)</strong>
-                      <span style="font-size:0.78rem;color:var(--muted)">15 min · 1 €</span>
+                      <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">French **</strong>
+                      <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">15 min · 1 €</span>
                     </div>
                   </label>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="na_baby">
                     <input type="radio" name="service" value="na_baby" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
-                      <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Baby boomer (par ongle)</strong>
-                      <span style="font-size:0.78rem;color:var(--muted)">20 min · 1 €</span>
+                      <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Baby boomer **</strong>
+                      <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">20 min · 1 €</span>
                     </div>
                   </label>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="na_marbre">
                     <input type="radio" name="service" value="na_marbre" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
-                      <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Marbre / Animalier / 3D (par ongle)</strong>
-                      <span style="font-size:0.78rem;color:var(--muted)">25 min · 2 €</span>
+                      <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Marbre / Animalier / 3D **</strong>
+                      <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">25 min · 2 €</span>
                     </div>
                   </label>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="na_casse">
                     <input type="radio" name="service" value="na_casse" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Ongle cassé</strong>
-                      <span style="font-size:0.78rem;color:var(--muted)">5 min · 3 €</span>
+                      <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">5 min · 3 €</span>
                     </div>
                   </label>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="na_forme">
                     <input type="radio" name="service" value="na_forme" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Changement de forme</strong>
-                      <span style="font-size:0.78rem;color:var(--muted)">10 min · 5 €</span>
+                      <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">10 min · 5 €</span>
                     </div>
                   </label>
+                  <p style="font-size:0.72rem;color:var(--muted);margin-top:14px;padding-top:10px;border-top:1px dashed var(--nude);font-style:italic">** Nail art facturé par ongle. Veuillez préciser le nombre de doigts concernés dans la section &laquo;&nbsp;Autres précisions&nbsp;&raquo;.</p>
                 </div>
 
                 <div class="s2-group" data-s2cat="ongles">
-                  <p style="font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--brun);font-family:var(--sans);font-weight:600;padding:12px 0 6px;border-bottom:1.5px solid var(--nude);margin-top:clamp(20px,3vw,32px);margin-bottom:8px">Dépose</p>
+                  <p style="font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--brun);font-family:var(--sans);font-weight:600;padding:12px 0 6px;border-bottom:1.5px solid var(--nude);margin-top:clamp(20px,3vw,32px);margin-bottom:8px">Dépose manucure</p>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="dep_gel">
                     <input type="radio" name="service" value="dep_gel" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Dépose gel &amp; soin</strong>
-                      <span style="font-size:0.78rem;color:var(--muted)">25 min · 25 €</span>
+                      <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">30 min · 25 €</span>
                     </div>
                   </label>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="dep_semi_repose">
                     <input type="radio" name="service" value="dep_semi_repose" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Dépose semi-permanent si repose</strong>
-                      <span style="font-size:0.78rem;color:var(--muted)">15 min · Gratuit</span>
+                      <span class="service-description" style="font-size:0.78rem;color:var(--muted);display:block">Dépose gratuite si repose de semi-permanent.</span>
+                      <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">15 min · Gratuit</span>
                     </div>
                   </label>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="dep_semi">
                     <input type="radio" name="service" value="dep_semi" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Dépose semi-permanent</strong>
-                      <span style="font-size:0.78rem;color:var(--muted)">10 min · 7 €</span>
+                      <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">10 min · 7 €</span>
                     </div>
                   </label>
                 </div>
 
-                <div class="s2-group" data-s2cat="ongles">
-                  <p style="font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--brun);font-family:var(--sans);font-weight:600;padding:12px 0 6px;border-bottom:1.5px solid var(--nude);margin-top:clamp(20px,3vw,32px);margin-bottom:8px">Pédicure</p>
-                  <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="pedi_gainage">
-                    <input type="radio" name="service" value="pedi_gainage" style="margin-top:3px;accent-color:var(--accent)" />
+
+                <div class="s2-group" data-s2cat="pedicure">
+                  <p style="font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--brun);font-family:var(--sans);font-weight:600;padding:12px 0 6px;border-bottom:1.5px solid var(--nude);margin-top:clamp(20px,3vw,32px);margin-bottom:8px">Pédicure — Un soin, une signature</p>
+                  <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="pedi_calus">
+                    <input type="radio" name="service" value="pedi_calus" style="margin-top:3px;accent-color:var(--accent)" />
+                    <div>
+                      <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Calus N°1</strong>
+                      <span class="service-description" style="font-size:0.78rem;color:var(--muted);display:block">Composé à 99 % d'origines naturelles. Le soin N°1 qui traite les callosités pour un résultat pieds de soie.</span>
+                      <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">45 min · 65 €</span>
+                    </div>
+                  </label>
+                  <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="pedi_luxury">
+                    <input type="radio" name="service" value="pedi_luxury" style="margin-top:3px;accent-color:var(--accent)" />
+                    <div>
+                      <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Pedi Luxury</strong>
+                      <span class="service-description" style="font-size:0.78rem;color:var(--muted);display:block">Bain profond relaxant, gommage, masque et rituel crème.</span>
+                      <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">45 min · 55 €</span>
+                    </div>
+                  </label>
+                  <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="pedi_care">
+                    <input type="radio" name="service" value="pedi_care" style="margin-top:3px;accent-color:var(--accent)" />
+                    <div>
+                      <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Pedi Care</strong>
+                      <span class="service-description" style="font-size:0.78rem;color:var(--muted);display:block">Bain avec émollient et rituel crème.</span>
+                      <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">20 min · 19 €</span>
+                    </div>
+                  </label>
+                </div>
+
+                <div class="s2-group" data-s2cat="pedicure">
+                  <p style="font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--brun);font-family:var(--sans);font-weight:600;padding:12px 0 6px;border-bottom:1.5px solid var(--nude);margin-top:clamp(20px,3vw,32px);margin-bottom:8px">Duo — Soin &amp; ongles</p>
+                  <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="pedi_duo_calus">
+                    <input type="radio" name="service" value="pedi_duo_calus" style="margin-top:3px;accent-color:var(--accent)" />
+                    <div>
+                      <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Calus N°1 &amp; semi-permanent</strong>
+                      <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">1h20 min · 85 €</span>
+                    </div>
+                  </label>
+                  <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="pedi_duo_luxury">
+                    <input type="radio" name="service" value="pedi_duo_luxury" style="margin-top:3px;accent-color:var(--accent)" />
+                    <div>
+                      <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Pedi Luxury &amp; semi-permanent</strong>
+                      <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">1h20 min · 77 €</span>
+                    </div>
+                  </label>
+                  <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="pedi_duo_care">
+                    <input type="radio" name="service" value="pedi_duo_care" style="margin-top:3px;accent-color:var(--accent)" />
+                    <div>
+                      <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Pedi Care &amp; semi-permanent</strong>
+                      <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">1h · 45 €</span>
+                    </div>
+                  </label>
+                </div>
+
+                <div class="s2-group" data-s2cat="pedicure">
+                  <p style="font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--brun);font-family:var(--sans);font-weight:600;padding:12px 0 6px;border-bottom:1.5px solid var(--nude);margin-top:clamp(20px,3vw,32px);margin-bottom:8px">Pédicure — Beauté des ongles</p>
+                  <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="pedi_gainage_new">
+                    <input type="radio" name="service" value="pedi_gainage_new" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Gainage gel (pieds)</strong>
-                      <span style="font-size:0.78rem;color:var(--muted)">45 min · 45 €</span>
+                      <span class="service-description" style="font-size:0.78rem;color:var(--muted);display:block">Renfort sur ongle naturel fragile ou cassant.</span>
+                      <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">1h15 · 45 €</span>
                     </div>
                   </label>
-                  <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="pedi_semi">
-                    <input type="radio" name="service" value="pedi_semi" style="margin-top:3px;accent-color:var(--accent)" />
+                  <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="pedi_semi_new">
+                    <input type="radio" name="service" value="pedi_semi_new" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Semi-permanent (pieds)</strong>
-                      <span style="font-size:0.78rem;color:var(--muted)">40 min · 36 €</span>
+                      <span class="service-description" style="font-size:0.78rem;color:var(--muted);display:block">Vernis longue tenue.</span>
+                      <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">30 min · 35 €</span>
                     </div>
                   </label>
-                  <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="pedi_depose">
-                    <input type="radio" name="service" value="pedi_depose" style="margin-top:3px;accent-color:var(--accent)" />
+                  <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="pedi_depose_gel">
+                    <input type="radio" name="service" value="pedi_depose_gel" style="margin-top:3px;accent-color:var(--accent)" />
+                    <div>
+                      <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Dépose gainage gel (pieds)</strong>
+                      <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">20 min · 14 €</span>
+                    </div>
+                  </label>
+                  <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="pedi_depose_new">
+                    <input type="radio" name="service" value="pedi_depose_new" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Dépose semi-permanent (pieds)</strong>
-                      <span style="font-size:0.78rem;color:var(--muted)">15 min · 7 €</span>
+                      <span class="service-description" style="font-size:0.78rem;color:var(--muted);display:block">Dépose gratuite si repose de semi-permanent.</span>
+                      <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">10 min · 7 €</span>
                     </div>
                   </label>
-                </div>
-
-                <div class="s2-group" data-s2cat="decouverte">
-                  <p style="font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--brun);font-family:var(--sans);font-weight:600;padding:12px 0 6px;border-bottom:1.5px solid var(--nude);margin-top:clamp(20px,3vw,32px);margin-bottom:8px">Découverte &amp; orientation</p>
-                  <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="consultation-decouverte">
-                    <input type="radio" name="service" value="consultation-decouverte" style="margin-top:3px;accent-color:var(--accent)" />
-                    <div>
-                      <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Consultation découverte</strong>
-                      <span style="font-size:0.78rem;color:var(--muted)">Premier échange pour identifier vos besoins · 20 min · Gratuit</span>
-                    </div>
-                  </label>
-                  <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="conseil-prestation">
-                    <input type="radio" name="service" value="conseil-prestation" style="margin-top:3px;accent-color:var(--accent)" />
-                    <div>
-                      <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Conseil avant prestation</strong>
-                      <span style="font-size:0.78rem;color:var(--muted)">Recommandation personnalisée avant de choisir · 30 min · Sur devis</span>
-                    </div>
-                  </label>
-                  <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="rdv-orientation">
-                    <input type="radio" name="service" value="rdv-orientation" style="margin-top:3px;accent-color:var(--accent)" />
-                    <div>
-                      <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Rendez-vous d’orientation</strong>
-                      <span style="font-size:0.78rem;color:var(--muted)">Aide à la décision pour votre parcours de soin · 30 min · Sur devis</span>
-                    </div>
-                  </label>
+                  <p style="font-size:0.72rem;color:var(--muted);margin-top:10px;padding-top:8px;border-top:1px dashed var(--nude);font-style:italic">Suppléments &amp; Nail art — par ongle ** · 3 € — Ongle cassé · Nail art — voir price list à propos</p>
                 </div>
               </div>
 
@@ -536,23 +595,10 @@
               </div>
               <div style="margin-top:20px">
                 <label>Créneau horaire</label>
-                <div style="display:grid;grid-template-columns:repeat(3,auto);gap:10px;margin-top:8px">
-                  <label class="slot-option" style="border:1px solid var(--nude);padding:10px 16px;cursor:pointer;font-size:0.8rem;text-align:center;transition:all .2s">
-                    <input type="radio" name="slot" value="09:00" style="display:none" />09h00
-                  </label>
-                  <label class="slot-option" style="border:1px solid var(--nude);padding:10px 16px;cursor:pointer;font-size:0.8rem;text-align:center;transition:all .2s">
-                    <input type="radio" name="slot" value="11:00" style="display:none" />11h00
-                  </label>
-                  <label class="slot-option" style="border:1px solid var(--nude);padding:10px 16px;cursor:pointer;font-size:0.8rem;text-align:center;transition:all .2s">
-                    <input type="radio" name="slot" value="14:00" style="display:none" />14h00
-                  </label>
-                  <label class="slot-option" style="border:1px solid var(--nude);padding:10px 16px;cursor:pointer;font-size:0.8rem;text-align:center;transition:all .2s">
-                    <input type="radio" name="slot" value="16:00" style="display:none" />16h00
-                  </label>
-                  <label class="slot-option" style="border:1px solid var(--nude);padding:10px 16px;cursor:pointer;font-size:0.8rem;text-align:center;transition:all .2s">
-                    <input type="radio" name="slot" value="17:30" style="display:none" />17h30
-                  </label>
+                <div id="slotOptions" class="slot-options">
+                  <p class="slot-empty">Sélectionnez d'abord une prestation pour voir les créneaux compatibles.</p>
                 </div>
+                <p id="slotChangedNotice" style="display:none;font-size:0.8rem;color:var(--accent-warm);margin-top:8px;line-height:1.6">La durée de cette prestation nécessite un nouveau créneau. Merci de sélectionner une disponibilité compatible.</p>
               </div>
               <div style="margin-top:24px;display:flex;gap:12px;justify-content:space-between">
                 <button type="button" class="btn btn-secondary" onclick="goStep(2)">Retour</button>
@@ -564,15 +610,30 @@
             <div class="form-panel" id="step4">
               <p class="section-label">Étape 4 — Vos coordonnées</p>
               <h3 style="margin-bottom:20px">Pour vous<br /><em class="serif-italic">recontacter.</em></h3>
+              <div id="memberPrefillNotice" class="member-prefill-notice" style="display:none">
+                ✓ Vos informations membre ont été préremplies. Vous pouvez les modifier avant validation.
+              </div>
               <div class="form-grid">
                 <div><label for="bFirstname">Prénom</label><input id="bFirstname" name="firstname" type="text" required placeholder="Prénom" /></div>
                 <div><label for="bLastname">Nom</label><input id="bLastname" name="lastname" type="text" required placeholder="Nom" /></div>
                 <div class="full"><label for="bEmail">Email</label><input id="bEmail" name="email" type="email" required placeholder="votre@email.fr" /></div>
                 <div class="full"><label for="bPhone">Téléphone</label><input id="bPhone" name="phone" type="tel" required placeholder="+33 6 …" /></div>
+                <div class="full">
+                  <label for="bBirthday">Date d'anniversaire <span style="font-size:0.75rem;color:var(--muted);font-weight:400">(Facultatif — pour bénéficier d'une attention ou remise spéciale)</span></label>
+                  <input id="bBirthday" name="birthday" type="date" style="max-width:220px" />
+                </div>
               </div>
+              <div style="margin-top:16px;padding:14px;background:var(--ivory);border:1px solid var(--nude)">
+                <label style="display:flex;align-items:flex-start;gap:10px;font-size:0.82rem;cursor:pointer;text-transform:none;letter-spacing:0;line-height:1.6">
+                  <input type="checkbox" name="save_info" id="bSaveInfo" style="accent-color:var(--accent);width:16px;height:16px;min-width:16px;margin-top:2px" />
+                  Garder mes informations pour aller plus vite lors de ma prochaine réservation.
+                  <span style="font-size:0.72rem;color:var(--muted);display:block;margin-top:4px">Seules vos informations de contact sont conservées localement. Les informations préparatoires de soin ne sont pas enregistrées dans le navigateur.</span>
+                </label>
+              </div>
+
               <div style="margin-top:20px;padding-top:20px;border-top:1px solid var(--nude)">
                 <p class="section-label" style="margin-bottom:12px">Moyen de paiement</p>
-                <p style="font-size:0.78rem;color:var(--muted);margin-bottom:14px">Le paiement sera finalisé en institut lors de votre rendez-vous.</p>
+                <p style="font-size:0.78rem;color:var(--muted);margin-bottom:14px">Une empreinte bancaire sera demandée pour confirmer le rendez-vous. Aucun débit immédiat n'est effectué depuis ce site.<br />Paiement sur place : virement ou espèces uniquement.</p>
                 <div style="display:flex;flex-direction:column;gap:8px">
                   <label style="display:flex;align-items:center;gap:10px;font-size:0.85rem;cursor:default;text-transform:none;letter-spacing:0">
                     <input type="radio" name="paiement" value="empreinte_bancaire_obligatoire" checked readonly style="accent-color:var(--accent)" /> Empreinte bancaire obligatoire
@@ -591,11 +652,11 @@
               <p class="section-label">Étape 5 — Consentement</p>
               <h3 style="margin-bottom:16px">Préparer votre rendez-vous<br /><em class="serif-italic">en confiance.</em></h3>
               <div class="medical-intro-box">
-                <p>Vos informations sont utilisées exclusivement pour préparer votre prestation et permettent à l&apos;institut d&apos;adapter le soin avec précision. Ces informations ne constituent pas un diagnostic médical.</p>
+                <p>Vos informations préparatoires sont utilisées exclusivement pour préparer votre prestation et adapter chaque geste à votre situation.</p>
               </div>
 
               <div style="display:flex;flex-direction:column;gap:14px;margin-top:20px">
-                <p style="font-size:0.75rem;color:var(--muted)">Conformément au RGPD, vos données de santé sont traitées sur la base de votre consentement explicite (art. 9 §2 a).</p>
+                <p style="font-size:0.75rem;color:var(--muted)">Vos informations préparatoires sont traitées avec confidentialité, conformément au RGPD.</p>
 
                 <label style="display:flex;align-items:flex-start;gap:12px;font-size:0.82rem;cursor:pointer;text-transform:none;letter-spacing:0;line-height:1.6">
                   <input type="checkbox" id="consentMedical" name="consent_medical" required style="accent-color:var(--accent);width:16px;height:16px;min-width:16px;margin-top:2px" />
@@ -609,7 +670,7 @@
 
                 <label style="display:flex;align-items:flex-start;gap:12px;font-size:0.82rem;cursor:pointer;text-transform:none;letter-spacing:0;line-height:1.6">
                   <input type="checkbox" id="consentInfo" name="consent_info" required style="accent-color:var(--accent);width:16px;height:16px;min-width:16px;margin-top:2px" />
-                  J&apos;accepte les conditions de réservation et d&apos;annulation (voir ci-dessous).
+                  J&apos;ai lu et j&apos;accepte les conditions d&apos;annulation (obligatoire).
                 </label>
 
                 <label style="display:flex;align-items:flex-start;gap:12px;font-size:0.82rem;cursor:pointer;text-transform:none;letter-spacing:0;line-height:1.6">
@@ -621,9 +682,9 @@
               <div class="annulation-box">
                 <h5>Conditions d&apos;annulation</h5>
                 <p>Pour préserver la qualité de l&apos;organisation, toute annulation tardive ou absence non signalée peut entraîner une retenue selon les conditions suivantes :<br /><br />
-                · Annulation à moins de 48h : 50 % du montant peut être dû.<br />
-                · No-show (absence non signalée) : 50 % du montant peut être dû.<br />
-                · Annulation le jour du rendez-vous : 100 % du solde peut être dû.</p>
+                · Annulation à moins de 48h : 50 % du montant total dû est retenu.<br />
+                · No-show (absence non signalée) : 50 % du montant total dû est retenu.<br />
+                · Annulation le jour J : la totalité du solde est retenue.</p>
               </div>
 
               <div style="margin-top:24px;display:flex;gap:12px;justify-content:space-between">
@@ -640,6 +701,7 @@
                 <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(217,204,192,0.4)"><span style="color:var(--muted)">Prestation</span><span id="confService">—</span></div>
                 <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(217,204,192,0.4)"><span style="color:var(--muted)">Date</span><span id="confDate">—</span></div>
                 <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(217,204,192,0.4)"><span style="color:var(--muted)">Créneau</span><span id="confSlot">—</span></div>
+                <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(217,204,192,0.4)"><span style="color:var(--muted)">Fin estimée</span><span id="confEndTime">—</span></div>
                 <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(217,204,192,0.4)"><span style="color:var(--muted)">Client</span><span id="confName">—</span></div>
                 <div style="padding:8px 0" id="confAlertBox" style="display:none"></div>
               </div>
@@ -661,9 +723,10 @@
           <div class="summary-line"><span class="summary-label">Date</span><span class="summary-value" id="summaryDate">—</span></div>
           <div class="summary-line"><span class="summary-label">Créneau</span><span class="summary-value" id="summarySlot">—</span></div>
           <div class="summary-line"><span class="summary-label">Durée</span><span class="summary-value" id="summaryDuration">—</span></div>
+          <div class="summary-line"><span class="summary-label">Fin estimée</span><span class="summary-value" id="summaryEndTime">—</span></div>
           <div class="summary-line" style="border-top:1px solid var(--nude);margin-top:8px;padding-top:8px"><span class="summary-label">Estimation</span><span class="summary-value" id="summaryPrice">—</span></div>
           <div style="margin-top:20px;border-top:1px solid var(--nude);padding-top:16px">
-            <p style="font-size:0.75rem;color:var(--muted)">Réservation sécurisée. Données conformes au RGPD.</p>
+            <p style="font-size:0.75rem;color:var(--muted)">Réservation sécurisée. Données conformes au RGPD. Questionnaire de renseignements inclus.</p>
           </div>
           <div style="margin-top:16px;padding-top:16px;border-top:1px solid var(--nude)">
             <p style="font-size:0.72rem;color:var(--muted)">Après confirmation :</p>
@@ -680,6 +743,16 @@
 
   </main>
 
+
+  <!-- MEMBRES ONLY — Préparatoire -->
+  <section class="section fade-up" style="background:var(--ivory);border-top:1px solid var(--nude);padding-top:clamp(32px,5vw,60px);padding-bottom:clamp(32px,5vw,60px)">
+    <div class="container" style="max-width:640px;margin:0 auto;text-align:center">
+      <p class="section-label">Espace membre</p>
+      <h2 style="font-size:clamp(1.4rem,2.5vw,2.2rem);margin-bottom:12px">Members only</h2>
+      <p style="color:var(--muted);font-size:0.88rem;max-width:480px;margin:0 auto">Bientôt disponible : retrouvez vos informations, vos demandes et vos suivis.</p>
+    </div>
+  </section>
+
   <footer class="site-footer site-footer--dark site-footer--compact">
     <div class="container footer-inner">
       <div class="footer-col footer-brand-col">
@@ -695,6 +768,7 @@
         <a href="collection.html">Collection</a>
         <a href="archives.html">Archives</a>
         <a href="contact.html">Contact</a>
+        <a href="members.html">Members Only</a>
       </div>
       <div class="footer-col">
         <div class="footer-title">Infos</div>
@@ -713,8 +787,8 @@
   <script src="assets/app.js"></script>
   <script>
     const serviceLabels = {
-      'soin_microneedling_face': 'Nano therapy visage',
-      'soin_microneedling_face_neck': 'Nano therapy visage et cou',
+      'soin_nanotherapy_face': 'Nano therapy visage',
+      'soin_nanotherapy_face_neck': 'Nano therapy visage et cou',
       'soin_peeling_acne': 'Peeling : No more acne',
       'soin_peeling_glow': 'Peeling : Glow peel',
       'soin_peeling_melano': 'Peeling : Melano peel',
@@ -724,7 +798,7 @@
       'soin_plasmalift_face': 'Plasma lift',
       'corps_jellyv': 'Jelly V • Soin pubis',
       'corps_jellyb': 'Jelly B • Soin fessier',
-      'corps_torsoneedling': 'Nano therapy corps',
+      'corps_nanotherapy': 'Nano therapy corps',
       'corps_aquagold': 'Aqua gold corps',
       'corps_plasmalift': 'Plasma lift corps',
       'blanchiment_1': 'Blanchiment dentaire · 1 séance',
@@ -756,16 +830,20 @@
       'dep_gel': 'Dépose gel avec soin',
       'dep_semi_repose': 'Dépose semi-permanent si repose',
       'dep_semi': 'Dépose semi-permanent sans repose',
-      'pedi_gainage': 'Gainage gel (pieds)',
-      'pedi_semi': 'Semi-permanent (pieds)',
-      'pedi_depose': 'Dépose semi-permanent (pieds)',
-      'consultation-decouverte': 'Consultation découverte',
-      'conseil-prestation': 'Conseil avant prestation',
-      'rdv-orientation': 'Rendez-vous d’orientation',
+      'pedi_calus': 'Calus N°1',
+      'pedi_luxury': 'Pedi Luxury',
+      'pedi_care': 'Pedi Care',
+      'pedi_duo_calus': 'Calus N°1 & semi-permanent',
+      'pedi_duo_luxury': 'Pedi Luxury & semi-permanent',
+      'pedi_duo_care': 'Pedi Care & semi-permanent',
+      'pedi_gainage_new': 'Gainage gel (pieds)',
+      'pedi_semi_new': 'Semi-permanent (pieds)',
+      'pedi_depose_gel': 'Dépose gainage gel (pieds)',
+      'pedi_depose_new': 'Dépose semi-permanent (pieds)',
     };
     const servicePrices = {
-      'soin_microneedling_face': '80 €',
-      'soin_microneedling_face_neck': '100 €',
+      'soin_nanotherapy_face': '80 €',
+      'soin_nanotherapy_face_neck': '100 €',
       'soin_peeling_acne': '80 €',
       'soin_peeling_glow': '100 €',
       'soin_peeling_melano': '100 €',
@@ -775,7 +853,7 @@
       'soin_plasmalift_face': '190 €',
       'corps_jellyv': '85 €',
       'corps_jellyb': '90 €',
-      'corps_torsoneedling': '100 €',
+      'corps_nanotherapy': '100 €',
       'corps_aquagold': 'À partir de 120 €',
       'corps_plasmalift': 'À partir de 190 €',
       'blanchiment_1': '140 €',
@@ -794,7 +872,7 @@
       'ongles_fill_l': '65 €',
       'ongles_fill_xl': '75 €',
       'ongles_gainage': '45 €',
-      'ongles_semi': '36 €',
+      'ongles_semi': '35 €',
       'ongles_manicare': '19 €',
       'na_sticker': '0,50 €',
       'na_chrome': '1 €',
@@ -807,16 +885,20 @@
       'dep_gel': '25 €',
       'dep_semi_repose': 'Gratuit',
       'dep_semi': '7 €',
-      'pedi_gainage': '45 €',
-      'pedi_semi': '36 €',
-      'pedi_depose': '7 €',
-      'consultation-decouverte': 'Gratuit',
-      'conseil-prestation': 'Sur devis',
-      'rdv-orientation': 'Sur devis',
+      'pedi_calus': '65 €',
+      'pedi_luxury': '55 €',
+      'pedi_care': '19 €',
+      'pedi_duo_calus': '85 €',
+      'pedi_duo_luxury': '77 €',
+      'pedi_duo_care': '45 €',
+      'pedi_gainage_new': '45 €',
+      'pedi_semi_new': '35 €',
+      'pedi_depose_gel': '14 €',
+      'pedi_depose_new': '7 €',
     };
     const serviceDurations = {
-      'soin_microneedling_face': '45 min',
-      'soin_microneedling_face_neck': '1h',
+      'soin_nanotherapy_face': '45 min',
+      'soin_nanotherapy_face_neck': '1h',
       'soin_peeling_acne': '40 min',
       'soin_peeling_glow': '40 min',
       'soin_peeling_melano': '40 min',
@@ -826,7 +908,7 @@
       'soin_plasmalift_face': '1h',
       'corps_jellyv': '45 min',
       'corps_jellyb': '45 min',
-      'corps_torsoneedling': '1h',
+      'corps_nanotherapy': '1h',
       'corps_aquagold': '1h',
       'corps_plasmalift': '1h',
       'blanchiment_1': '1h',
@@ -855,26 +937,30 @@
       'na_marbre': '25 min',
       'na_casse': '5 min',
       'na_forme': '10 min',
-      'dep_gel': '25 min',
+      'dep_gel': '30 min',
       'dep_semi_repose': '15 min',
       'dep_semi': '10 min',
-      'pedi_gainage': '45 min',
-      'pedi_semi': '40 min',
-      'pedi_depose': '15 min',
-      'consultation-decouverte': '20 min',
-      'conseil-prestation': '30 min',
-      'rdv-orientation': '30 min',
+      'pedi_calus': '45 min',
+      'pedi_luxury': '45 min',
+      'pedi_care': '20 min',
+      'pedi_duo_calus': '1h20',
+      'pedi_duo_luxury': '1h20',
+      'pedi_duo_care': '1h',
+      'pedi_gainage_new': '1h15',
+      'pedi_semi_new': '30 min',
+      'pedi_depose_gel': '20 min',
+      'pedi_depose_new': '10 min',
     };
 
-        function checkMedicalAlert() {
+        function checkCareAlert() {
       const sensibilite = document.getElementById('bSensibilite').value;
       const antecedents = document.getElementById('bAntecedents').value.trim();
       const allergies   = document.getElementById('bAllergies').value.trim();
       const traitement  = document.getElementById('bTraitement').value.trim();
-      const alert = document.getElementById('medicalAlert');
+      const alert = document.getElementById('careAlert');
       const needsReview = sensibilite === 'eleve' || sensibilite === 'tres-reactif' || antecedents.length > 3 || allergies.length > 3 || traitement.length > 3;
       alert.classList.toggle('is-visible', needsReview);
-      window._medicalReviewRequired = needsReview;
+      window._careReviewRequired = needsReview;
     }
 
     document.querySelectorAll('.slot-option').forEach(el => {
@@ -950,9 +1036,9 @@
         document.getElementById('confSlot').textContent = slot || '—';
         document.getElementById('confName').textContent = (fn || '') + ' ' + (ln || '');
         const alertBox = document.getElementById('confAlertBox');
-        if (window._medicalReviewRequired) {
+        if (window._careReviewRequired) {
           alertBox.style.display = 'block';
-          alertBox.innerHTML = `<span style="font-size:0.78rem;color:var(--accent-warm);">⚠ Votre demande nécessite une relecture spécifique par l'institut avant validation.</span>`;
+          alertBox.innerHTML = `<span style="font-size:0.78rem;color:var(--accent-warm);">⚠ Votre demande fera l'objet d'une relecture spécifique par l'institut avant validation.</span>`;
         }
       }
       updateSummary();
@@ -1000,7 +1086,7 @@
         email:                    document.getElementById('bEmail').value || null,
         phone:                    document.getElementById('bPhone').value || null,
         health_answers:           healthAnswers,
-        medical_review_required:  window._medicalReviewRequired || false,
+        medical_review_required:  window._careReviewRequired || false,
         paiement:                 document.querySelector('input[name="paiement"]:checked')?.value || null,
         consent_medical:          document.getElementById('consentMedical').checked,
         sincere_medical_form_accepted: document.getElementById('consentMedical').checked,
@@ -1013,7 +1099,7 @@
         consent_form_sent:        false,
         confirmation_email_sent:  false,
         confirmation_status:      'pending',
-        admin_notes:              window._medicalReviewRequired ? 'RELECTURE MÉDICALE REQUISE' : null
+        admin_notes:              window._careReviewRequired ? 'RELECTURE MÉDICALE REQUISE' : null
       };
     }
 
@@ -1031,15 +1117,281 @@
       result.style.color = 'var(--muted)';
       try {
         const payload = buildBookingPayload();
+        // ─── Sauvegarder les informations si la case est cochée ─────────
+        if (document.getElementById('bSaveInfo').checked) {
+          const safeProfile = {
+            firstname: document.getElementById('bFirstname').value || '',
+            lastname:  document.getElementById('bLastname').value  || '',
+            email:     document.getElementById('bEmail').value     || '',
+            phone:     document.getElementById('bPhone').value     || '',
+            birthday:  document.getElementById('bBirthday').value  || '',
+          };
+          localStorage.setItem('pom_member_profile', JSON.stringify(safeProfile));
+        }
         await submitBookingRequest(payload);
         result.textContent = "Votre demande a bien été transmise. L'institut vous recontactera pour confirmer le créneau.";
         result.style.color = 'var(--accent)';
       } catch (err) {
-        result.textContent = 'Une erreur est survenue. Veuillez réessayer ou nous contacter directement.';
+               result.textContent = 'Une erreur est survenue. Veuillez réessayer ou nous contacter directement.';
         result.style.color = 'var(--accent-warm)';
         console.error('[POM] Booking error:', err);
       }
     });
+
+    // ════════════════════════════════════════════════════════════════════
+    // CRÉNEAUX DYNAMIQUES — Type Booksy
+    // ════════════════════════════════════════════════════════════════════
+
+    // ─── Durées en minutes (pour calcul créneaux) ───────────────────────
+    // Ne pas supprimer serviceDurations (utilisé pour l'affichage texte dans le récap).
+    const serviceDurationsMinutes = {
+      'soin_nanotherapy_face':      45,
+      'soin_nanotherapy_face_neck': 60,
+      'soin_peeling_acne':          40,
+      'soin_peeling_glow':          40,
+      'soin_peeling_melano':        40,
+      'soin_peeling_rice':          40,
+      'soin_aquagold':              50,
+      'soin_newskin':               80,
+      'soin_plasmalift_face':       60,
+      'corps_jellyv':               45,
+      'corps_jellyb':               45,
+      'corps_nanotherapy':          60,
+      'corps_aquagold':             60,
+      'corps_plasmalift':           60,
+      'blanchiment_1':              60,
+      'pig_grain':                  30,
+      'pig_freckles_nez':           45,
+      'pig_freckles_nez_pom':       90,
+      'pig_freckles_visage':        120,
+      'pig_ret_grain':              20,
+      'pig_ret_nez':                60,
+      'pig_ret_nez_pom':            40,
+      'pig_ret_visage':             45,
+      'ongles_pose_sm':             110,
+      'ongles_pose_l':              120,
+      'ongles_pose_xl':             135,
+      'ongles_fill_sm':             90,
+      'ongles_fill_l':              90,
+      'ongles_fill_xl':             90,
+      'ongles_gainage':             75,
+      'ongles_semi':                35,
+      'ongles_manicare':            20,
+      'na_sticker':                 10,
+      'na_chrome':                  15,
+      'na_cat':                     15,
+      'na_french':                  15,
+      'na_baby':                    20,
+      'na_marbre':                  25,
+      'na_casse':                   5,
+      'na_forme':                   10,
+      'dep_gel':                    30,
+      'dep_semi_repose':            15,
+      'dep_semi':                   10,
+      'pedi_calus':                 45,
+      'pedi_luxury':                45,
+      'pedi_care':                  20,
+      'pedi_duo_calus':             80,
+      'pedi_duo_luxury':            80,
+      'pedi_duo_care':              60,
+      'pedi_gainage_new':           75,
+      'pedi_semi_new':              30,
+      'pedi_depose_gel':            20,
+      'pedi_depose_new':            10,
+    };
+
+    // ─── Horaires d'ouverture ──────────────────────────────────────────
+    // Pour activer le samedi : 6: { start: "11:30", end: "15:30" }
+    const businessHours = {
+      1: { start: "10:00", end: "17:30" },
+      2: { start: "10:00", end: "17:30" },
+      3: { start: "10:00", end: "17:30" },
+      4: { start: "10:00", end: "17:30" },
+      5: { start: "10:00", end: "17:30" },
+      6: null,
+      0: null
+    };
+
+    const slotStepMinutes      = 30;
+    const bookingBufferMinutes = 10;
+
+    // À remplacer par les réservations confirmées depuis Supabase.
+    const existingBookings = [];
+
+    function timeToMinutes(time) {
+      var p = time.split(':');
+      return parseInt(p[0], 10) * 60 + parseInt(p[1], 10);
+    }
+
+    function minutesToTimeLabel(minutes) {
+      var h = Math.floor(minutes / 60);
+      var m = minutes % 60;
+      return h + 'h' + (m === 0 ? '00' : (m < 10 ? '0' + m : String(m)));
+    }
+
+    function minutesToTimeValue(minutes) {
+      var h = Math.floor(minutes / 60);
+      var m = minutes % 60;
+      return (h < 10 ? '0' + h : h) + ':' + (m < 10 ? '0' + m : m);
+    }
+
+    function getServiceDurationMinutes(serviceKey) {
+      return serviceDurationsMinutes[serviceKey] || 60;
+    }
+
+    function overlaps(startA, endA, startB, endB) {
+      return timeToMinutes(startA) < timeToMinutes(endB) &&
+             timeToMinutes(endA)   > timeToMinutes(startB);
+    }
+
+    function generateAvailableSlots(dateString, serviceKey) {
+      if (!dateString || !serviceKey) return [];
+      var date     = new Date(dateString + 'T00:00:00');
+      var dow      = date.getDay();
+      var hours    = businessHours[dow];
+      if (!hours) return [];
+      var duration = getServiceDurationMinutes(serviceKey);
+      var openMin  = timeToMinutes(hours.start);
+      var closeMin = timeToMinutes(hours.end);
+      var slots    = [];
+      for (var t = openMin; t + duration + bookingBufferMinutes <= closeMin; t += slotStepMinutes) {
+        var slotStart = minutesToTimeValue(t);
+        var slotEnd   = minutesToTimeValue(t + duration + bookingBufferMinutes);
+        var blocked = existingBookings.some(function(b) {
+          return b.date === dateString && overlaps(slotStart, slotEnd, b.start, b.end);
+        });
+        if (!blocked) slots.push({ start: slotStart, label: minutesToTimeLabel(t), endMin: t + duration });
+      }
+      return slots;
+    }
+
+    function renderSlots(slots, container) {
+      container.innerHTML = '';
+      if (!slots || slots.length === 0) {
+        container.innerHTML = '<p class="slot-empty">Aucun créneau compatible avec la durée de cette prestation sur cette date.</p>';
+        return;
+      }
+      slots.forEach(function(slot) {
+        var div = document.createElement('div');
+        div.className = 'slot-option';
+        div.textContent = slot.label;
+        div.dataset.value  = slot.start;
+        div.dataset.endMin = slot.endMin;
+        div.addEventListener('click', function() {
+          container.querySelectorAll('.slot-option').forEach(function(s) { s.classList.remove('is-selected'); });
+          div.classList.add('is-selected');
+          document.getElementById('slotChangedNotice').style.display = 'none';
+          updateSummaryFull();
+        });
+        container.appendChild(div);
+      });
+    }
+
+    function refreshSlots() {
+      var svc       = document.querySelector('input[name="service"]:checked');
+      var svcVal    = svc ? svc.value : null;
+      var dateVal   = document.getElementById('bookDate').value;
+      var container = document.getElementById('slotOptions');
+      if (!container) return;
+      if (!svcVal) {
+        container.innerHTML = '<p class="slot-empty">Sélectionnez d’abord une prestation pour voir les créneaux compatibles.</p>';
+        return;
+      }
+      if (!dateVal) {
+        container.innerHTML = '<p class="slot-empty">Choisissez une date pour afficher les créneaux disponibles.</p>';
+        return;
+      }
+      var date = new Date(dateVal + 'T00:00:00');
+      var dow  = date.getDay();
+      if (!businessHours[dow]) {
+        container.innerHTML = '<p class="slot-empty">Aucun créneau disponible ce jour-là.</p>';
+        return;
+      }
+      renderSlots(generateAvailableSlots(dateVal, svcVal), container);
+    }
+
+    function updateSummaryFull() {
+      var svc  = document.querySelector('input[name="service"]:checked');
+      var svcVal = svc ? svc.value : null;
+      var date = document.getElementById('bookDate').value;
+      var selSlot = document.querySelector('#slotOptions .slot-option.is-selected');
+      if (svcVal) {
+        document.getElementById('summaryService').textContent  = serviceLabels[svcVal] || svcVal;
+        document.getElementById('summaryPrice').textContent    = servicePrices[svcVal] || '—';
+        document.getElementById('summaryDuration').textContent = serviceDurations[svcVal] || '—';
+      }
+      if (date) {
+        document.getElementById('summaryDate').textContent = new Date(date + 'T00:00:00').toLocaleDateString('fr-FR', {weekday:'long',day:'numeric',month:'long'});
+      }
+      if (selSlot) {
+        document.getElementById('summarySlot').textContent    = selSlot.dataset.value ? selSlot.dataset.value.replace(':', 'h') : '—';
+        var endMin = parseInt(selSlot.dataset.endMin || '0', 10);
+        document.getElementById('summaryEndTime').textContent = minutesToTimeLabel(endMin);
+      }
+    }
+
+    // Remplacer updateSummary pour utiliser la version enrichie
+    updateSummary = updateSummaryFull;
+
+    document.getElementById('bookDate').addEventListener('change', function() {
+      refreshSlots();
+      updateSummaryFull();
+    });
+
+    document.querySelectorAll('.service-option').forEach(function(el) {
+      el.addEventListener('click', function() {
+        var prevSlot = document.querySelector('#slotOptions .slot-option.is-selected');
+        var prevVal  = prevSlot ? prevSlot.dataset.value : null;
+        refreshSlots();
+        if (prevVal) {
+          var container = document.getElementById('slotOptions');
+          var match = container ? Array.from(container.querySelectorAll('.slot-option')).find(function(s) {
+            return s.dataset.value === prevVal;
+          }) : null;
+          if (!match) {
+            document.getElementById('slotChangedNotice').style.display = 'block';
+            document.getElementById('summarySlot').textContent    = '—';
+            document.getElementById('summaryEndTime').textContent = '—';
+          } else {
+            match.classList.add('is-selected');
+          }
+        }
+        updateSummaryFull();
+      });
+    });
+
+    // Override goStep pour inclure fin estimée dans confirmation
+    var _origGoStep = goStep;
+    goStep = function(n) {
+      _origGoStep(n);
+      if (n === 6) {
+        var selSlot = document.querySelector('#slotOptions .slot-option.is-selected');
+        if (selSlot) {
+          document.getElementById('confSlot').textContent = selSlot.dataset.value ? selSlot.dataset.value.replace(':', 'h') : '—';
+          var endEl = document.getElementById('confEndTime');
+          if (endEl) endEl.textContent = minutesToTimeLabel(parseInt(selSlot.dataset.endMin || '0', 10));
+        }
+      }
+    };
+
+    // ─── MEMBERS — Préremplissage depuis ?member=1 ───────────────────
+    // Ne jamais préremplir les champs sensibles du questionnaire.
+    (function initMemberPrefill() {
+      var params = new URLSearchParams(location.search);
+      if (!params.get('member')) return;
+      try {
+        var raw = localStorage.getItem('pom_member_profile');
+        if (!raw) return;
+        var profile = JSON.parse(raw);
+        if (profile.firstname) document.getElementById('bFirstname').value = profile.firstname;
+        if (profile.lastname)  document.getElementById('bLastname').value  = profile.lastname;
+        if (profile.email)     document.getElementById('bEmail').value     = profile.email;
+        if (profile.phone)     document.getElementById('bPhone').value     = profile.phone;
+        if (profile.birthday)  document.getElementById('bBirthday').value  = profile.birthday;
+        document.getElementById('memberPrefillNotice').style.display = 'block';
+      } catch(e) { console.warn('[POM] Prefill error:', e); }
+    })();
+
   </script>
 </body>
 </html>

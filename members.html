@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Members Only — Peace of Mind Institut</title>
+  <meta name="description" content="Votre espace personnel Peace of Mind Institut — informations sauvegardées, réservations, accès rapide." />
+  <link rel="icon" href="assets/logo-peace-of-mind-final.png" type="image/png" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <header class="site-header" id="siteHeader">
+    <a class="brand" href="index.html">
+      <img src="assets/logo-peace-of-mind-final.png" alt="Peace of Mind®" />
+    </a>
+    <nav class="site-nav" id="siteNav">
+      <a href="index.html">Accueil</a>
+      <a href="maison.html">Expertise</a>
+      <a href="reserver.html">Menu</a>
+      <a href="collection.html">Collection</a>
+      <a href="archives.html">Archives</a>
+      <a href="contact.html">Contact</a>
+      <a href="members.html" class="is-active">Members Only</a>
+    </nav>
+    <div class="header-actions">
+      <a class="header-cta" href="reserver.html">Réserver</a>
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav">Menu</button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="page-hero section fade-up">
+      <p class="section-label">Chapitre VII — Members Only</p>
+      <h1>Votre espace<br /><em class="serif-italic">personnel.</em></h1>
+      <p style="margin-top:14px;max-width:540px;color:var(--muted);font-size:0.9rem;line-height:1.75">Un espace pensé pour simplifier vos prochaines réservations. Retrouvez vos informations essentielles, vos demandes en cours et vos préférences de contact.</p>
+      <div class="cta-row" style="margin-top:clamp(20px,3vw,32px)">
+        <a class="btn btn-primary" href="#member-auth">Créer mon espace</a>
+        <a class="btn btn-secondary" href="reserver.html">Réserver une prestation</a>
+      </div>
+    </section>
+
+    <!-- AVANTAGES MEMBRES -->
+    <section class="section fade-up" style="background:var(--ivory);padding-top:clamp(32px,4vw,56px);padding-bottom:clamp(32px,4vw,56px)">
+      <div class="container">
+        <p class="section-label">Votre espace</p>
+        <h2 style="margin-bottom:clamp(20px,3vw,32px)">Pourquoi créer<br /><em class="serif-italic">un compte ?</em></h2>
+        <div class="member-benefits-grid">
+          <div class="member-benefit-card">
+            <span class="benefit-icon">◇</span>
+            <h5>Réservation plus rapide</h5>
+            <p>Vos coordonnées préremplies automatiquement à chaque nouvelle réservation.</p>
+          </div>
+          <div class="member-benefit-card">
+            <span class="benefit-icon">◇</span>
+            <h5>Suivi de vos demandes</h5>
+            <p>Bientôt : retrouvez vos réservations passées, en cours et à venir.</p>
+          </div>
+          <div class="member-benefit-card">
+            <span class="benefit-icon">◇</span>
+            <h5>Confidentialité absolue</h5>
+            <p>Seules vos informations de contact sont conservées. Les données de soin ne sont jamais enregistrées.</p>
+          </div>
+          <div class="member-benefit-card">
+            <span class="benefit-icon">◇</span>
+            <h5>Attention anniversaire</h5>
+            <p>Renseignez votre date de naissance pour bénéficier d'une attention spéciale lors de votre mois.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AUTH SECTION -->
+    <section class="section frame fade-up" id="member-auth" style="background:var(--cream);max-width:100%;margin:0">
+      <div class="container">
+        <div class="section-head fade-up">
+          <p class="section-label">Accès membre</p>
+          <h2>Connexion &amp;<br /><em class="serif-italic">création de compte.</em></h2>
+        </div>
+
+        <!-- Bloc affiché si profil déjà présent -->
+        <div id="memberProfileBlock" style="display:none;margin-top:32px">
+          <p class="section-label" style="margin-bottom:16px">Mes informations</p>
+          <div class="member-profile-card">
+            <div class="profile-row">
+              <span class="profile-label">Prénom</span>
+              <span class="profile-value" id="profileFirstname">—</span>
+            </div>
+            <div class="profile-row">
+              <span class="profile-label">Nom</span>
+              <span class="profile-value" id="profileLastname">—</span>
+            </div>
+            <div class="profile-row">
+              <span class="profile-label">Email</span>
+              <span class="profile-value" id="profileEmail">—</span>
+            </div>
+            <div class="profile-row">
+              <span class="profile-label">Téléphone</span>
+              <span class="profile-value" id="profilePhone">—</span>
+            </div>
+            <div class="profile-row">
+              <span class="profile-label">Anniversaire</span>
+              <span class="profile-value" id="profileBirthday">—</span>
+            </div>
+          </div>
+          <div class="cta-row" style="margin-top:20px;flex-wrap:wrap;gap:10px">
+            <a class="btn btn-primary" href="reserver.html?member=1">Réserver avec mes informations</a>
+            <button class="btn btn-secondary" id="btnEditProfile">Modifier mes informations</button>
+            <button class="btn btn-secondary" id="btnDeleteProfile" style="border-color:var(--accent-warm);color:var(--accent-warm)">Supprimer mes informations locales</button>
+          </div>
+          <p style="font-size:0.72rem;color:var(--muted);margin-top:12px;line-height:1.65">Les informations sensibles du questionnaire ne sont jamais enregistrées dans le navigateur. Seules vos coordonnées de contact sont conservées localement.</p>
+        </div>
+
+        <!-- Bloc auth (connexion / création) -->
+        <div id="memberAuthBlock" class="member-auth-layout" style="margin-top:32px">
+          <div class="member-auth-card">
+
+            <div class="member-tabs">
+              <button class="member-tab is-active" data-panel="panelLogin" id="tabLogin">Connexion</button>
+              <button class="member-tab" data-panel="panelRegister" id="tabRegister">Créer un compte</button>
+            </div>
+
+            <!-- CONNEXION -->
+            <div class="member-panel is-active" id="panelLogin">
+              <div class="form-grid" style="grid-template-columns:1fr;gap:16px">
+                <div>
+                  <label for="loginEmail">Email</label>
+                  <input id="loginEmail" type="email" placeholder="votre@email.fr" autocomplete="email" />
+                </div>
+                <div>
+                  <label for="loginPassword">Mot de passe</label>
+                  <input id="loginPassword" type="password" placeholder="••••••••" autocomplete="current-password" />
+                </div>
+              </div>
+              <p style="font-size:0.75rem;color:var(--muted);margin-top:14px;line-height:1.6">
+                <!-- TEMPORAIRE FRONT-END. À remplacer par Supabase Auth avant production finale. -->
+                La connexion complète sera disponible après connexion Supabase. Pour l'instant, vos informations de contact peuvent être enregistrées localement.
+              </p>
+              <button class="btn btn-primary" id="btnLogin" style="margin-top:20px;width:100%">Se connecter</button>
+              <p id="loginResult" style="font-size:0.8rem;margin-top:10px" aria-live="polite"></p>
+            </div>
+
+            <!-- CRÉATION DE COMPTE -->
+            <div class="member-panel" id="panelRegister">
+              <div class="form-grid" style="gap:16px">
+                <div>
+                  <label for="regFirstname">Prénom</label>
+                  <input id="regFirstname" type="text" placeholder="Votre prénom" autocomplete="given-name" required />
+                </div>
+                <div>
+                  <label for="regLastname">Nom</label>
+                  <input id="regLastname" type="text" placeholder="Votre nom" autocomplete="family-name" required />
+                </div>
+                <div class="full">
+                  <label for="regEmail">Email</label>
+                  <input id="regEmail" type="email" placeholder="votre@email.fr" autocomplete="email" required />
+                </div>
+                <div class="full">
+                  <label for="regPhone">Téléphone</label>
+                  <input id="regPhone" type="tel" placeholder="+33 6 …" autocomplete="tel" />
+                </div>
+                <div class="full">
+                  <label for="regBirthday">Date d'anniversaire <span style="font-size:0.75rem;color:var(--muted);font-weight:400">(Facultatif)</span></label>
+                  <input id="regBirthday" type="date" style="max-width:220px" />
+                </div>
+                <div class="full">
+                  <label for="regPassword">Mot de passe</label>
+                  <input id="regPassword" type="password" placeholder="••••••••" autocomplete="new-password" required />
+                </div>
+                <div class="full">
+                  <label for="regPasswordConfirm">Confirmation du mot de passe</label>
+                  <input id="regPasswordConfirm" type="password" placeholder="••••••••" autocomplete="new-password" required />
+                </div>
+                <div class="full" style="margin-top:4px">
+                  <label style="display:flex;align-items:flex-start;gap:12px;font-size:0.82rem;cursor:pointer;text-transform:none;letter-spacing:0;line-height:1.65">
+                    <input type="checkbox" id="regConsent" required style="accent-color:var(--accent);width:16px;height:16px;min-width:16px;margin-top:3px" />
+                    J'accepte la création de mon espace membre et l'utilisation de mes informations pour faciliter mes futures réservations.
+                  </label>
+                </div>
+              </div>
+              <p style="font-size:0.72rem;color:var(--muted);margin-top:14px;line-height:1.65;background:var(--ivory);border:1px solid var(--nude);padding:10px 14px">
+                Les informations sensibles du questionnaire de soin ne sont jamais enregistrées dans le navigateur.
+              </p>
+              <p style="font-size:0.72rem;color:var(--muted);margin-top:8px;line-height:1.6">
+                <!-- TEMPORAIRE FRONT-END. À remplacer par Supabase Auth + table profiles avant production finale. -->
+                Vos informations de contact seront conservées localement pour faciliter vos prochaines réservations. La connexion Supabase permettra bientôt une synchronisation sécurisée.
+              </p>
+              <button class="btn btn-primary" id="btnRegister" style="margin-top:20px;width:100%">Créer mon espace</button>
+              <p id="registerResult" style="font-size:0.8rem;margin-top:10px" aria-live="polite"></p>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- MES RÉSERVATIONS -->
+    <section class="section fade-up" style="background:var(--ivory);padding-top:clamp(32px,4vw,56px);padding-bottom:clamp(32px,4vw,56px)">
+      <div class="container">
+        <p class="section-label">Suivi</p>
+        <h2 style="margin-bottom:clamp(16px,2vw,24px)">Mes<br /><em class="serif-italic">réservations.</em></h2>
+
+        <!-- TEMPORAIRE FRONT-END. À remplacer par les réservations confirmées récupérées depuis Supabase.
+             Table future : bookings (id, profile_id, service_key, service_label, service_price,
+             service_duration_minutes, booking_date, start_time, end_time, status, created_at) -->
+        <div class="member-empty-state">
+          <p>Aucune réservation synchronisée pour le moment.<br />La connexion Supabase permettra bientôt de suivre vos demandes en cours, confirmées ou passées.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- RÉASSURANCE -->
+    <div class="info-strip fade-up">
+      <div class="info-card">
+        <p class="section-label">Confidentialité</p>
+        <h3>Vos données restent privées.</h3>
+        <p>Seules vos coordonnées de contact sont enregistrées. Les informations de soin ne sont jamais conservées localement.</p>
+      </div>
+      <div class="info-card">
+        <p class="section-label">Simplicité</p>
+        <h3>Un seul clic pour réserver.</h3>
+        <p>Vos informations sont préremplies à l'étape coordonnées — plus besoin de les ressaisir à chaque fois.</p>
+      </div>
+      <div class="info-card">
+        <p class="section-label">Supabase ready</p>
+        <h3>Synchronisation prochaine.</h3>
+        <p>Le suivi de vos réservations sera disponible dès la connexion Supabase activée.</p>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="site-footer site-footer--dark site-footer--compact">
+    <div class="container footer-inner">
+      <div class="footer-col footer-brand-col">
+        <img src="assets/logo-peace-of-mind-final.png" alt="Peace of Mind Institut" class="footer-brand-img" />
+        <span class="footer-baseline">Soin · Beauté · Expertise</span>
+        <a class="footer-mini-cta" href="reserver.html">Réserver une prestation</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-title">Navigation</div>
+        <a href="index.html">Accueil</a>
+        <a href="maison.html">Expertise</a>
+        <a href="reserver.html">Menu</a>
+        <a href="collection.html">Collection</a>
+        <a href="archives.html">Archives</a>
+        <a href="contact.html">Contact</a>
+        <a href="members.html">Members Only</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-title">Infos</div>
+        <a href="contact.html">Nous contacter</a>
+        <a href="mentions.html">Mentions légales</a>
+        <a href="mentions.html#confidentialite">Confidentialité</a>
+        <a href="mentions.html#donnees-sante">Données &amp; consentements</a>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <span>© 2026 Peace of Mind Institut — Tous droits réservés.</span>
+      <span>Gradignan, Bordeaux</span>
+    </div>
+  </footer>
+
+  <script src="assets/app.js"></script>
+  <script>
+    // ════════════════════════════════════════════════════════════════════
+    // PEACE OF MIND — MEMBERS ONLY — Front-end temporaire
+    // TEMPORAIRE FRONT-END. À remplacer par Supabase Auth + table profiles avant production finale.
+    // Tables futures :
+    //   profiles  (id, auth_user_id, firstname, lastname, email, phone, birthday, created_at, updated_at)
+    //   bookings  (id, profile_id, service_key, service_label, service_price, service_duration_minutes,
+    //              booking_date, start_time, end_time, status, created_at)
+    //   booking_consents (booking_id, consent_questionnaire, consent_data, consent_cancellation,
+    //              consent_email, consent_timestamp)
+    //   availability_exceptions (date, is_closed, open_from, open_until, reason)
+    // ════════════════════════════════════════════════════════════════════
+
+    const MEMBERS_STORAGE_KEY = "pom_member_profile";
+
+    // ─── Fonctions profil ─────────────────────────────────────────────
+    function saveMemberProfile(data) {
+      // Ne jamais stocker : objectif, motif, zone, sensibilite, antecedents,
+      // allergies, traitement, attentes, consentements santé.
+      const safe = {
+        firstname: data.firstname || '',
+        lastname:  data.lastname  || '',
+        email:     data.email     || '',
+        phone:     data.phone     || '',
+        birthday:  data.birthday  || '',
+      };
+      localStorage.setItem(MEMBERS_STORAGE_KEY, JSON.stringify(safe));
+    }
+
+    function loadMemberProfile() {
+      try {
+        const raw = localStorage.getItem(MEMBERS_STORAGE_KEY);
+        return raw ? JSON.parse(raw) : null;
+      } catch(e) { return null; }
+    }
+
+    function clearMemberProfile() {
+      localStorage.removeItem(MEMBERS_STORAGE_KEY);
+    }
+
+    function isMemberProfileAvailable() {
+      return !!loadMemberProfile();
+    }
+
+    // ─── Rendu du profil ──────────────────────────────────────────────
+    function renderProfileCard(profile) {
+      document.getElementById('profileFirstname').textContent = profile.firstname || '—';
+      document.getElementById('profileLastname').textContent  = profile.lastname  || '—';
+      document.getElementById('profileEmail').textContent     = profile.email     || '—';
+      document.getElementById('profilePhone').textContent     = profile.phone     || '—';
+      const bd = profile.birthday;
+      if (bd) {
+        const d = new Date(bd + 'T00:00:00');
+        document.getElementById('profileBirthday').textContent = d.toLocaleDateString('fr-FR', {day:'numeric', month:'long', year:'numeric'});
+      } else {
+        document.getElementById('profileBirthday').textContent = '—';
+      }
+    }
+
+    function showProfileBlock() {
+      const profile = loadMemberProfile();
+      if (!profile) return;
+      renderProfileCard(profile);
+      document.getElementById('memberProfileBlock').style.display = 'block';
+      document.getElementById('memberAuthBlock').style.display = 'none';
+    }
+
+    function hideProfileBlock() {
+      document.getElementById('memberProfileBlock').style.display = 'none';
+      document.getElementById('memberAuthBlock').style.display = '';
+    }
+
+    // ─── Init ─────────────────────────────────────────────────────────
+    if (isMemberProfileAvailable()) {
+      showProfileBlock();
+    }
+
+    // ─── Tabs ─────────────────────────────────────────────────────────
+    document.querySelectorAll('.member-tab').forEach(function(tab) {
+      tab.addEventListener('click', function() {
+        document.querySelectorAll('.member-tab').forEach(function(t) { t.classList.remove('is-active'); });
+        document.querySelectorAll('.member-panel').forEach(function(p) { p.classList.remove('is-active'); });
+        tab.classList.add('is-active');
+        document.getElementById(tab.dataset.panel).classList.add('is-active');
+      });
+    });
+
+    // ─── Connexion (front-end temporaire) ─────────────────────────────
+    document.getElementById('btnLogin').addEventListener('click', function() {
+      const email    = document.getElementById('loginEmail').value.trim();
+      const password = document.getElementById('loginPassword').value;
+      const result   = document.getElementById('loginResult');
+      if (!email || !password) {
+        result.textContent = 'Veuillez renseigner votre email et mot de passe.';
+        result.style.color = 'var(--accent-warm)';
+        return;
+      }
+      // TODO SUPABASE: const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+      // Temporaire : vérifier si un profil local existe pour cet email
+      const profile = loadMemberProfile();
+      if (profile && profile.email === email) {
+        result.textContent = 'Connexion simulée. Vos informations sont chargées.';
+        result.style.color = 'var(--accent)';
+        showProfileBlock();
+      } else {
+        result.textContent = 'Aucun profil local trouvé pour cet email. Créez votre espace ci-dessous.';
+        result.style.color = 'var(--accent-warm)';
+      }
+    });
+
+    // ─── Création de compte (front-end temporaire) ────────────────────
+    document.getElementById('btnRegister').addEventListener('click', function() {
+      const firstname = document.getElementById('regFirstname').value.trim();
+      const lastname  = document.getElementById('regLastname').value.trim();
+      const email     = document.getElementById('regEmail').value.trim();
+      const phone     = document.getElementById('regPhone').value.trim();
+      const birthday  = document.getElementById('regBirthday').value;
+      const password  = document.getElementById('regPassword').value;
+      const confirm   = document.getElementById('regPasswordConfirm').value;
+      const consent   = document.getElementById('regConsent').checked;
+      const result    = document.getElementById('registerResult');
+
+      if (!firstname || !lastname || !email) {
+        result.textContent = 'Prénom, nom et email sont obligatoires.';
+        result.style.color = 'var(--accent-warm)';
+        return;
+      }
+      if (!consent) {
+        result.textContent = 'Veuillez accepter les conditions pour continuer.';
+        result.style.color = 'var(--accent-warm)';
+        return;
+      }
+      if (password !== confirm) {
+        result.textContent = 'Les mots de passe ne correspondent pas.';
+        result.style.color = 'var(--accent-warm)';
+        return;
+      }
+      if (password.length < 6) {
+        result.textContent = 'Le mot de passe doit contenir au moins 6 caractères.';
+        result.style.color = 'var(--accent-warm)';
+        return;
+      }
+
+      // TODO SUPABASE: const { data, error } = await supabase.auth.signUp({ email, password });
+      // Puis : supabase.from('profiles').insert([{ auth_user_id: data.user.id, firstname, lastname, email, phone, birthday }]);
+      saveMemberProfile({ firstname, lastname, email, phone, birthday });
+      result.textContent = 'Espace créé. Vos informations sont enregistrées localement.';
+      result.style.color = 'var(--accent)';
+      setTimeout(function() { showProfileBlock(); }, 900);
+    });
+
+    // ─── Modifier profil ──────────────────────────────────────────────
+    document.getElementById('btnEditProfile').addEventListener('click', function() {
+      const profile = loadMemberProfile();
+      if (!profile) return;
+      // Repasser en mode formulaire pré-rempli
+      document.getElementById('regFirstname').value  = profile.firstname || '';
+      document.getElementById('regLastname').value   = profile.lastname  || '';
+      document.getElementById('regEmail').value      = profile.email     || '';
+      document.getElementById('regPhone').value      = profile.phone     || '';
+      document.getElementById('regBirthday').value   = profile.birthday  || '';
+      document.getElementById('memberProfileBlock').style.display = 'none';
+      document.getElementById('memberAuthBlock').style.display = '';
+      // Activer l'onglet création
+      document.querySelectorAll('.member-tab').forEach(function(t) { t.classList.remove('is-active'); });
+      document.querySelectorAll('.member-panel').forEach(function(p) { p.classList.remove('is-active'); });
+      document.getElementById('tabRegister').classList.add('is-active');
+      document.getElementById('panelRegister').classList.add('is-active');
+      document.getElementById('registerResult').textContent = '';
+    });
+
+    // ─── Supprimer profil ─────────────────────────────────────────────
+    document.getElementById('btnDeleteProfile').addEventListener('click', function() {
+      if (!confirm('Supprimer vos informations locales ? Cette action est irréversible.')) return;
+      clearMemberProfile();
+      hideProfileBlock();
+      window.POM && window.POM.showToast && window.POM.showToast('Informations supprimées.');
+    });
+  </script>
+</body>
+</html>

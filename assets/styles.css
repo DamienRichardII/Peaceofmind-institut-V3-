@@ -3126,3 +3126,429 @@ em.serif-italic {
   object-fit: cover;
   object-position: center;
 }
+
+/* ── ÉTAPE 2 — Groupes de prestations (Partie 6) ────────────────────── */
+.s2-group {
+  margin-top: clamp(28px, 4vw, 48px);
+  padding: clamp(16px, 2.5vw, 24px);
+  border: 1px solid rgba(217, 204, 192, 0.75);
+  background: rgba(243, 237, 229, 0.36);
+  border-radius: 2px;
+}
+
+.s2-group > p {
+  margin-top: 0 !important;
+  margin-bottom: 16px !important;
+  padding-bottom: 10px !important;
+  border-bottom: 1.5px solid rgba(125, 90, 70, 0.28) !important;
+}
+
+.service-option {
+  background: var(--cream) !important;
+  transition: border-color 0.2s, background 0.18s;
+}
+
+.service-option:hover {
+  border-color: var(--brun-soft) !important;
+  background: var(--ivory) !important;
+}
+
+.service-option strong {
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  color: var(--brun);
+  display: block;
+  margin-bottom: 3px;
+}
+
+.service-option span {
+  color: var(--brun-soft) !important;
+  font-size: 0.78rem;
+  line-height: 1.55;
+}
+
+/* care-alert (anciennement medical-alert) */
+.care-alert {
+  display: none;
+  background: rgba(194, 141, 100, 0.08);
+  border-left: 3px solid var(--accent-warm, #c28d64);
+  padding: 12px 16px;
+  margin-top: 12px;
+  font-size: 0.82rem;
+  color: var(--brun);
+  border-radius: 0 2px 2px 0;
+}
+
+.care-alert.is-visible {
+  display: block;
+}
+
+/* ── MOBILE-FIRST — reserver.html (Partie 19) ───────────────────────── */
+@media (max-width: 780px) {
+  .booking-layout {
+    grid-template-columns: 1fr !important;
+    gap: 0 !important;
+  }
+
+  .booking-summary {
+    position: static !important;
+    margin-top: 32px !important;
+    border-top: 1px solid var(--nude);
+    padding-top: 20px;
+  }
+
+  .booking-progress {
+    overflow-x: auto;
+    padding-bottom: 8px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .booking-progress::-webkit-scrollbar { display: none; }
+
+  .step-dot__label {
+    font-size: 0.6rem;
+    letter-spacing: 0.08em;
+  }
+
+  .service-option {
+    padding: 14px 12px !important;
+  }
+
+  .service-option strong {
+    font-size: 0.95rem !important;
+    line-height: 1.3 !important;
+  }
+
+  .service-option span,
+  .service-option small {
+    font-size: 0.78rem !important;
+  }
+
+  .s2-group {
+    padding: 14px 12px !important;
+  }
+}
+
+/* ── Members Only section ───────────────────────────────────────────── */
+.members-only-section {
+  background: var(--ivory);
+  border-top: 1px solid var(--nude);
+  text-align: center;
+  padding: clamp(40px, 6vw, 72px) clamp(20px, 5vw, 60px);
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   MEMBERS ONLY — Partie 20 (Mission members.html + créneaux dynamiques)
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* ── Auth layout ─────────────────────────────────────────────────────── */
+.member-auth-layout {
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 0 clamp(16px, 4vw, 32px);
+}
+
+.member-auth-card {
+  background: var(--cream);
+  border: 1px solid var(--nude);
+  padding: clamp(24px, 4vw, 40px);
+  margin-top: 32px;
+}
+
+/* ── Auth tabs ───────────────────────────────────────────────────────── */
+.member-tabs {
+  display: flex;
+  border-bottom: 1.5px solid var(--nude);
+  margin-bottom: 28px;
+  gap: 0;
+}
+
+.member-tab {
+  flex: 1;
+  padding: 10px 16px;
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+  text-align: center;
+}
+
+.member-tab.is-active {
+  color: var(--brun);
+  border-bottom: 2px solid var(--brun);
+}
+
+.member-panel {
+  display: none;
+}
+
+.member-panel.is-active {
+  display: block;
+}
+
+/* ── Profile card ────────────────────────────────────────────────────── */
+.member-profile-card {
+  background: var(--ivory);
+  border: 1px solid var(--nude);
+  padding: clamp(20px, 3vw, 32px);
+  margin-top: 0;
+}
+
+.member-profile-card .profile-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 9px 0;
+  border-bottom: 1px solid rgba(217, 204, 192, 0.5);
+  font-size: 0.85rem;
+}
+
+.member-profile-card .profile-row:last-of-type {
+  border-bottom: none;
+}
+
+.member-profile-card .profile-label {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.member-profile-card .profile-value {
+  color: var(--brun);
+  font-family: var(--serif);
+  font-size: 1rem;
+}
+
+/* ── Benefits grid ───────────────────────────────────────────────────── */
+.member-benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.member-benefit-card {
+  background: var(--cream);
+  border: 1px solid var(--nude);
+  padding: 20px;
+}
+
+.member-benefit-card .benefit-icon {
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+  display: block;
+  color: var(--brun-soft);
+  font-style: normal;
+}
+
+.member-benefit-card h5 {
+  font-family: var(--serif);
+  font-size: 1rem;
+  color: var(--brun);
+  margin-bottom: 6px;
+}
+
+.member-benefit-card p {
+  font-size: 0.78rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* ── Empty state ─────────────────────────────────────────────────────── */
+.member-empty-state {
+  background: var(--ivory);
+  border: 1px dashed var(--nude);
+  padding: 32px 24px;
+  text-align: center;
+  margin-top: 16px;
+}
+
+.member-empty-state p {
+  font-size: 0.82rem;
+  color: var(--muted);
+  line-height: 1.7;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+/* ── Member notice (in reserver step 4) ──────────────────────────────── */
+.member-prefill-notice {
+  background: rgba(125, 90, 70, 0.06);
+  border-left: 3px solid var(--brun-soft);
+  padding: 10px 16px;
+  font-size: 0.8rem;
+  color: var(--brun);
+  margin-bottom: 18px;
+  line-height: 1.6;
+}
+
+/* ── Slot options ────────────────────────────────────────────────────── */
+.slot-options {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.slot-option {
+  border: 1px solid var(--nude);
+  padding: 10px 8px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  text-align: center;
+  transition: all 0.2s;
+  font-family: var(--sans);
+  letter-spacing: 0.06em;
+  background: var(--cream);
+  user-select: none;
+}
+
+.slot-option:hover {
+  border-color: var(--brun-soft);
+  background: var(--ivory);
+}
+
+.slot-option.is-selected {
+  background: var(--brun);
+  border-color: var(--brun);
+  color: var(--cream);
+}
+
+.slot-empty {
+  font-size: 0.82rem;
+  color: var(--muted);
+  font-style: italic;
+  padding: 16px 0;
+  grid-column: 1 / -1;
+}
+
+/* ── Summary end time ────────────────────────────────────────────────── */
+.summary-endtime {
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin-top: 2px;
+}
+
+/* ── Mobile ──────────────────────────────────────────────────────────── */
+@media (max-width: 780px) {
+  .slot-options {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+
+  .slot-option {
+    padding: 10px 6px;
+    font-size: 0.78rem;
+  }
+
+  .member-benefits-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .member-auth-card {
+    padding: 20px 16px;
+  }
+
+  .member-profile-card .profile-row {
+    flex-direction: column;
+    gap: 2px;
+  }
+}
+
+@media (max-width: 420px) {
+  .slot-options {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   PARTIE 21 — Corrections ciblées Expertise / Menu / Collection / Archives
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* ── 1. Service description + meta (étape 2 reserver.html) ──────────── */
+.service-description {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--muted);
+  line-height: 1.55;
+  margin-bottom: 4px;
+}
+
+.service-meta {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--brun);
+  font-weight: 500;
+  font-family: var(--sans);
+  letter-spacing: 0.04em;
+  margin-top: 3px;
+}
+
+/* ── 2. Justification des textes longs ──────────────────────────────── */
+.service-description,
+.form-panel > p,
+.secure-notice p,
+.care-alert,
+.booking-summary p,
+.medical-intro-box p,
+.annulation-box p {
+  text-align: justify;
+  text-wrap: pretty;
+  hyphens: auto;
+}
+
+@media (max-width: 680px) {
+  .service-description,
+  .form-panel > p,
+  .secure-notice p,
+  .care-alert,
+  .booking-summary p {
+    text-align: left;
+  }
+}
+
+/* ── 3. Vidéo collection — entièrement visible (object-fit: contain) ── */
+.collection-feature__media--video {
+  min-height: clamp(420px, 62vw, 760px);
+  background: var(--brun);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  aspect-ratio: unset;
+}
+
+.collection-feature__media--video video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+}
+
+/* ── 4. Archive 10 — centrée sur la dernière ligne ──────────────────── */
+.archive-card--centered {
+  justify-self: center;
+}
+
+@media (min-width: 900px) {
+  .archive-card--centered {
+    grid-column: 2;
+  }
+}
+
+@media (max-width: 899px) {
+  .archive-card--centered {
+    justify-self: unset;
+  }
+}
