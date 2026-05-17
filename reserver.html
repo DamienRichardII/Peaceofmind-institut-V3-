@@ -1045,7 +1045,6 @@
       updateNailArtQuantity(nailArtQuantity + 1);
     });
     });
-    });
 
 
     // ─── STEP 2 CATEGORY FILTER ─────────────────────────────
@@ -1425,15 +1424,6 @@
         document.getElementById('summaryEndTime').textContent = minutesToTimeLabel(endMin);
       }
     }
-      if (date) {
-        document.getElementById('summaryDate').textContent = new Date(date + 'T00:00:00').toLocaleDateString('fr-FR', {weekday:'long',day:'numeric',month:'long'});
-      }
-      if (selSlot) {
-        document.getElementById('summarySlot').textContent    = selSlot.dataset.value ? selSlot.dataset.value.replace(':', 'h') : '—';
-        var endMin = parseInt(selSlot.dataset.endMin || '0', 10);
-        document.getElementById('summaryEndTime').textContent = minutesToTimeLabel(endMin);
-      }
-    }
 
     // Remplacer updateSummary pour utiliser la version enrichie
     updateSummary = updateSummaryFull;
@@ -1478,6 +1468,7 @@
         }
       }
     };
+    window.goStep = goStep;
 
     // ─── MEMBERS — Préremplissage depuis ?member=1 ───────────────────
     // Ne jamais préremplir les champs sensibles du questionnaire.
