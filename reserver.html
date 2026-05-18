@@ -7,6 +7,33 @@
   <meta name="description" content="Réserver une prestation Peace of Mind Institut — Soins sur-mesure, selection of treatments. Consentement en ligne. Gradignan, Bordeaux." />
   <link rel="icon" href="assets/logo-peace-of-mind-final.png" type="image/png" />
   <link rel="stylesheet" href="assets/styles.css" />
+  <style>
+    /* Step 6 — mobile responsive */
+    @media (max-width: 640px) {
+      #step6 {
+        width: 100%;
+        max-width: 100%;
+        margin-left: 0;
+        padding-left: 0;
+        padding-right: 0;
+        box-sizing: border-box;
+      }
+      #step6 > div {
+        max-width: 100%;
+        box-sizing: border-box;
+      }
+      #step6 > div[style*="justify-content:space-between"] {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+      }
+      #step6 > div[style*="justify-content:space-between"] button,
+      #step6 > div[style*="justify-content:space-between"] [type="submit"] {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -181,6 +208,7 @@
                     <input type="radio" name="service" value="soin_aquagold" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Aqua gold</strong>
+                      <span class="service-description" style="font-size:0.78rem;color:var(--muted);display:block">Nano therapy &amp; feuille d’or - soin antioxydant.</span>
                       <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">50 min · 120 €</span>
                     </div>
                   </label>
@@ -196,7 +224,7 @@
                     <input type="radio" name="service" value="soin_plasmalift_face" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Plasma lift</strong>
-                      <span class="service-description" style="font-size:0.78rem;color:var(--muted);display:block">Technique non invasive.</span>
+                      <span class="service-description" style="font-size:0.78rem;color:var(--muted);display:block">Soin ciblé pour le relâchement cutané.</span>
                       <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">1h · 190 €</span>
                     </div>
                   </label>
@@ -232,7 +260,7 @@
                     <input type="radio" name="service" value="corps_aquagold" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Aqua gold corps</strong>
-                      <span class="service-description" style="font-size:0.78rem;color:var(--muted);display:block">Nano therapy + feuilles d’or.</span>
+                      <span class="service-description" style="font-size:0.78rem;color:var(--muted);display:block">Nano therapy &amp; feuille d’or - soin antioxydant.</span>
                       <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">1h · À partir de 120 €</span>
                     </div>
                   </label>
@@ -240,6 +268,7 @@
                     <input type="radio" name="service" value="corps_plasmalift" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Plasma lift corps</strong>
+                      <span class="service-description" style="font-size:0.78rem;color:var(--muted);display:block">Soin ciblé pour le relâchement cutané.</span>
                       <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">1h · À partir de 190 €</span>
                     </div>
                   </label>
@@ -262,7 +291,7 @@
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="pig_grain">
                     <input type="radio" name="service" value="pig_grain" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
-                      <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Grain de beauté</strong>
+                      <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Grains de beauté</strong>
                       <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">30 min · 50 €</span>
                     </div>
                   </label>
@@ -297,7 +326,7 @@
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="pig_ret_grain">
                     <input type="radio" name="service" value="pig_ret_grain" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
-                      <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Retouche grain de beauté</strong>
+                      <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Retouche grains de beauté</strong>
                       <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">20 min · 25 €</span>
                     </div>
                   </label>
@@ -325,7 +354,7 @@
                 </div>
 
                 <div class="s2-group" data-s2cat="ongles">
-                  <p style="font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--brun);font-family:var(--sans);font-weight:600;padding:12px 0 6px;border-bottom:1.5px solid var(--nude);margin-top:clamp(20px,3vw,32px);margin-bottom:8px">Manucure — Pose complète gel</p>
+                  <p style="font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--brun);font-family:var(--sans);font-weight:600;padding:12px 0 6px;border-bottom:1.5px solid var(--nude);margin-top:clamp(20px,3vw,32px);margin-bottom:8px">Manucure — Pose complète gel &amp; extensions</p>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="ongles_pose_sm">
                     <input type="radio" name="service" value="ongles_pose_sm" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
@@ -373,6 +402,11 @@
                     </div>
                   </label>
                   <p style="font-size:0.72rem;color:var(--muted);margin-top:8px;padding-top:8px;border-top:1px dashed var(--nude);font-style:italic">Remplissage extérieur ou 3 ongles cassés ou +4 semaines = prix d'une pose complète.</p>
+                  <div style="margin-top:16px;padding:16px;background:var(--ivory);border:1px solid var(--nude);border-radius:2px">
+                    <p style="font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;font-family:var(--sans);font-weight:700;color:var(--brun);margin-bottom:8px">Offre POM 20</p>
+                    <p style="font-size:0.82rem;color:var(--brun-soft);line-height:1.6;margin-bottom:6px">Remise de 20 % sur deux remplissages choisis dans le même mois.</p>
+                    <p style="font-size:0.75rem;color:var(--muted);font-style:italic;line-height:1.55">Le paiement total s’effectue dès la réservation globale. Écrivez-moi ou voir sur place pour convenir de votre date de deuxième rendez-vous.</p>
+                  </div>
                 </div>
 
                 <div class="s2-group" data-s2cat="ongles">
@@ -400,6 +434,12 @@
                       <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">20 min · 19 €</span>
                     </div>
                   </label>
+
+                  <div style="margin-top:16px;padding:16px;background:var(--ivory);border:1px solid var(--nude);border-radius:2px">
+                    <p style="font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;font-family:var(--sans);font-weight:700;color:var(--brun);margin-bottom:8px">Offre POM 20</p>
+                    <p style="font-size:0.82rem;color:var(--brun-soft);line-height:1.6;margin-bottom:6px">Remise de 20 % sur deux gainages ou semi-permanents choisis dans le même mois.</p>
+                    <p style="font-size:0.75rem;color:var(--muted);font-style:italic;line-height:1.55">Le paiement total s’effectue dès la réservation globale. Écrivez-moi ou voir sur place pour convenir de votre date de deuxième rendez-vous.</p>
+                  </div>
                 </div>
 
                 <div class="s2-group" data-s2cat="ongles">
@@ -408,48 +448,48 @@
                     <input type="radio" name="service" value="na_sticker" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Sticker ou strass **</strong>
-                      <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">10 min · 0,50 €</span>
+                      <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">5 min · 0,50 €</span>
                     </div>
                   </label>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="na_chrome">
                     <input type="radio" name="service" value="na_chrome" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Chrome **</strong>
-                      <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">15 min · 1 €</span>
+                      <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">5 min · 1 €</span>
                     </div>
                   </label>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="na_cat">
                     <input type="radio" name="service" value="na_cat" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Cat eye **</strong>
-                      <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">15 min · 1 €</span>
+                      <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">5 min · 1 €</span>
                     </div>
                   </label>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="na_french">
                     <input type="radio" name="service" value="na_french" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">French **</strong>
-                      <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">15 min · 1 €</span>
+                      <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">5 min · 1 €</span>
                     </div>
                   </label>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="na_baby">
                     <input type="radio" name="service" value="na_baby" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Baby boomer **</strong>
-                      <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">20 min · 1 €</span>
+                      <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">5 min · 1 €</span>
                     </div>
                   </label>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="na_marbre">
                     <input type="radio" name="service" value="na_marbre" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Marbre / Animalier / 3D **</strong>
-                      <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">25 min · 2 €</span>
+                      <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">5 min · 2 €</span>
                     </div>
                   </label>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="na_casse">
                     <input type="radio" name="service" value="na_casse" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
-                      <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Ongle cassé</strong>
+                      <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Ongle cassé **</strong>
                       <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">5 min · 3 €</span>
                     </div>
                   </label>
@@ -481,19 +521,19 @@
                       <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">30 min · 25 €</span>
                     </div>
                   </label>
-                  <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="dep_semi_repose">
-                    <input type="radio" name="service" value="dep_semi_repose" style="margin-top:3px;accent-color:var(--accent)" />
-                    <div>
-                      <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Dépose semi-permanent si repose</strong>
-                      <span class="service-description" style="font-size:0.78rem;color:var(--muted);display:block">Dépose gratuite si repose de semi-permanent.</span>
-                      <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">15 min · Gratuit</span>
-                    </div>
-                  </label>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="dep_semi">
                     <input type="radio" name="service" value="dep_semi" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Dépose semi-permanent</strong>
                       <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">10 min · 7 €</span>
+                    </div>
+                  </label>
+                  <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="dep_semi_repose">
+                    <input type="radio" name="service" value="dep_semi_repose" style="margin-top:3px;accent-color:var(--accent)" />
+                    <div>
+                      <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Dépose semi-permanent si repose</strong>
+                      <span class="service-description" style="font-size:0.78rem;color:var(--muted);display:block">Dépose gratuite si repose de semi-permanent.</span>
+                      <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">10 min · Gratuit</span>
                     </div>
                   </label>
                 </div>
@@ -672,13 +712,18 @@
                 <p style="font-size:0.75rem;color:var(--muted)">Vos informations préparatoires sont traitées avec confidentialité, conformément au RGPD.</p>
 
                 <label style="display:flex;align-items:flex-start;gap:12px;font-size:0.82rem;cursor:pointer;text-transform:none;letter-spacing:0;line-height:1.6">
-                  <input type="checkbox" id="consentMedical" name="consent_medical" required style="accent-color:var(--accent);width:16px;height:16px;min-width:16px;margin-top:2px" />
-                  Je confirme avoir rempli le questionnaire de renseignements avec sincérité.
+                  <input type="checkbox" id="consentRgpd" name="consent_rgpd" required style="accent-color:var(--accent);width:16px;height:16px;min-width:16px;margin-top:2px" />
+                  Je confirme avoir rempli le questionnaire de renseignement avec sincérité et transmis mes données conformément à la politique de confidentialité RGPD.
                 </label>
 
                 <label style="display:flex;align-items:flex-start;gap:12px;font-size:0.82rem;cursor:pointer;text-transform:none;letter-spacing:0;line-height:1.6">
-                  <input type="checkbox" id="consentData" name="consent_data" required style="accent-color:var(--accent);width:16px;height:16px;min-width:16px;margin-top:2px" />
-                  J&apos;accepte que les informations transmises soient utilisées exclusivement pour préparer ma prestation, conformément à la <a href="mentions.html" style="color:var(--accent)">politique de confidentialité</a>.
+                  <input type="checkbox" id="consentAge" name="consent_age" required style="accent-color:var(--accent);width:16px;height:16px;min-width:16px;margin-top:2px" />
+                  Je déclare avoir 18 ans ou plus.
+                </label>
+
+                <label style="display:flex;align-items:flex-start;gap:12px;font-size:0.82rem;cursor:pointer;text-transform:none;letter-spacing:0;line-height:1.6">
+                  <input type="checkbox" id="consentMedia" name="consent_media" style="accent-color:var(--accent);width:16px;height:16px;min-width:16px;margin-top:2px" />
+                  J&apos;accepte de donner l&apos;autorisation de me prendre en photo et/ou vidéo et d&apos;utiliser ces dernières gratuitement à des fins marketing.
                 </label>
 
                 <label style="display:flex;align-items:flex-start;gap:12px;font-size:0.82rem;cursor:pointer;text-transform:none;letter-spacing:0;line-height:1.6">
@@ -694,10 +739,8 @@
 
               <div class="annulation-box">
                 <h5>Conditions d&apos;annulation</h5>
-                <p>Pour préserver la qualité de l&apos;organisation, toute annulation tardive ou absence non signalée peut entraîner une retenue selon les conditions suivantes :<br /><br />
-                · Annulation à moins de 48h : 50 % du montant total dû est retenu.<br />
-                · No-show (absence non signalée) : 50 % du montant total dû est retenu.<br />
-                · Annulation le jour J : la totalité du solde est retenue.</p>
+                <p>Dans le cas où vous annulez votre rendez-vous 48H avant la date prévue ou sans délai,<br />50% du service est prélevé.</p>
+                <p style="margin-top:10px">Dans le cas où vous annulez votre rendez-vous 24H avant la date prévue ou sans délai,<br />100% du service est prélevé.</p>
               </div>
 
               <div style="margin-top:24px;display:flex;gap:12px;justify-content:space-between">
@@ -815,11 +858,11 @@
       'corps_aquagold': 'Aqua gold corps',
       'corps_plasmalift': 'Plasma lift corps',
       'blanchiment_1': 'Blanchiment dentaire · 1 séance',
-      'pig_grain': 'Grain de beauté',
+      'pig_grain': 'Grains de beauté',
       'pig_freckles_nez': 'Freckles NEZ',
       'pig_freckles_nez_pom': 'Freckles NEZ & POMMETTES',
       'pig_freckles_visage': 'Freckles VISAGE',
-      'pig_ret_grain': 'Retouche grain de beauté',
+      'pig_ret_grain': 'Retouche grains de beauté',
       'pig_ret_nez': 'Retouche NEZ',
       'pig_ret_nez_pom': 'Retouche NEZ & POMMETTES',
       'pig_ret_visage': 'Retouche VISAGE',
@@ -954,16 +997,16 @@
       'ongles_gainage': '1h15',
       'ongles_semi': '35 min',
       'ongles_manicare': '20 min',
-      'na_sticker': '10 min',
-      'na_chrome': '15 min',
-      'na_cat': '15 min',
-      'na_french': '15 min',
-      'na_baby': '20 min',
-      'na_marbre': '25 min',
+      'na_sticker': '5 min',
+      'na_chrome': '5 min',
+      'na_cat': '5 min',
+      'na_french': '5 min',
+      'na_baby': '5 min',
+      'na_marbre': '5 min',
       'na_casse': '5 min',
       'na_forme': '10 min',
       'dep_gel': '30 min',
-      'dep_semi_repose': '15 min',
+      'dep_semi_repose': '10 min',
       'dep_semi': '10 min',
       'pedi_calus': '45 min',
       'pedi_luxury': '45 min',
@@ -1117,60 +1160,76 @@
       if (radio) { radio.click(); }
     }
 
-    // ---- SUPABASE INTEGRATION READY ----
-    // TODO SUPABASE: Créer table `booking_requests` avec colonnes :
-    //   id, created_at, service, service_label, date, slot, firstname, lastname, email, phone,
-    //   motif, objectif, zone, sensibilite, antecedents, allergies, traitement, attentes,
-    //   paiement, consent_medical, consent_data, consent_info, consent_email,
-    //   medical_review_required, health_answers (jsonb),
-    //   status, bank_hold_status, consent_form_sent, confirmation_email_sent, confirmation_status, admin_notes
-    // Statuts : nouvelle_demande | a_relire | empreinte_a_envoyer | empreinte_recue | confirmee | refusee | terminee
+    // ---- BACKEND INTEGRATION ----
+    // TODO SUPABASE: Créer table `reservations` avec colonnes :
+    //   id, created_at, service_key, service_label, service_price, service_duration,
+    //   date, slot, firstname, lastname, email, phone,
+    //   health_issues, allergies, nails_condition, preferences, notes,
+    //   consent, is_member, member_code,
+    //   status, payment_status, updated_at
+    // Statuts : pending | confirmed | cancelled
+
+    // ── API Backend ──────────────────────────────────────────────────
+    // En développement : http://localhost:3000/api
+    // En production    : définir window.POM_API_BASE_URL avant le chargement de app.js
+    var API_BASE_URL = window.POM_API_BASE_URL || 'http://localhost:3000/api';
 
     function buildBookingPayload() {
-      const healthAnswers = {
-        objectif:    document.getElementById('bObjectif').value || null,
-        motif:       document.getElementById('bMotif').value || null,
-        zone:        document.getElementById('bZone').value || null,
-        sensibilite: document.getElementById('bSensibilite').value || null,
-        antecedents: document.getElementById('bAntecedents').value || null,
-        allergies:   document.getElementById('bAllergies').value || null,
-        traitement:  document.getElementById('bTraitement').value || null,
-        attentes:    document.getElementById('bAttentes').value || null,
-      };
+      const svcKey = document.querySelector('input[name="service"]:checked')?.value || '';
+
+      // Consentements obligatoires : RGPD + majeur + conditions info
+      const consentOk =
+        (document.getElementById('consentRgpd')?.checked || false) &&
+        (document.getElementById('consentAge')?.checked  || false) &&
+        (document.getElementById('consentInfo')?.checked || false);
+
+      // Notes : combiner les champs questionnaire libre
+      const noteParts = [
+        document.getElementById('bObjectif')?.value   || '',
+        document.getElementById('bMotif')?.value      || '',
+        document.getElementById('bSensibilite')?.value || '',
+        document.getElementById('bTraitement')?.value || '',
+      ].map(s => s.trim()).filter(Boolean);
+
       return {
-        service:                  document.querySelector('input[name="service"]:checked')?.value || null,
-        service_label:            serviceLabels[document.querySelector('input[name="service"]:checked')?.value] || null,
-        service_price:            servicePrices[document.querySelector('input[name="service"]:checked')?.value] || null,
-        service_duration:         serviceDurations[document.querySelector('input[name="service"]:checked')?.value] || null,
-        date:                     document.getElementById('bookDate').value || null,
-        slot:                     document.querySelector('input[name="slot"]:checked')?.value || null,
-        firstname:                document.getElementById('bFirstname').value || null,
-        lastname:                 document.getElementById('bLastname').value || null,
-        email:                    document.getElementById('bEmail').value || null,
-        phone:                    document.getElementById('bPhone').value || null,
-        health_answers:           healthAnswers,
-        medical_review_required:  window._careReviewRequired || false,
-        paiement:                 document.querySelector('input[name="paiement"]:checked')?.value || null,
-        consent_medical:          document.getElementById('consentMedical').checked,
-        sincere_medical_form_accepted: document.getElementById('consentMedical').checked,
-        consent_data:             document.getElementById('consentData').checked,
-        consent_info:             document.getElementById('consentInfo').checked,
-        consent_email:            document.getElementById('consentEmail').checked,
-        cancellation_policy_accepted: document.getElementById('consentInfo').checked,
-        status:                   'nouvelle_demande',
-        bank_hold_status:         'pending',
-        consent_form_sent:        false,
-        confirmation_email_sent:  false,
-        confirmation_status:      'pending',
-        admin_notes:              window._careReviewRequired ? 'RELECTURE MÉDICALE REQUISE' : null
+        // ── Identité ─────────────────────────────────────────────────
+        firstname:        document.getElementById('bFirstname')?.value?.trim() || '',
+        lastname:         document.getElementById('bLastname')?.value?.trim()  || '',
+        email:            document.getElementById('bEmail')?.value?.trim()     || '',
+        phone:            document.getElementById('bPhone')?.value?.trim()     || '',
+        // ── Prestation ───────────────────────────────────────────────
+        service_key:      svcKey,
+        service_label:    serviceLabels[svcKey]   || svcKey,
+        service_duration: serviceDurations[svcKey] || '',
+        service_price:    String(servicePrices[svcKey] || ''),
+        // ── Créneau ──────────────────────────────────────────────────
+        date:             document.getElementById('bookDate')?.value || '',
+        slot:             document.querySelector('input[name="slot"]:checked')?.value || '',
+        // ── Consentement (booléen plat requis par le backend) ─────────
+        consent:          consentOk,
+        // ── Questionnaire médical → champs plats backend ─────────────
+        health_issues:    document.getElementById('bAntecedents')?.value?.trim() || '',
+        allergies:        document.getElementById('bAllergies')?.value?.trim()   || '',
+        nails_condition:  document.getElementById('bZone')?.value?.trim()        || '',
+        preferences:      document.getElementById('bAttentes')?.value?.trim()    || '',
+        notes:            noteParts.join('\n\n'),
+        // ── Membre ───────────────────────────────────────────────────
+        member_code:      document.getElementById('bMemberCode')?.value?.trim() || '',
+        is_member:        Boolean(document.getElementById('bMemberCode')?.value?.trim()),
       };
     }
 
     async function submitBookingRequest(payload) {
-      // TODO SUPABASE: const { data, error } = await supabase.from('booking_requests').insert([payload]);
-      // TODO EMAIL: Déclencher email transactionnel (SendGrid / Resend / Brevo)
-      console.log('[POM] Booking payload (TODO SUPABASE):', JSON.stringify(payload, null, 2));
-      return { ok: true };
+      const resp = await fetch(API_BASE_URL + '/reservations', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      if (!resp.ok) {
+        const err = await resp.json().catch(() => ({}));
+        throw new Error(err.message || 'Erreur serveur (' + resp.status + ')');
+      }
+      return await resp.json();
     }
 
     document.getElementById('bookingForm').addEventListener('submit', async function(e) {
@@ -1178,24 +1237,42 @@
       const result = document.getElementById('bookingResult');
       result.textContent = 'Envoi en cours…';
       result.style.color = 'var(--muted)';
+
       try {
         const payload = buildBookingPayload();
-        // ─── Sauvegarder les informations si la case est cochée ─────────
-        if (document.getElementById('bSaveInfo').checked) {
-          const safeProfile = {
-            firstname: document.getElementById('bFirstname').value || '',
-            lastname:  document.getElementById('bLastname').value  || '',
-            email:     document.getElementById('bEmail').value     || '',
-            phone:     document.getElementById('bPhone').value     || '',
-            birthday:  document.getElementById('bBirthday').value  || '',
-          };
-          localStorage.setItem('pom_member_profile', JSON.stringify(safeProfile));
+
+        // ── Validation avant envoi ──────────────────────────────────
+        const required = ['firstname', 'lastname', 'email', 'service_key', 'service_label', 'date', 'slot'];
+        const missing = required.filter(k => !payload[k]);
+        if (missing.length) {
+          result.textContent = 'Merci de compléter toutes les informations obligatoires avant de confirmer votre réservation.';
+          result.style.color = 'var(--accent-warm)';
+          return;
         }
+        if (!payload.consent) {
+          result.textContent = 'Merci de cocher les consentements obligatoires avant de confirmer votre réservation.';
+          result.style.color = 'var(--accent-warm)';
+          return;
+        }
+
+        // ── Sauvegarder le profil si demandé ───────────────────────
+        if (document.getElementById('bSaveInfo')?.checked) {
+          const safeProfile = {
+            firstname: payload.firstname,
+            lastname:  payload.lastname,
+            email:     payload.email,
+            phone:     payload.phone,
+            birthday:  document.getElementById('bBirthday')?.value || '',
+          };
+          try { localStorage.setItem('pom_member_profile', JSON.stringify(safeProfile)); } catch(_) {}
+        }
+
         await submitBookingRequest(payload);
-        result.textContent = "Votre demande a bien été transmise. L'institut vous recontactera pour confirmer le créneau.";
+        result.textContent = 'Votre demande de réservation a bien été transmise. Un email de confirmation vous sera envoyé sous peu.';
         result.style.color = 'var(--accent)';
+
       } catch (err) {
-               result.textContent = 'Une erreur est survenue. Veuillez réessayer ou nous contacter directement.';
+        result.textContent = 'Une erreur est survenue. Vous pouvez nous écrire directement à peaceofmindinstitut@gmail.com.';
         result.style.color = 'var(--accent-warm)';
         console.error('[POM] Booking error:', err);
       }
@@ -1240,16 +1317,16 @@
       'ongles_gainage':             75,
       'ongles_semi':                35,
       'ongles_manicare':            20,
-      'na_sticker':                 10,
-      'na_chrome':                  15,
-      'na_cat':                     15,
-      'na_french':                  15,
-      'na_baby':                    20,
-      'na_marbre':                  25,
+      'na_sticker':                 5,
+      'na_chrome':                  5,
+      'na_cat':                     5,
+      'na_french':                  5,
+      'na_baby':                    5,
+      'na_marbre':                  5,
       'na_casse':                   5,
       'na_forme':                   10,
       'dep_gel':                    30,
-      'dep_semi_repose':            15,
+      'dep_semi_repose':            10,
       'dep_semi':                   10,
       'pedi_calus':                 45,
       'pedi_luxury':                45,

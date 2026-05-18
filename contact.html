@@ -52,9 +52,9 @@
         <p class="section-label">Informations pratiques</p>
         <h3 style="margin-bottom:20px">Rencontrez-nous.</h3>
         <ul class="contact-list">
-          <li><strong>Email</strong><a href="mailto:contact@peace-of-mind-signature.fr">contact@peace-of-mind-signature.fr</a></li>
+          <li><strong>Email</strong><a href="mailto:peaceofmindinstitut@gmail.com">peaceofmindinstitut@gmail.com</a></li>
           <li><strong>Adresse</strong>Gradignan, Bordeaux — adresse exacte communiquée à la confirmation</li>
-          <li><strong>Horaires</strong>Mardi — Vendredi : 10h — 17h30 &nbsp;·&nbsp; Samedi : 11h30 — 15h30</li>
+          <li><strong>Horaires</strong>Lundi — Vendredi : 10h — 17h30 &nbsp;·&nbsp; Samedi : 11h30 — 15h30</li>
           <li><strong>Réponse</strong>Sous 24h ouvrées</li>
         </ul>
         <div class="cta-row mt-md">
@@ -167,13 +167,8 @@
 
   <script src="assets/app.js"></script>
   <script>
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const r = document.getElementById('contactResult');
-      r.textContent = 'Message envoyé. Réponse sous 24h ouvrées.';
-      r.style.color = 'var(--accent)';
-      this.reset();
-    });
+    // Géré par assets/app.js — initContactForm()
+    // Le fetch vers API_BASE_URL/contact est dans app.js
   </script>
 </body>
 </html>

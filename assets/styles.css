@@ -2964,31 +2964,30 @@ legend {
 
 .archives-gallery-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: clamp(14px, 2vw, 24px);
+  grid-template-columns: repeat(12, 1fr);
+  gap: clamp(28px, 4vw, 56px);
   max-width: 1280px;
   margin: 0 auto;
+  align-items: start;
 }
 
+/* ── Archive card — conteneur image pur, aucun fond ni cadre ── */
 .archive-card {
   position: relative;
-  min-height: clamp(360px, 44vw, 560px);
   overflow: hidden;
-  background: var(--ivory);
-  border: 1px solid rgba(217, 204, 192, 0.7);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
 }
 
 .archive-card img {
-  position: absolute;
-  inset: 0;
+  display: block;
   width: 100%;
-  height: 100%;
+  height: auto;
   object-fit: contain;
   object-position: center;
-  background: var(--ivory);
+  background: transparent;
   transition: transform 0.8s ease;
 }
 
@@ -2996,37 +2995,71 @@ legend {
   transform: scale(1.015);
 }
 
-.archive-card::after {
+/* Micro-dégradé très discret — photos sombres uniquement */
+.archive-card:not(.archive-card--text-dark)::after {
   content: "";
   position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(42, 26, 14, 0.62), rgba(42, 26, 14, 0.14) 58%, rgba(42, 26, 14, 0.02));
+  inset: auto 0 0 0;
+  height: 38%;
+  background: linear-gradient(
+    to top,
+    rgba(42, 26, 14, 0.28),
+    transparent
+  );
+  pointer-events: none;
   z-index: 1;
 }
 
+/* Overlay absolu dans la photo — jamais en dehors */
 .archive-card__overlay {
-  position: relative;
+  position: absolute;
+  left: clamp(18px, 2.2vw, 32px);
+  bottom: clamp(18px, 2.2vw, 32px);
+  right: clamp(18px, 2.2vw, 32px);
   z-index: 2;
-  min-height: inherit;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: clamp(20px, 3vw, 34px);
-  color: var(--cream);
+  background: transparent !important;
+  padding: 0 !important;
+  pointer-events: none;
 }
 
+/* Label d'archive */
 .archive-card__eyebrow {
-  font-size: 0.66rem;
-  letter-spacing: 0.16em;
+  display: block;
+  font-family: var(--sans);
+  font-size: clamp(0.58rem, 0.75vw, 0.68rem);
+  letter-spacing: 0.24em;
   text-transform: uppercase;
-  color: rgba(250, 246, 241, 0.72);
+  color: inherit;
   margin-bottom: 10px;
 }
 
-.archive-card h3 {
-  color: var(--cream);
-  font-size: clamp(1.1rem, 1.8vw, 1.65rem);
+/* Titre de l'archive */
+.archive-card__overlay h3 {
+  font-family: var(--serif);
+  font-size: clamp(1.15rem, 2vw, 1.65rem);
   line-height: 1.15;
+  font-weight: 400;
+  color: inherit;
+  max-width: 520px;
+}
+
+/* Photos sombres — texte crème hérité par enfants */
+.archive-card:not(.archive-card--text-dark) .archive-card__overlay {
+  color: var(--cream);
+}
+/* Ombre brun légère appliquée directement sur les éléments texte */
+.archive-card:not(.archive-card--text-dark) .archive-card__eyebrow,
+.archive-card:not(.archive-card--text-dark) .archive-card__overlay h3 {
+  text-shadow: 0 2px 10px rgba(42, 26, 14, 0.38);
+}
+
+/* Photos claires — texte brun, pas d'ombre */
+.archive-card--text-dark .archive-card__overlay {
+  color: var(--brun);
+}
+.archive-card--text-dark .archive-card__eyebrow,
+.archive-card--text-dark .archive-card__overlay h3 {
+  text-shadow: none !important;
 }
 
 .archives-after-note {
@@ -3034,22 +3067,6 @@ legend {
   margin: clamp(32px, 5vw, 64px) auto 0;
   text-align: center;
   color: var(--brun-soft);
-}
-
-@media (max-width: 1100px) {
-  .archives-gallery-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 680px) {
-  .archives-gallery-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .archive-card {
-    min-height: 420px;
-  }
 }
 
 /* ── HARMONISATION TYPOGRAPHIQUE GLOBALE (Partie 8) ────────────────── */
@@ -3536,22 +3553,7 @@ em.serif-italic {
   display: block;
 }
 
-/* ── 4. Archive 10 — centrée sur la dernière ligne ──────────────────── */
-.archive-card--centered {
-  justify-self: center;
-}
-
-@media (min-width: 900px) {
-  .archive-card--centered {
-    grid-column: 2;
-  }
-}
-
-@media (max-width: 899px) {
-  .archive-card--centered {
-    justify-self: unset;
-  }
-}
+/* archive-card--centered redéfini dans PARTIE 23 */
 
 /* ═══════════════════════════════════════════════════════════════════
    PARTIE 22 — Nail Art Quantity Selector
@@ -3593,23 +3595,57 @@ em.serif-italic {
 }
 
 /* ═══════════════════════════════════════════════════════════════════
-   PARTIE 23 — Archive cards sans cadre (frameless)
+   PARTIE 23 — Placements éditoriaux archives (grille 12 colonnes)
    ═══════════════════════════════════════════════════════════════════ */
 
-/* ── Archives sans bordure — image pleine largeur sans overlay de fond ── */
-.archive-card--frameless {
-  border: none;
-  background: transparent;
-  box-shadow: none;
+/* Format normal — 4/12 colonnes (1/3 de la grille) */
+.archive-card--normal {
+  grid-column: span 4;
 }
 
-.archive-card--frameless .archive-card__overlay {
-  background: linear-gradient(to top, rgba(44,34,26,.55) 0%, transparent 55%);
+/* Format large — 8/12 colonnes (2/3 de la grille) */
+.archive-card--wide {
+  grid-column: span 8;
 }
 
-.archive-card--frameless img {
-  border: none;
+/* Archive 10 — centré dans la grille (col 3 → col 10) */
+.archive-card--centered {
+  grid-column: 3 / span 8;
 }
+
+/* ── Responsive tablette (900–760px) ── */
+@media (max-width: 900px) {
+  .archives-gallery-grid {
+    grid-template-columns: repeat(6, 1fr);
+    gap: clamp(20px, 3vw, 36px);
+  }
+  .archive-card--normal   { grid-column: span 2; }
+  .archive-card--wide     { grid-column: span 4; }
+  .archive-card--centered { grid-column: 2 / span 4; }
+}
+
+/* ── Responsive mobile (≤760px) ── */
+@media (max-width: 760px) {
+  .archives-gallery-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+  .archive-card--normal,
+  .archive-card--wide,
+  .archive-card--centered {
+    grid-column: 1 / -1;
+  }
+  .archive-card__overlay {
+    left: 18px;
+    right: 18px;
+    bottom: 18px;
+  }
+  .archive-card__overlay h3 {
+    font-size: clamp(1.1rem, 6vw, 1.45rem);
+    line-height: 1.2;
+  }
+}
+
 
 /* ═══════════════════════════════════════════════════════════════════
    PARTIE 22 — Nail Art Quantity Selector
@@ -3648,35 +3684,4 @@ em.serif-italic {
   cursor: not-allowed;
 }
 
-/* ═══════════════════════════════════════════════════════════════════
-   PARTIE 23 — Archive cards sans cadre (frameless)
-   ═══════════════════════════════════════════════════════════════════ */
 
-.archive-card--frameless {
-  border: none;
-  background: transparent;
-  box-shadow: none;
-}
-
-.archive-card--frameless .archive-card__overlay {
-  background: linear-gradient(to top, rgba(44,34,26,.55) 0%, transparent 55%);
-}
-
-.archive-card--frameless img {
-  border: none;
-}
-
-
-.archive-card--frameless {
-  border: none;
-  background: transparent;
-  box-shadow: none;
-}
-
-.archive-card--frameless .archive-card__overlay {
-  background: linear-gradient(to top, rgba(44,34,26,.55) 0%, transparent 55%);
-}
-
-.archive-card--frameless img {
-  border: none;
-}
