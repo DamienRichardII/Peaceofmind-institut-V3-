@@ -501,13 +501,21 @@
                     </div>
                   </label>
                   <div id="nailArtQuantitySelector" style="display:none;margin-top:14px;padding:16px;border:1px solid var(--nude);border-radius:2px;background:var(--ivory)">
-                    <p style="font-size:0.82rem;font-family:var(--sans);font-weight:600;color:var(--brun);margin-bottom:12px">Nombre de doigts / ongles concernés :</p>
-                    <div class="nail-qty-stepper">
-                      <button type="button" class="nail-qty-btn" id="nailQtyMinus" aria-label="Moins" disabled>−</button>
-                      <span id="nailQtyDisplay" style="font-family:var(--serif);font-size:1.4rem;min-width:2ch;text-align:center;display:inline-block">1</span>
-                      <button type="button" class="nail-qty-btn" id="nailQtyPlus" aria-label="Plus">+</button>
-                    </div>
-                    <p style="font-size:0.72rem;color:var(--muted);margin-top:8px;font-style:italic" id="nailQtyNote">1 doigt sélectionné.</p>
+                    <label for="nailQtySelect" style="font-size:0.82rem;font-family:var(--sans);font-weight:600;color:var(--brun);display:block;margin-bottom:10px">Nombre de doigts / ongles concernés :</label>
+                    <select id="nailQtySelect" name="nail_art_quantity"
+                      style="font-family:var(--sans);font-size:0.9rem;padding:9px 14px;border:1px solid var(--brun);
+                             border-radius:2px;background:var(--cream);color:var(--brun);width:100%;max-width:260px;cursor:pointer">
+                      <option value="1">1 ongle / doigt</option>
+                      <option value="2">2 ongles / doigts</option>
+                      <option value="3">3 ongles / doigts</option>
+                      <option value="4">4 ongles / doigts</option>
+                      <option value="5">5 ongles / doigts</option>
+                      <option value="6">6 ongles / doigts</option>
+                      <option value="7">7 ongles / doigts</option>
+                      <option value="8">8 ongles / doigts</option>
+                      <option value="9">9 ongles / doigts</option>
+                      <option value="10">10 ongles / doigts</option>
+                    </select>
                   </div>
                   <p style="font-size:0.72rem;color:var(--muted);margin-top:14px;padding-top:10px;border-top:1px dashed var(--nude);font-style:italic">** Prix par ongle. Sélectionnez le nombre de doigts concernés ci-dessus.</p>
                 </div>
@@ -1057,10 +1065,8 @@
           if (nailArtPerNailKeys.indexOf(svcNowVal) !== -1) {
             qtyEl.style.display = 'block';
             nailArtQuantity = 1;
-            document.getElementById('nailQtyDisplay').textContent = '1';
-            document.getElementById('nailQtyNote').textContent    = '1 doigt sélectionné.';
-            document.getElementById('nailQtyMinus').disabled      = true;
-            document.getElementById('nailQtyPlus').disabled       = false;
+            var selReset = document.getElementById('nailQtySelect');
+            if (selReset) selReset.value = '1';
           } else {
             qtyEl.style.display = 'none';
             nailArtQuantity = 1;
@@ -1083,13 +1089,13 @@
         updateSummaryFull();
       });
 
-    // ─ Nail art quantity buttons ──────────────────────────
-    document.getElementById('nailQtyMinus').addEventListener('click', function() {
-      updateNailArtQuantity(nailArtQuantity - 1);
-    });
-    document.getElementById('nailQtyPlus').addEventListener('click', function() {
-      updateNailArtQuantity(nailArtQuantity + 1);
-    });
+    // ─ Nail art quantity select ─────────────────────────────────────────
+    var nailQtySelectEl = document.getElementById('nailQtySelect');
+    if (nailQtySelectEl) {
+      nailQtySelectEl.addEventListener('change', function() {
+        updateNailArtQuantity(parseInt(this.value, 10));
+      });
+    }
     });
 
 
@@ -1474,15 +1480,13 @@
     }
 
     function updateNailArtQuantity(val) {
-      nailArtQuantity = Math.max(1, Math.min(10, val));
-      document.getElementById('nailQtyDisplay').textContent = nailArtQuantity;
-      var note = nailArtQuantity === 1
-        ? '1 doigt sélectionné.'
-        : nailArtQuantity + ' doigts sélectionnés.';
-      document.getElementById('nailQtyNote').textContent = note;
-      document.getElementById('nailQtyMinus').disabled = (nailArtQuantity <= 1);
-      document.getElementById('nailQtyPlus').disabled  = (nailArtQuantity >= 10);
-      refreshSlots();
+      var parsed = parseInt(val, 10);
+      nailArtQuantity = Math.min(10, Math.max(1, isNaN(parsed) ? 1 : parsed));
+      // Synchroniser le select si appel programmatique
+      var selEl = document.getElementById('nailQtySelect');
+      if (selEl && selEl.value !== String(nailArtQuantity)) {
+        selEl.value = String(nailArtQuantity);
+      }
       updateSummaryFull();
     }
 
