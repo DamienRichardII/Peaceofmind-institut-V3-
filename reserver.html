@@ -501,7 +501,7 @@
                     </div>
                   </label>
                   <div id="nailArtQuantitySelector" style="display:none;margin-top:14px;padding:16px;border:1px solid var(--nude);border-radius:2px;background:var(--ivory)">
-                    <p style="font-size:0.82rem;font-family:var(--sans);font-weight:600;color:var(--brun);margin-bottom:12px">Nombre de doigts concernés :</p>
+                    <p style="font-size:0.82rem;font-family:var(--sans);font-weight:600;color:var(--brun);margin-bottom:12px">Nombre de doigts / ongles concernés :</p>
                     <div class="nail-qty-stepper">
                       <button type="button" class="nail-qty-btn" id="nailQtyMinus" aria-label="Moins" disabled>−</button>
                       <span id="nailQtyDisplay" style="font-family:var(--serif);font-size:1.4rem;min-width:2ch;text-align:center;display:inline-block">1</span>
@@ -757,6 +757,7 @@
                 <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(217,204,192,0.4)"><span style="color:var(--muted)">Prestation</span><span id="confService">—</span></div>
                 <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(217,204,192,0.4)"><span style="color:var(--muted)">Date</span><span id="confDate">—</span></div>
                 <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(217,204,192,0.4)"><span style="color:var(--muted)">Créneau</span><span id="confSlot">—</span></div>
+                <div id="confQuantityLine" style="display:none;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(217,204,192,0.4)"><span style="color:var(--muted)">Quantité</span><span id="confQuantity">—</span></div>
                 <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(217,204,192,0.4)"><span style="color:var(--muted)">Fin estimée</span><span id="confEndTime">—</span></div>
                 <div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(217,204,192,0.4)"><span style="color:var(--muted)">Client</span><span id="confName">—</span></div>
                 <div style="padding:8px 0" id="confAlertBox" style="display:none"></div>
@@ -776,6 +777,7 @@
         <aside class="booking-summary">
           <h4>Votre demande</h4>
           <div class="summary-line"><span class="summary-label">Prestation</span><span class="summary-value" id="summaryService">—</span></div>
+          <div class="summary-line" id="summaryQuantityLine" style="display:none"><span class="summary-label">Quantité</span><span class="summary-value" id="summaryQuantity">—</span></div>
           <div class="summary-line"><span class="summary-label">Date</span><span class="summary-value" id="summaryDate">—</span></div>
           <div class="summary-line"><span class="summary-label">Créneau</span><span class="summary-value" id="summarySlot">—</span></div>
           <div class="summary-line"><span class="summary-label">Durée</span><span class="summary-value" id="summaryDuration">—</span></div>
@@ -899,14 +901,15 @@
     };
 
     // ─ Nail art : clés avec tarif par ongle ──────────────────
-    const nailArtPerNailKeys = ['na_sticker', 'na_chrome', 'na_cat', 'na_french', 'na_baby', 'na_marbre'];
+    const nailArtPerNailKeys = ['na_sticker', 'na_chrome', 'na_cat', 'na_french', 'na_baby', 'na_marbre', 'na_casse'];
     const nailArtBasePricesMap = {
       'na_sticker': 0.50,
       'na_chrome':  1,
       'na_cat':     1,
       'na_french':  1,
       'na_baby':    1,
-      'na_marbre':  2
+      'na_marbre':  2,
+      'na_casse':   3
     };
     let nailArtQuantity = 1;
     const servicePrices = {
@@ -1141,6 +1144,17 @@
         document.getElementById('confDate').textContent = date ? new Date(date).toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long'}) : '—';
         document.getElementById('confSlot').textContent = slot || '—';
         document.getElementById('confName').textContent = (fn || '') + ' ' + (ln || '');
+        // Quantité Nail Art dans la confirmation
+        var confQtyLine = document.getElementById('confQuantityLine');
+        var confQtySpan = document.getElementById('confQuantity');
+        if (confQtyLine && confQtySpan && svc && nailArtPerNailKeys.indexOf(svc) !== -1) {
+          confQtyLine.style.display = 'flex';
+          confQtySpan.textContent = nailArtQuantity === 1
+            ? '1 doigt / ongle'
+            : nailArtQuantity + ' doigts / ongles';
+        } else if (confQtyLine) {
+          confQtyLine.style.display = 'none';
+        }
         const alertBox = document.getElementById('confAlertBox');
         if (window._careReviewRequired) {
           alertBox.style.display = 'block';
@@ -1212,7 +1226,12 @@
         allergies:        document.getElementById('bAllergies')?.value?.trim()   || '',
         nails_condition:  document.getElementById('bZone')?.value?.trim()        || '',
         preferences:      document.getElementById('bAttentes')?.value?.trim()    || '',
-        notes:            noteParts.join('\n\n'),
+        notes:            [
+          ...noteParts,
+          (nailArtPerNailKeys.indexOf(svcKey) !== -1 && nailArtQuantity > 0)
+            ? 'Quantité Nail Art / Supplément : ' + nailArtQuantity + ' doigt(s) / ongle(s).'
+            : ''
+        ].filter(Boolean).join('\n\n'),
         // ── Membre ───────────────────────────────────────────────────
         member_code:      document.getElementById('bMemberCode')?.value?.trim() || '',
         is_member:        Boolean(document.getElementById('bMemberCode')?.value?.trim()),
@@ -1491,6 +1510,21 @@
         document.getElementById('summaryService').textContent  = serviceLabels[svcVal] || svcVal;
         document.getElementById('summaryPrice').textContent    = priceText;
         document.getElementById('summaryDuration').textContent = durText;
+        // Ligne Quantité : visible uniquement pour les prestations par ongle
+        var qtyLine = document.getElementById('summaryQuantityLine');
+        var qtySpan = document.getElementById('summaryQuantity');
+        if (qtyLine && qtySpan) {
+          var isPerNailNow = nailArtPerNailKeys.indexOf(svcVal) !== -1;
+          if (isPerNailNow) {
+            qtyLine.style.display = '';
+            qtySpan.textContent = nailArtQuantity === 1
+              ? '1 doigt / ongle'
+              : nailArtQuantity + ' doigts / ongles';
+          } else {
+            qtyLine.style.display = 'none';
+            qtySpan.textContent = '—';
+          }
+        }
       }
       if (date) {
         document.getElementById('summaryDate').textContent = new Date(date + 'T00:00:00').toLocaleDateString('fr-FR', {weekday:'long',day:'numeric',month:'long'});
