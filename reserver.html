@@ -126,10 +126,7 @@
                   <label for="bAllergies">Allergies connues</label>
                   <textarea id="bAllergies" name="allergies" rows="2" placeholder="Composants cosmétiques, latex, autre…" oninput="checkCareAlert()"></textarea>
                 </div>
-                <div>
-                  <label for="bTraitement">Traitement en cours &amp; situation actuelle</label>
-                  <textarea id="bTraitement" name="traitement" rows="2" placeholder="Nom du traitement si vous souhaitez le préciser, grossesse, allaitement en cours ou situation particulière." oninput="checkCareAlert()"></textarea>
-                </div>
+
                 <div>
                   <label for="bAttentes">Autres précisions &amp; questions</label>
                   <textarea id="bAttentes" name="attentes" rows="2" placeholder="Tout ce qui peut nous aider à préparer votre prestation…"></textarea>
@@ -292,6 +289,7 @@
                     <input type="radio" name="service" value="pig_grain" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Grains de beauté</strong>
+                      <span class="service-description" style="font-size:0.78rem;color:var(--muted);display:block">Pigmentation vegan — effet naturel.</span>
                       <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">30 min · 50 €</span>
                     </div>
                   </label>
@@ -299,7 +297,7 @@
                     <input type="radio" name="service" value="pig_freckles_nez" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Freckles NEZ</strong>
-                      <span class="service-description" style="font-size:0.78rem;color:var(--muted);display:block">Pigments vegan — effet naturel.</span>
+                      <span class="service-description" style="font-size:0.78rem;color:var(--muted);display:block">Pigmentation vegan — effet naturel.</span>
                       <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">45 min · 69 €</span>
                     </div>
                   </label>
@@ -327,6 +325,7 @@
                     <input type="radio" name="service" value="pig_ret_grain" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Retouche grains de beauté</strong>
+                      <span class="service-description" style="font-size:0.78rem;color:var(--muted);display:block">Retouche pigmentation vegan — effet naturel.</span>
                       <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">20 min · 25 €</span>
                     </div>
                   </label>
@@ -334,6 +333,7 @@
                     <input type="radio" name="service" value="pig_ret_nez" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Retouche NEZ</strong>
+                      <span class="service-description" style="font-size:0.78rem;color:var(--muted);display:block">Retouche pigmentation vegan — effet naturel.</span>
                       <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">1h · 35 €</span>
                     </div>
                   </label>
@@ -341,6 +341,7 @@
                     <input type="radio" name="service" value="pig_ret_nez_pom" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Retouche NEZ &amp; POMMETTES</strong>
+                      <span class="service-description" style="font-size:0.78rem;color:var(--muted);display:block">Retouche pigmentation vegan — effet naturel.</span>
                       <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">40 min · 45 €</span>
                     </div>
                   </label>
@@ -348,6 +349,7 @@
                     <input type="radio" name="service" value="pig_ret_visage" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Retouche VISAGE</strong>
+                      <span class="service-description" style="font-size:0.78rem;color:var(--muted);display:block">Retouche pigmentation vegan — effet naturel.</span>
                       <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">45 min · 60 €</span>
                     </div>
                   </label>
@@ -1035,9 +1037,8 @@
       const sensibilite = document.getElementById('bSensibilite').value;
       const antecedents = document.getElementById('bAntecedents').value.trim();
       const allergies   = document.getElementById('bAllergies').value.trim();
-      const traitement  = document.getElementById('bTraitement').value.trim();
       const alert = document.getElementById('careAlert');
-      const needsReview = sensibilite === 'eleve' || sensibilite === 'tres-reactif' || antecedents.length > 3 || allergies.length > 3 || traitement.length > 3;
+      const needsReview = sensibilite === 'eleve' || sensibilite === 'tres-reactif' || antecedents.length > 3 || allergies.length > 3;
       alert.classList.toggle('is-visible', needsReview);
       window._careReviewRequired = needsReview;
     }
@@ -1208,7 +1209,6 @@
         document.getElementById('bObjectif')?.value   || '',
         document.getElementById('bMotif')?.value      || '',
         document.getElementById('bSensibilite')?.value || '',
-        document.getElementById('bTraitement')?.value || '',
       ].map(s => s.trim()).filter(Boolean);
 
       return {
