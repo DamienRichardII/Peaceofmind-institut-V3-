@@ -1,8 +1,8 @@
 // ── API BACKEND ───────────────────────────────────────────────
 // En développement : http://localhost:3000/api
-// En production    : définir window.POM_API_BASE_URL = 'https://votre-backend.railway.app/api'
+// En production    : https://peaceofmind-backend-production.up.railway.app/api
 //                    dans un <script> avant le chargement de app.js
-var API_BASE_URL = window.POM_API_BASE_URL || 'http://localhost:3000/api';
+var API_BASE_URL = window.POM_API_BASE_URL || 'https://peaceofmind-backend-production.up.railway.app/api';
 
 /* ============================================================
    Peace of Mind® — app.js — V3
