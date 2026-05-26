@@ -33,6 +33,35 @@
         text-align: center;
       }
     }
+
+    /* ── Stripe Card Section ─────────────────────────────────────── */
+    .stripe-card-section {
+      margin: 20px 0;
+      padding: 20px;
+      border: 1px solid var(--nude);
+      border-radius: 2px;
+      background: var(--ivory);
+    }
+    #card-element {
+      padding: 12px 14px;
+      border: 1px solid var(--brun);
+      border-radius: 2px;
+      background: var(--cream);
+      transition: border-color .2s;
+    }
+    #card-element:focus-within {
+      border-color: var(--accent);
+    }
+    #card-errors {
+      color: #8b1e1e;
+      font-size: 0.8rem;
+      font-family: var(--sans);
+      margin-top: 8px;
+      min-height: 20px;
+    }
+    @media (max-width: 640px) {
+      .stripe-card-section { padding: 14px; }
+    }
   </style>
 </head>
 <body>
@@ -773,9 +802,17 @@
                 <div style="padding:8px 0" id="confAlertBox" style="display:none"></div>
               </div>
               <p style="font-size:0.78rem;color:var(--muted);margin-bottom:16px">Votre demande est relue par l&apos;institut avant confirmation. Un message vous sera envoyé sous 24h ouvrées.</p>
+
+              <!-- ── EMPREINTE BANCAIRE STRIPE ───────────────────────────── -->
+              <div class="stripe-card-section" id="stripeCardSection">
+                <p class="section-label" style="margin-bottom:10px">Empreinte bancaire sécurisée</p>
+                <p style="font-size:0.78rem;color:var(--muted);margin-bottom:16px;line-height:1.6">Aucun débit immédiat n&apos;est effectué. L&apos;empreinte bancaire permet uniquement d&apos;appliquer les conditions d&apos;annulation acceptées.</p>
+                <div id="card-element"></div>
+                <div id="card-errors" role="alert"></div>
+              </div>
               <div style="margin-top:24px;display:flex;gap:12px;justify-content:space-between">
                 <button type="button" class="btn btn-secondary" onclick="goStep(5)">Modifier</button>
-                <button type="submit" class="btn btn-primary">Envoyer ma demande de réservation</button>
+                <button type="submit" class="btn btn-primary" id="confirmBtn">Envoyer ma demande de réservation</button>
               </div>
               <p id="bookingResult" style="margin-top:12px;font-size:0.82rem" aria-live="polite"></p>
             </div>
@@ -852,6 +889,7 @@
     </div>
   </footer>
 
+  <script src="https://js.stripe.com/v3/"></script>
   <script src="assets/app.js"></script>
   <script>
     const serviceLabels = {
@@ -1195,6 +1233,41 @@
     // En production    : définir window.POM_API_BASE_URL avant le chargement de app.js
     var API_BASE_URL = window.POM_API_BASE_URL || 'http://localhost:3000/api';
 
+    // ── Stripe — empreinte bancaire ──────────────────────────────────────────
+    var STRIPE_PUBLIC_KEY = 'pk_live_51TZ5teFTm9jmbD08AAnI7cE3bML1kmepMsm85RVFpKA2QXfPz3V3sfSlnZCHLnEAwX30FhEbu97vwX1HADB67r1P00NnytBXRk';
+    var _stripeInstance = null;
+    var _stripeElements = null;
+    var _stripeCard     = null;
+
+    function initStripeCard() {
+      if (_stripeCard) return; // déjà monté
+      if (typeof Stripe === 'undefined') {
+        console.error('[POM] Stripe.js n\'est pas chargé.');
+        return;
+      }
+      _stripeInstance = Stripe(STRIPE_PUBLIC_KEY);
+      _stripeElements = _stripeInstance.elements();
+      _stripeCard = _stripeElements.create('card', {
+        hidePostalCode: true,
+        style: {
+          base: {
+            fontSize: '16px',
+            color: '#4b2c20',
+            fontFamily: 'Raleway, sans-serif',
+            '::placeholder': { color: '#b8a79c' }
+          },
+          invalid: { color: '#8b1e1e' }
+        }
+      });
+      _stripeCard.mount('#card-element');
+      _stripeCard.on('change', function(event) {
+        var errorBox = document.getElementById('card-errors');
+        if (!errorBox) return;
+        errorBox.textContent = event.error ? event.error.message : '';
+      });
+    }
+
+
     function buildBookingPayload() {
       const svcKey = document.querySelector('input[name="service"]:checked')?.value || '';
 
@@ -1259,24 +1332,41 @@
 
     document.getElementById('bookingForm').addEventListener('submit', async function(e) {
       e.preventDefault();
-      const result = document.getElementById('bookingResult');
-      result.textContent = 'Envoi en cours…';
+      const result    = document.getElementById('bookingResult');
+      const confirmBtn = document.getElementById('confirmBtn');
+
+      // ── Protection double clic — désactiver le bouton ────────────
+      if (confirmBtn) {
+        confirmBtn.disabled    = true;
+        confirmBtn.textContent = 'Validation en cours…';
+      }
+      result.textContent = 'Validation en cours…';
       result.style.color = 'var(--muted)';
 
       try {
         const payload = buildBookingPayload();
 
-        // ── Validation avant envoi ──────────────────────────────────
+        // ── Validation champs obligatoires ─────────────────────────
         const required = ['firstname', 'lastname', 'email', 'service_key', 'service_label', 'date', 'slot'];
-        const missing = required.filter(k => !payload[k]);
+        const missing  = required.filter(k => !payload[k]);
         if (missing.length) {
           result.textContent = 'Merci de compléter toutes les informations obligatoires avant de confirmer votre réservation.';
           result.style.color = 'var(--accent-warm)';
+          if (confirmBtn) { confirmBtn.disabled = false; confirmBtn.textContent = 'Envoyer ma demande de réservation'; }
           return;
         }
         if (!payload.consent) {
           result.textContent = 'Merci de cocher les consentements obligatoires avant de confirmer votre réservation.';
           result.style.color = 'var(--accent-warm)';
+          if (confirmBtn) { confirmBtn.disabled = false; confirmBtn.textContent = 'Envoyer ma demande de réservation'; }
+          return;
+        }
+
+        // ── Vérifier que Stripe est prêt ────────────────────────────
+        if (!_stripeInstance || !_stripeCard) {
+          result.textContent = 'Le module de paiement sécurisé n’est pas initialisé. Veuillez recharger la page.';
+          result.style.color = 'var(--accent-warm)';
+          if (confirmBtn) { confirmBtn.disabled = false; confirmBtn.textContent = 'Envoyer ma demande de réservation'; }
           return;
         }
 
@@ -1292,13 +1382,82 @@
           try { localStorage.setItem('pom_member_profile', JSON.stringify(safeProfile)); } catch(_) {}
         }
 
+        // ── 1. Créer le SetupIntent via le backend ──────────────────
+        result.textContent = 'Création de l’empreinte bancaire…';
+        const setupResp = await fetch(API_BASE_URL + '/payment/create-setup-intent', {
+          method:  'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body:    JSON.stringify({
+            firstname:        payload.firstname,
+            lastname:         payload.lastname,
+            email:            payload.email,
+            phone:            payload.phone,
+            service_label:    payload.service_label,
+            service_price:    payload.service_price,
+            service_duration: payload.service_duration,
+            date:             payload.date,
+            slot:             payload.slot,
+          })
+        });
+        const setupData = await setupResp.json().catch(() => ({}));
+        if (!setupResp.ok) {
+          throw new Error(setupData.message || 'Erreur lors de la création de l’empreinte bancaire (' + setupResp.status + ')');
+        }
+        const clientSecret = setupData.clientSecret || setupData.client_secret;
+        if (!clientSecret) {
+          throw new Error('Réponse invalide du serveur : clientSecret manquant.');
+        }
+
+        // ── 2. Confirmer l'empreinte avec Stripe.js ─────────────────
+        result.textContent = 'Confirmation de l’empreinte bancaire…';
+        const stripeResult = await _stripeInstance.confirmCardSetup(clientSecret, {
+          payment_method: {
+            card: _stripeCard,
+            billing_details: {
+              name:  (payload.firstname + ' ' + payload.lastname).trim(),
+              email: payload.email,
+              phone: payload.phone || undefined,
+            }
+          }
+        });
+
+        if (stripeResult.error) {
+          const errBox = document.getElementById('card-errors');
+          if (errBox) errBox.textContent = stripeResult.error.message || 'Erreur carte.';
+          result.textContent = 'L’empreinte bancaire n’a pas pu être validée. Veuillez vérifier vos informations bancaires ou essayer une autre carte.';
+          result.style.color = 'var(--accent-warm)';
+          if (confirmBtn) { confirmBtn.disabled = false; confirmBtn.textContent = 'Envoyer ma demande de réservation'; }
+          return;
+        }
+
+        if (!stripeResult.setupIntent || stripeResult.setupIntent.status !== 'succeeded') {
+          throw new Error('L’empreinte bancaire n’a pas abouti (statut : ' + (stripeResult.setupIntent?.status || 'inconnu') + ').');
+        }
+
+        // ── 3. Envoyer la réservation au backend ────────────────────
+        result.textContent = 'Enregistrement de la réservation…';
+        const stripeNote = 'Empreinte bancaire Stripe validée : ' + stripeResult.setupIntent.id;
+        payload.notes          = payload.notes ? payload.notes + '\n\n' + stripeNote : stripeNote;
+        payload.payment_status = 'setup_succeeded';
+
         await submitBookingRequest(payload);
-        result.textContent = 'Votre demande de réservation a bien été transmise. Un email de confirmation vous sera envoyé sous peu.';
+
+        result.textContent = 'Votre demande de réservation a bien été transmise. Votre empreinte bancaire a été enregistrée de manière sécurisée. Aucun débit immédiat n’a été effectué. Vous recevrez un email de confirmation.';
         result.style.color = 'var(--accent)';
+        if (confirmBtn) {
+          confirmBtn.disabled    = true;
+          confirmBtn.textContent = 'Demande envoyée ✓';
+        }
 
       } catch (err) {
-        result.textContent = 'Une erreur est survenue. Vous pouvez nous écrire directement à peaceofmindinstitut@gmail.com.';
+        // Erreur post-Stripe vs erreur générique
+        if (err.message && (err.message.includes('réservation') || err.message.includes('serveur'))) {
+          result.textContent = 'Votre empreinte bancaire a été validée, mais une erreur est survenue lors de l’enregistrement de la réservation. Veuillez contacter Peace of Mind à peaceofmindinstitut@gmail.com.';
+        } else {
+          result.textContent = 'Une erreur est survenue. Vous pouvez nous écrire directement à peaceofmindinstitut@gmail.com.';
+        }
         result.style.color = 'var(--accent-warm)';
+        if (confirmBtn) { confirmBtn.disabled = false; confirmBtn.textContent = 'Envoyer ma demande de réservation'; }
         console.error('[POM] Booking error:', err);
       }
     });
@@ -1570,7 +1729,7 @@
       });
     });
 
-    // Override goStep pour inclure fin estimée dans confirmation
+    // Override goStep pour inclure fin estimée dans confirmation + init Stripe
     var _origGoStep = goStep;
     goStep = function(n) {
       _origGoStep(n);
@@ -1581,6 +1740,8 @@
           var endEl = document.getElementById('confEndTime');
           if (endEl) endEl.textContent = minutesToTimeLabel(parseInt(selSlot.dataset.endMin || '0', 10));
         }
+        // Initialiser Stripe Elements au premier accès à l'étape 6
+        initStripeCard();
       }
     };
     window.goStep = goStep;
