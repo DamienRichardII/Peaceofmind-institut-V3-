@@ -1268,10 +1268,22 @@
     }
 
 
+    // ── Normalise le prix pour le backend (Gratuit / vide -> '0') ─────────
+    function normalizeServicePrice(raw) {
+      if (raw === undefined || raw === null) return '0';
+      var s = String(raw).trim();
+      if (s === '' || s.toLowerCase() === 'gratuit') return '0';
+      return s;
+    }
+
     function buildBookingPayload() {
       const svcKey = document.querySelector('input[name="service"]:checked')?.value || '';
 
-      // Consentements obligatoires : RGPD + majeur + conditions info
+      // ── Créneau : les slots sont des <div class='slot-option'>, pas des radio ──
+      var selSlotEl = document.querySelector('#slotOptions .slot-option.is-selected');
+      var slotValue = selSlotEl ? (selSlotEl.dataset.value || '') : '';
+
+      // ── Consentements obligatoires : RGPD + majeur + conditions annulation ──
       const consentOk =
         (document.getElementById('consentRgpd')?.checked || false) &&
         (document.getElementById('consentAge')?.checked  || false) &&
@@ -1294,10 +1306,10 @@
         service_key:      svcKey,
         service_label:    serviceLabels[svcKey]   || svcKey,
         service_duration: serviceDurations[svcKey] || '',
-        service_price:    String(servicePrices[svcKey] || ''),
+        service_price:    normalizeServicePrice(servicePrices[svcKey]),
         // ── Créneau ──────────────────────────────────────────────────
         date:             document.getElementById('bookDate')?.value || '',
-        slot:             document.querySelector('input[name="slot"]:checked')?.value || '',
+        slot:             slotValue,
         // ── Consentement (booléen plat requis par le backend) ─────────
         consent:          consentOk,
         // ── Questionnaire médical → champs plats backend ─────────────
@@ -1346,16 +1358,37 @@
       try {
         const payload = buildBookingPayload();
 
+        // ── Diagnostic — visible dans DevTools > Console ────────────
+        console.log('[POM Reservation debug]', {
+          service_key:      payload.service_key,
+          service_label:    payload.service_label,
+          service_price:    payload.service_price,
+          service_duration: payload.service_duration,
+          date:             payload.date,
+          slot:             payload.slot,
+          firstname:        payload.firstname,
+          lastname:         payload.lastname,
+          email:            payload.email,
+          consent:          payload.consent,
+          stripeReady:      Boolean(_stripeInstance && _stripeCard),
+        });
+
         // ── Validation champs obligatoires ─────────────────────────
         const required = ['firstname', 'lastname', 'email', 'service_key', 'service_label', 'date', 'slot'];
         const missing  = required.filter(k => !payload[k]);
         if (missing.length) {
+          console.warn('[POM Reservation blocked]', 'Champs manquants :', missing, payload);
           result.textContent = 'Merci de compléter toutes les informations obligatoires avant de confirmer votre réservation.';
           result.style.color = 'var(--accent-warm)';
           if (confirmBtn) { confirmBtn.disabled = false; confirmBtn.textContent = 'Envoyer ma demande de réservation'; }
           return;
         }
         if (!payload.consent) {
+          console.warn('[POM Reservation blocked]', 'Consentements incomplets', {
+            consentRgpd: document.getElementById('consentRgpd')?.checked,
+            consentAge:  document.getElementById('consentAge')?.checked,
+            consentInfo: document.getElementById('consentInfo')?.checked,
+          });
           result.textContent = 'Merci de cocher les consentements obligatoires avant de confirmer votre réservation.';
           result.style.color = 'var(--accent-warm)';
           if (confirmBtn) { confirmBtn.disabled = false; confirmBtn.textContent = 'Envoyer ma demande de réservation'; }
@@ -1364,6 +1397,7 @@
 
         // ── Vérifier que Stripe est prêt ────────────────────────────
         if (!_stripeInstance || !_stripeCard) {
+          console.warn('[POM Reservation blocked]', 'Stripe non initialisé', { stripe: !!_stripeInstance, card: !!_stripeCard });
           result.textContent = 'Le module de paiement sécurisé n’est pas initialisé. Veuillez recharger la page.';
           result.style.color = 'var(--accent-warm)';
           if (confirmBtn) { confirmBtn.disabled = false; confirmBtn.textContent = 'Envoyer ma demande de réservation'; }
