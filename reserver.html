@@ -1335,6 +1335,16 @@
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
       });
+      if (resp.status === 409) {
+        // Créneau pris entre-temps — invalider le cache et rafraîchir
+        var dateKey = payload.date;
+        if (dateKey && typeof _blockedSlotsCache !== 'undefined') {
+          delete _blockedSlotsCache[dateKey];
+          await refreshSlots();
+        }
+        const err = await resp.json().catch(() => ({}));
+        throw new Error(err.message || 'Ce créneau n'est plus disponible. Merci de choisir un autre horaire.');
+      }
       if (!resp.ok) {
         const err = await resp.json().catch(() => ({}));
         throw new Error(err.message || 'Erreur serveur (' + resp.status + ')');
@@ -1573,8 +1583,8 @@
     const slotStepMinutes      = 30;
     const bookingBufferMinutes = 10;
 
-    // À remplacer par les réservations confirmées depuis Supabase.
-    const existingBookings = [];
+    // Disponibilite temps reel — cache par date
+    var _blockedSlotsCache = {};
 
     function timeToMinutes(time) {
       var p = time.split(':');
@@ -1601,12 +1611,25 @@
       return base;
     }
 
-    function overlaps(startA, endA, startB, endB) {
-      return timeToMinutes(startA) < timeToMinutes(endB) &&
-             timeToMinutes(endA)   > timeToMinutes(startB);
+    function slotsOverlap(reqStart, reqEnd, exStart, exEnd) {
+      return reqStart < exEnd && reqEnd > exStart;
     }
 
-    function generateAvailableSlots(dateString, serviceKey) {
+    async function fetchBlockedSlots(dateString) {
+      if (_blockedSlotsCache[dateString]) return _blockedSlotsCache[dateString];
+      try {
+        var resp = await fetch(API_BASE_URL + '/reservations/availability?date=' + dateString);
+        if (!resp.ok) { _blockedSlotsCache[dateString] = []; return []; }
+        var data = await resp.json();
+        _blockedSlotsCache[dateString] = data.blocked_slots || [];
+        return _blockedSlotsCache[dateString];
+      } catch (e) {
+        console.warn('[POM] fetchBlockedSlots error:', e.message);
+        return [];
+      }
+    }
+
+    function generateSlots(dateString, serviceKey, blockedData) {
       if (!dateString || !serviceKey) return [];
       var date     = new Date(dateString + 'T00:00:00');
       var dow      = date.getDay();
@@ -1617,39 +1640,55 @@
       var closeMin = timeToMinutes(hours.end);
       var slots    = [];
       for (var t = openMin; t + duration + bookingBufferMinutes <= closeMin; t += slotStepMinutes) {
-        var slotStart = minutesToTimeValue(t);
-        var slotEnd   = minutesToTimeValue(t + duration + bookingBufferMinutes);
-        var blocked = existingBookings.some(function(b) {
-          return b.date === dateString && overlaps(slotStart, slotEnd, b.start, b.end);
+        var reqStart = t;
+        var reqEnd   = t + duration;
+        var isBlocked = (blockedData || []).some(function(b) {
+          return slotsOverlap(reqStart, reqEnd, b.start_minutes, b.end_minutes);
         });
-        if (!blocked) slots.push({ start: slotStart, label: minutesToTimeLabel(t), endMin: t + duration });
+        slots.push({
+          start:    minutesToTimeValue(t),
+          label:    minutesToTimeLabel(t),
+          endMin:   t + duration,
+          blocked:  isBlocked,
+        });
       }
       return slots;
     }
 
     function renderSlots(slots, container) {
       container.innerHTML = '';
+      var available = slots.filter(function(s) { return !s.blocked; });
       if (!slots || slots.length === 0) {
         container.innerHTML = '<p class="slot-empty">Aucun créneau compatible avec la durée de cette prestation sur cette date.</p>';
         return;
       }
+      if (available.length === 0) {
+        container.innerHTML = '<p class="slot-empty">Tous les créneaux de ce jour sont déjà réservés. Merci de choisir une autre date.</p>';
+      }
       slots.forEach(function(slot) {
         var div = document.createElement('div');
-        div.className = 'slot-option';
-        div.textContent = slot.label;
-        div.dataset.value  = slot.start;
-        div.dataset.endMin = slot.endMin;
-        div.addEventListener('click', function() {
-          container.querySelectorAll('.slot-option').forEach(function(s) { s.classList.remove('is-selected'); });
-          div.classList.add('is-selected');
-          document.getElementById('slotChangedNotice').style.display = 'none';
-          updateSummaryFull();
-        });
+        if (slot.blocked) {
+          div.className = 'slot-option slot-option--blocked';
+          div.textContent = slot.label;
+          div.title = 'Ce créneau est déjà en cours de réservation ou confirmé.';
+          div.style.cssText = 'opacity:.4;cursor:not-allowed;pointer-events:none;background:var(--nude);color:var(--muted);text-decoration:line-through;';
+        } else {
+          div.className = 'slot-option';
+          div.textContent = slot.label;
+          div.dataset.value  = slot.start;
+          div.dataset.endMin = slot.endMin;
+          div.addEventListener('click', function() {
+            container.querySelectorAll('.slot-option').forEach(function(s) { s.classList.remove('is-selected'); });
+            div.classList.add('is-selected');
+            document.getElementById('slotChangedNotice').style.display = 'none';
+            updateSummaryFull();
+          });
+        }
         container.appendChild(div);
       });
     }
 
-    function refreshSlots() {
+    async function refreshSlots() {
       var svc       = document.querySelector('input[name="service"]:checked');
       var svcVal    = svc ? svc.value : null;
       var dateVal   = document.getElementById('bookDate').value;
@@ -1669,7 +1708,9 @@
         container.innerHTML = '<p class="slot-empty">Aucun créneau disponible ce jour-là.</p>';
         return;
       }
-      renderSlots(generateAvailableSlots(dateVal, svcVal), container);
+      container.innerHTML = '<p class="slot-empty" style="color:var(--muted);font-style:italic">Vérification des disponibilités…</p>';
+      var blocked = await fetchBlockedSlots(dateVal);
+      renderSlots(generateSlots(dateVal, svcVal, blocked), container);
     }
 
     function updateNailArtQuantity(val) {
@@ -1737,6 +1778,10 @@
     updateSummary = updateSummaryFull;
 
     document.getElementById('bookDate').addEventListener('change', function() {
+      var dateVal = document.getElementById('bookDate').value;
+      if (dateVal && typeof _blockedSlotsCache !== 'undefined') {
+        delete _blockedSlotsCache[dateVal]; // forcer rechargement a chaque changement
+      }
       refreshSlots();
       updateSummaryFull();
     });
