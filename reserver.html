@@ -1343,7 +1343,7 @@
           await refreshSlots();
         }
         const err = await resp.json().catch(() => ({}));
-        throw new Error(err.message || 'Ce créneau n'est plus disponible. Merci de choisir un autre horaire.');
+        throw new Error(err.message || "Ce créneau n'est plus disponible. Merci de choisir un autre horaire.");
       }
       if (!resp.ok) {
         const err = await resp.json().catch(() => ({}));
@@ -1824,6 +1824,7 @@
       }
     };
     window.goStep = goStep;
+    window.checkCareAlert = checkCareAlert;
 
     // ─── MEMBERS — Préremplissage depuis ?member=1 ───────────────────
     // Ne jamais préremplir les champs sensibles du questionnaire.
