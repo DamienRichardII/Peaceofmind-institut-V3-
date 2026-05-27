@@ -7,6 +7,51 @@
   <meta name="description" content="Votre espace personnel Peace of Mind Institut — informations sauvegardées, réservations, accès rapide." />
   <link rel="icon" href="assets/logo-peace-of-mind-final.png" type="image/png" />
   <link rel="stylesheet" href="assets/styles.css" />
+  <style>
+    /* ── Cartes réservations membres ─────────────────────────────── */
+    .resa-card {
+      background: var(--cream, #f9f5f0);
+      border: 1px solid var(--nude, #d9c8b4);
+      border-radius: 6px;
+      padding: clamp(18px, 2.5vw, 28px);
+      margin-bottom: 16px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px 24px;
+      align-items: start;
+    }
+    .resa-card__body { min-width: 0; }
+    .resa-card__service {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(1rem, 1.5vw, 1.15rem);
+      font-weight: 600;
+      color: var(--brun, #2A1A0E);
+      margin-bottom: 6px;
+    }
+    .resa-card__meta {
+      font-size: 0.82rem;
+      color: var(--muted, #8a7060);
+      line-height: 1.9;
+    }
+    .resa-card__meta span { display: block; }
+    .resa-badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-family: 'Raleway', sans-serif;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 4px 11px;
+      border-radius: 20px;
+      white-space: nowrap;
+      margin-top: 4px;
+    }
+    .resa-badge--pending   { background: #f5ede0; color: #b07030; border: 1px solid #e0c9a0; }
+    .resa-badge--confirmed { background: #e8f0e8; color: #3a6b3a; border: 1px solid #b0d0b0; }
+    .resa-badge--cancelled { background: #f5e8e8; color: #8b3030; border: 1px solid #d0b0b0; }
+    .resa-badge--completed { background: #ebebeb; color: #555;    border: 1px solid #ccc;    }
+    .resa-badge--review    { background: #fef3e2; color: #9a6a10; border: 1px solid #f0d090; }
+  </style>
 </head>
 <body>
 
@@ -200,26 +245,41 @@
     </section>
 
     <!-- MES RÉSERVATIONS -->
-    <section class="section fade-up" style="background:var(--ivory);padding-top:clamp(32px,4vw,56px);padding-bottom:clamp(32px,4vw,56px)">
+    <section class="section fade-up" id="sectionMesReservations" style="background:var(--ivory);padding-top:clamp(32px,4vw,56px);padding-bottom:clamp(32px,4vw,56px)">
       <div class="container">
         <p class="section-label">Suivi</p>
         <h2 style="margin-bottom:clamp(16px,2vw,24px)">Mes<br /><em class="serif-italic">réservations.</em></h2>
 
-        <!-- TEMPORAIRE FRONT-END. À remplacer par les réservations confirmées récupérées depuis Supabase.
-             Table future : bookings (id, profile_id, service_key, service_label, service_price,
-             service_duration_minutes, booking_date, start_time, end_time, status, created_at) -->
-        <div class="member-empty-state">
-          <p>Aucune réservation synchronisée pour le moment.<br />La connexion Supabase permettra bientôt de suivre vos demandes en cours, confirmées ou passées.</p>
+        <!-- État : pas de profil -->
+        <div id="reservNoProfile" style="display:none">
+          <p style="color:var(--muted);font-size:0.92rem;line-height:1.75">Connectez ou enregistrez vos informations pour suivre vos réservations.</p>
+        </div>
+
+        <!-- État : chargement -->
+        <div id="reservLoading" style="display:none">
+          <p style="color:var(--muted);font-size:0.92rem;font-style:italic">Chargement de vos réservations…</p>
+        </div>
+
+        <!-- État : erreur -->
+        <div id="reservError" style="display:none">
+          <p style="color:var(--accent-warm);font-size:0.92rem;line-height:1.75">Impossible de charger vos réservations pour le moment. Réessayez dans quelques instants.</p>
+        </div>
+
+        <!-- État : vide -->
+        <div id="reservEmpty" style="display:none">
+          <p style="color:var(--muted);font-size:0.92rem;line-height:1.75">Aucune réservation trouvée avec cet email pour le moment.</p>
+        </div>
+
+        <!-- Liste des réservations -->
+        <div id="reservList" style="display:none"></div>
+
+        <!-- Bouton Actualiser -->
+        <div id="reservActions" style="display:none;margin-top:24px">
+          <button class="btn btn-secondary" id="btnRefreshReservations" style="font-size:0.82rem;padding:10px 20px">Actualiser mes réservations</button>
         </div>
       </div>
     </section>
 
-    <!-- RÉASSURANCE -->
-      <div class="info-card">
-        <p class="section-label">Supabase ready</p>
-        <h3>Synchronisation prochaine.</h3>
-        <p>Le suivi de vos réservations sera disponible dès la connexion Supabase activée.</p>
-      </div>
     </div>
 
   </main>
@@ -434,6 +494,134 @@
       hideProfileBlock();
       window.POM && window.POM.showToast && window.POM.showToast('Informations supprimées.');
     });
+
+    // ─── Supprimer profil — update callback ─────────────────────────
+    // (btnDeleteProfile redéfini ci-dessous pour appeler showReservState)
+    document.getElementById('btnDeleteProfile').removeEventListener('click', null);
+    document.getElementById('btnDeleteProfile').addEventListener('click', function() {
+      if (!confirm('Supprimer vos informations locales ? Cette action est irréversible.')) return;
+      clearMemberProfile();
+      hideProfileBlock();
+      showReservState('noProfile');
+      window.POM && window.POM.showToast && window.POM.showToast('Informations supprimées.');
+    });
+
+    // ════════════════════════════════════════════════════════════════════
+    // MES RÉSERVATIONS — Connexion backend Railway
+    // ════════════════════════════════════════════════════════════════════
+
+    var MEMBERS_API = (window.POM_API_BASE_URL || 'https://peaceofmind-backend-production.up.railway.app/api') + '/members/reservations';
+
+    var RESA_STATUS_LABELS = {
+      'pending':                'Demande en attente de confirmation',
+      'confirmed':              'Rendez-vous confirmé',
+      'cancelled':              'Rendez-vous annulé',
+      'completed':              'Rendez-vous passé',
+      'cancellation_to_review': 'Annulation en cours de traitement',
+    };
+
+    var RESA_BADGE_CLASS = {
+      'pending':                'resa-badge--pending',
+      'confirmed':              'resa-badge--confirmed',
+      'cancelled':              'resa-badge--cancelled',
+      'completed':              'resa-badge--completed',
+      'cancellation_to_review': 'resa-badge--review',
+    };
+
+    function showReservState(state) {
+      ['reservNoProfile','reservLoading','reservError','reservEmpty','reservList','reservActions'].forEach(function(id) {
+        var el = document.getElementById(id);
+        if (el) el.style.display = 'none';
+      });
+      if (state === 'noProfile') { document.getElementById('reservNoProfile').style.display = ''; }
+      if (state === 'loading')   { document.getElementById('reservLoading').style.display = ''; }
+      if (state === 'error')     { document.getElementById('reservError').style.display = ''; document.getElementById('reservActions').style.display = ''; }
+      if (state === 'empty')     { document.getElementById('reservEmpty').style.display = ''; document.getElementById('reservActions').style.display = ''; }
+      if (state === 'list')      { document.getElementById('reservList').style.display = ''; document.getElementById('reservActions').style.display = ''; }
+    }
+
+    function formatResaDate(dateStr) {
+      if (!dateStr) return '—';
+      try {
+        var d = new Date(dateStr + 'T00:00:00');
+        return d.toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+      } catch(e) { return dateStr; }
+    }
+
+    function formatResaDatetime(isoStr) {
+      if (!isoStr) return null;
+      try {
+        var d = new Date(isoStr);
+        return d.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
+      } catch(e) { return null; }
+    }
+
+    function renderReservationCard(r) {
+      var status      = r.status || 'pending';
+      var statusLabel = RESA_STATUS_LABELS[status] || RESA_STATUS_LABELS['pending'];
+      var badgeClass  = RESA_BADGE_CLASS[status]   || 'resa-badge--pending';
+      var confirmedAt = r.confirmed_at ? formatResaDatetime(r.confirmed_at) : null;
+      var createdAt   = r.created_at   ? formatResaDatetime(r.created_at)   : null;
+      var confirmedLine = confirmedAt ? '<span>Confirmé le : ' + confirmedAt + '</span>' : '';
+      var createdLine   = createdAt   ? '<span>Demande le : ' + createdAt + '</span>'    : '';
+
+      return '<div class="resa-card">'
+        + '<div class="resa-card__body">'
+        +   '<div class="resa-card__service">' + (r.service_label || 'Prestation') + '</div>'
+        +   '<div class="resa-card__meta">'
+        +     '<span>Date : ' + formatResaDate(r.date) + (r.slot ? ' — ' + r.slot : '') + '</span>'
+        +     (r.duration ? '<span>Durée : ' + r.duration + '</span>' : '')
+        +     (r.price    ? '<span>Estimation : ' + r.price + '</span>' : '')
+        +     createdLine
+        +     confirmedLine
+        +     (r.service_key ? '<span>Questionnaire transmis à l\'institut.</span>' : '')
+        +   '</div>'
+        + '</div>'
+        + '<div><span class="resa-badge ' + badgeClass + '">' + statusLabel + '</span></div>'
+        + '</div>';
+    }
+
+    async function loadMemberReservations() {
+      var profile = loadMemberProfile();
+      if (!profile || !profile.email) { showReservState('noProfile'); return; }
+      showReservState('loading');
+      try {
+        var resp = await fetch(MEMBERS_API, {
+          method:  'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body:    JSON.stringify({ email: profile.email }),
+        });
+        if (!resp.ok) { showReservState('error'); return; }
+        var data = await resp.json();
+        if (!data.success || !data.reservations || data.reservations.length === 0) {
+          showReservState('empty');
+          return;
+        }
+        var listEl = document.getElementById('reservList');
+        listEl.innerHTML = data.reservations.map(renderReservationCard).join('');
+        showReservState('list');
+      } catch(e) {
+        console.warn('[POM] loadMemberReservations error:', e.message);
+        showReservState('error');
+      }
+    }
+
+    // ─── Bouton Actualiser ────────────────────────────────────────────
+    document.getElementById('btnRefreshReservations').addEventListener('click', function() {
+      loadMemberReservations();
+    });
+
+    // ─── Polling léger — 60 secondes ─────────────────────────────────
+    (function startReservPolling() {
+      setInterval(function() {
+        var profile = loadMemberProfile();
+        if (profile && profile.email) loadMemberReservations();
+      }, 60000);
+    })();
+
+    // ─── Chargement initial des réservations ──────────────────────────
+    loadMemberReservations();
+
   </script>
 </body>
 </html>
