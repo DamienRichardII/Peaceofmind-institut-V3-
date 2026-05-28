@@ -62,6 +62,15 @@
     @media (max-width: 640px) {
       .stripe-card-section { padding: 14px; }
     }
+
+    /* ── Service option — multi-sélection ──────────────────────── */
+    .service-option.is-selected {
+      border-color: var(--accent) !important;
+      background: rgba(172, 110, 70, 0.06);
+    }
+    .service-option.is-selected strong {
+      color: var(--accent);
+    }
   </style>
 </head>
 <body>
@@ -178,12 +187,13 @@
 
 
 
+              <p style="font-size:0.78rem;color:var(--muted);font-family:var(--sans);margin-bottom:16px;font-style:italic">Vous pouvez sélectionner une ou plusieurs prestations.</p>
               <div style="display:flex;flex-direction:column;gap:8px" id="step2Services">
 
                 <div class="s2-group" data-s2cat="soins">
                   <p style="font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--brun);font-family:var(--sans);font-weight:600;padding:12px 0 6px;border-bottom:1.5px solid var(--nude);margin-top:clamp(20px,3vw,32px);margin-bottom:8px">Soins profonds · Visage</p>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="soin_nanotherapy_face">
-                    <input type="radio" name="service" value="soin_nanotherapy_face" style="margin-top:3px;accent-color:var(--accent)" />
+                    <input type="checkbox" name="service" value="soin_nanotherapy_face" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Nano therapy visage</strong>
                       <span class="service-description" style="font-size:0.78rem;color:var(--muted);display:block">Soin régénérant, traitant, multi-soins reconnu comme l'un des soins n°1 mondial.</span>
@@ -191,7 +201,7 @@
                     </div>
                   </label>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="soin_nanotherapy_face_neck">
-                    <input type="radio" name="service" value="soin_nanotherapy_face_neck" style="margin-top:3px;accent-color:var(--accent)" />
+                    <input type="checkbox" name="service" value="soin_nanotherapy_face_neck" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Nano therapy visage et cou</strong>
                       <span class="service-description" style="font-size:0.78rem;color:var(--muted);display:block">Soin régénérant, traitant, multi-soins reconnu comme l'un des soins n°1 mondial.</span>
@@ -199,7 +209,7 @@
                     </div>
                   </label>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="soin_peeling_acne">
-                    <input type="radio" name="service" value="soin_peeling_acne" style="margin-top:3px;accent-color:var(--accent)" />
+                    <input type="checkbox" name="service" value="soin_peeling_acne" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Peeling : No more acne</strong>
                       <span class="service-description" style="font-size:0.78rem;color:var(--muted);display:block">À base d’acide glycolique.</span>
@@ -207,7 +217,7 @@
                     </div>
                   </label>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="soin_peeling_glow">
-                    <input type="radio" name="service" value="soin_peeling_glow" style="margin-top:3px;accent-color:var(--accent)" />
+                    <input type="checkbox" name="service" value="soin_peeling_glow" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Peeling : Glow peel</strong>
                       <span class="service-description" style="font-size:0.78rem;color:var(--muted);display:block">Pour un teint éclatant de santé.</span>
@@ -215,7 +225,7 @@
                     </div>
                   </label>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="soin_peeling_melano">
-                    <input type="radio" name="service" value="soin_peeling_melano" style="margin-top:3px;accent-color:var(--accent)" />
+                    <input type="checkbox" name="service" value="soin_peeling_melano" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Peeling : Melano peel</strong>
                       <span class="service-description" style="font-size:0.78rem;color:var(--muted);display:block">Lutte contre l’hyperpigmentation.</span>
@@ -223,7 +233,7 @@
                     </div>
                   </label>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="soin_peeling_rice">
-                    <input type="radio" name="service" value="soin_peeling_rice" style="margin-top:3px;accent-color:var(--accent)" />
+                    <input type="checkbox" name="service" value="soin_peeling_rice" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Peeling : Rice peel</strong>
                       <span class="service-description" style="font-size:0.78rem;color:var(--muted);display:block">Pour lisser, illuminer et unifier le grain de peau.</span>
@@ -231,7 +241,7 @@
                     </div>
                   </label>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="soin_aquagold">
-                    <input type="radio" name="service" value="soin_aquagold" style="margin-top:3px;accent-color:var(--accent)" />
+                    <input type="checkbox" name="service" value="soin_aquagold" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Aqua gold</strong>
                       <span class="service-description" style="font-size:0.78rem;color:var(--muted);display:block">Nano therapy &amp; feuille d’or - soin antioxydant.</span>
@@ -239,7 +249,7 @@
                     </div>
                   </label>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="soin_newskin">
-                    <input type="radio" name="service" value="soin_newskin" style="margin-top:3px;accent-color:var(--accent)" />
+                    <input type="checkbox" name="service" value="soin_newskin" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">New skin</strong>
                       <span class="service-description" style="font-size:0.78rem;color:var(--muted);display:block">Soin profond + jelly mask.</span>
@@ -247,7 +257,7 @@
                     </div>
                   </label>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="soin_plasmalift_face">
-                    <input type="radio" name="service" value="soin_plasmalift_face" style="margin-top:3px;accent-color:var(--accent)" />
+                    <input type="checkbox" name="service" value="soin_plasmalift_face" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Plasma lift</strong>
                       <span class="service-description" style="font-size:0.78rem;color:var(--muted);display:block">Soin ciblé pour le relâchement cutané.</span>
@@ -259,7 +269,7 @@
                 <div class="s2-group" data-s2cat="soins">
                   <p style="font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--brun);font-family:var(--sans);font-weight:600;padding:12px 0 6px;border-bottom:1.5px solid var(--nude);margin-top:clamp(20px,3vw,32px);margin-bottom:8px">Soins profonds · Corps</p>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="corps_jellyv">
-                    <input type="radio" name="service" value="corps_jellyv" style="margin-top:3px;accent-color:var(--accent)" />
+                    <input type="checkbox" name="service" value="corps_jellyv" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Jelly V • Soin pubis</strong>
                       <span class="service-description" style="font-size:0.78rem;color:var(--muted);display:block">Poils incarnés &amp; hyperpigmentation.</span>
@@ -267,7 +277,7 @@
                     </div>
                   </label>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="corps_jellyb">
-                    <input type="radio" name="service" value="corps_jellyb" style="margin-top:3px;accent-color:var(--accent)" />
+                    <input type="checkbox" name="service" value="corps_jellyb" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Jelly B • Soin fessier</strong>
                       <span class="service-description" style="font-size:0.78rem;color:var(--muted);display:block">Boutons, cellulite &amp; hyperpigmentation.</span>
@@ -275,7 +285,7 @@
                     </div>
                   </label>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="corps_nanotherapy">
-                    <input type="radio" name="service" value="corps_nanotherapy" style="margin-top:3px;accent-color:var(--accent)" />
+                    <input type="checkbox" name="service" value="corps_nanotherapy" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Nano therapy corps</strong>
                       <span class="service-description" style="font-size:0.78rem;color:var(--muted);display:block">Zones du dos ou du torse.</span>
@@ -283,7 +293,7 @@
                     </div>
                   </label>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="corps_aquagold">
-                    <input type="radio" name="service" value="corps_aquagold" style="margin-top:3px;accent-color:var(--accent)" />
+                    <input type="checkbox" name="service" value="corps_aquagold" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Aqua gold corps</strong>
                       <span class="service-description" style="font-size:0.78rem;color:var(--muted);display:block">Nano therapy &amp; feuille d’or - soin antioxydant.</span>
@@ -291,7 +301,7 @@
                     </div>
                   </label>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="corps_plasmalift">
-                    <input type="radio" name="service" value="corps_plasmalift" style="margin-top:3px;accent-color:var(--accent)" />
+                    <input type="checkbox" name="service" value="corps_plasmalift" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Plasma lift corps</strong>
                       <span class="service-description" style="font-size:0.78rem;color:var(--muted);display:block">Soin ciblé pour le relâchement cutané.</span>
@@ -303,7 +313,7 @@
                 <div class="s2-group" data-s2cat="soins">
                   <p style="font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--brun);font-family:var(--sans);font-weight:600;padding:12px 0 6px;border-bottom:1.5px solid var(--nude);margin-top:clamp(20px,3vw,32px);margin-bottom:8px">Blanchiment dentaire</p>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="blanchiment_1">
-                    <input type="radio" name="service" value="blanchiment_1" style="margin-top:3px;accent-color:var(--accent)" />
+                    <input type="checkbox" name="service" value="blanchiment_1" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Blanchiment dentaire · 1 séance</strong>
                       <span class="service-description" style="font-size:0.78rem;color:var(--muted);display:block">Soin esthétique du sourire.</span>
@@ -315,7 +325,7 @@
                 <div class="s2-group" data-s2cat="pigmentation">
                   <p style="font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--brun);font-family:var(--sans);font-weight:600;padding:12px 0 6px;border-bottom:1.5px solid var(--nude);margin-top:clamp(20px,3vw,32px);margin-bottom:8px">Freckles &amp; Grains de beauté</p>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="pig_grain">
-                    <input type="radio" name="service" value="pig_grain" style="margin-top:3px;accent-color:var(--accent)" />
+                    <input type="checkbox" name="service" value="pig_grain" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Grains de beauté</strong>
                       <span class="service-description" style="font-size:0.78rem;color:var(--muted);display:block">Pigmentation vegan — effet naturel.</span>
@@ -323,7 +333,7 @@
                     </div>
                   </label>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="pig_freckles_nez">
-                    <input type="radio" name="service" value="pig_freckles_nez" style="margin-top:3px;accent-color:var(--accent)" />
+                    <input type="checkbox" name="service" value="pig_freckles_nez" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Freckles NEZ</strong>
                       <span class="service-description" style="font-size:0.78rem;color:var(--muted);display:block">Pigmentation vegan — effet naturel.</span>
@@ -331,7 +341,7 @@
                     </div>
                   </label>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="pig_freckles_nez_pom">
-                    <input type="radio" name="service" value="pig_freckles_nez_pom" style="margin-top:3px;accent-color:var(--accent)" />
+                    <input type="checkbox" name="service" value="pig_freckles_nez_pom" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Freckles NEZ &amp; POMMETTES</strong>
                       <span class="service-description" style="font-size:0.78rem;color:var(--muted);display:block">Pigmentation vegan — effet naturel.</span>
@@ -339,7 +349,7 @@
                     </div>
                   </label>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="pig_freckles_visage">
-                    <input type="radio" name="service" value="pig_freckles_visage" style="margin-top:3px;accent-color:var(--accent)" />
+                    <input type="checkbox" name="service" value="pig_freckles_visage" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Freckles VISAGE</strong>
                       <span class="service-description" style="font-size:0.78rem;color:var(--muted);display:block">Pigmentation vegan — effet naturel.</span>
@@ -351,7 +361,7 @@
                 <div class="s2-group" data-s2cat="pigmentation">
                   <p style="font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--brun);font-family:var(--sans);font-weight:600;padding:12px 0 6px;border-bottom:1.5px solid var(--nude);margin-top:clamp(20px,3vw,32px);margin-bottom:8px">Retouches</p>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="pig_ret_grain">
-                    <input type="radio" name="service" value="pig_ret_grain" style="margin-top:3px;accent-color:var(--accent)" />
+                    <input type="checkbox" name="service" value="pig_ret_grain" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Retouche grains de beauté</strong>
                       <span class="service-description" style="font-size:0.78rem;color:var(--muted);display:block">Retouche pigmentation vegan — effet naturel.</span>
@@ -359,7 +369,7 @@
                     </div>
                   </label>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="pig_ret_nez">
-                    <input type="radio" name="service" value="pig_ret_nez" style="margin-top:3px;accent-color:var(--accent)" />
+                    <input type="checkbox" name="service" value="pig_ret_nez" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Retouche NEZ</strong>
                       <span class="service-description" style="font-size:0.78rem;color:var(--muted);display:block">Retouche pigmentation vegan — effet naturel.</span>
@@ -367,7 +377,7 @@
                     </div>
                   </label>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="pig_ret_nez_pom">
-                    <input type="radio" name="service" value="pig_ret_nez_pom" style="margin-top:3px;accent-color:var(--accent)" />
+                    <input type="checkbox" name="service" value="pig_ret_nez_pom" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Retouche NEZ &amp; POMMETTES</strong>
                       <span class="service-description" style="font-size:0.78rem;color:var(--muted);display:block">Retouche pigmentation vegan — effet naturel.</span>
@@ -375,7 +385,7 @@
                     </div>
                   </label>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="pig_ret_visage">
-                    <input type="radio" name="service" value="pig_ret_visage" style="margin-top:3px;accent-color:var(--accent)" />
+                    <input type="checkbox" name="service" value="pig_ret_visage" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Retouche VISAGE</strong>
                       <span class="service-description" style="font-size:0.78rem;color:var(--muted);display:block">Retouche pigmentation vegan — effet naturel.</span>
@@ -387,21 +397,21 @@
                 <div class="s2-group" data-s2cat="ongles">
                   <p style="font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--brun);font-family:var(--sans);font-weight:600;padding:12px 0 6px;border-bottom:1.5px solid var(--nude);margin-top:clamp(20px,3vw,32px);margin-bottom:8px">Manucure — Pose complète gel &amp; extensions</p>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="ongles_pose_sm">
-                    <input type="radio" name="service" value="ongles_pose_sm" style="margin-top:3px;accent-color:var(--accent)" />
+                    <input type="checkbox" name="service" value="ongles_pose_sm" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Taille S ou M — pose complète</strong>
                       <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">1h50 · 65 €</span>
                     </div>
                   </label>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="ongles_pose_l">
-                    <input type="radio" name="service" value="ongles_pose_l" style="margin-top:3px;accent-color:var(--accent)" />
+                    <input type="checkbox" name="service" value="ongles_pose_l" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Taille L — pose complète</strong>
                       <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">2h · 75 €</span>
                     </div>
                   </label>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="ongles_pose_xl">
-                    <input type="radio" name="service" value="ongles_pose_xl" style="margin-top:3px;accent-color:var(--accent)" />
+                    <input type="checkbox" name="service" value="ongles_pose_xl" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Taille XL &amp;+ — pose complète</strong>
                       <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">2h15 · 85 €</span>
@@ -412,21 +422,21 @@
                 <div class="s2-group" data-s2cat="ongles">
                   <p style="font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--brun);font-family:var(--sans);font-weight:600;padding:12px 0 6px;border-bottom:1.5px solid var(--nude);margin-top:clamp(20px,3vw,32px);margin-bottom:8px">Manucure — Remplissage gel &amp; extension</p>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="ongles_fill_sm">
-                    <input type="radio" name="service" value="ongles_fill_sm" style="margin-top:3px;accent-color:var(--accent)" />
+                    <input type="checkbox" name="service" value="ongles_fill_sm" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Taille S ou M — remplissage</strong>
                       <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">1h30 · 55 €</span>
                     </div>
                   </label>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="ongles_fill_l">
-                    <input type="radio" name="service" value="ongles_fill_l" style="margin-top:3px;accent-color:var(--accent)" />
+                    <input type="checkbox" name="service" value="ongles_fill_l" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Taille L — remplissage</strong>
                       <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">1h30 · 65 €</span>
                     </div>
                   </label>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="ongles_fill_xl">
-                    <input type="radio" name="service" value="ongles_fill_xl" style="margin-top:3px;accent-color:var(--accent)" />
+                    <input type="checkbox" name="service" value="ongles_fill_xl" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Taille XL &amp;+ — remplissage</strong>
                       <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">1h30 · 75 €</span>
@@ -443,7 +453,7 @@
                 <div class="s2-group" data-s2cat="ongles">
                   <p style="font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--brun);font-family:var(--sans);font-weight:600;padding:12px 0 6px;border-bottom:1.5px solid var(--nude);margin-top:clamp(20px,3vw,32px);margin-bottom:8px">Manucure — Le gel sans extension &amp; soin</p>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="ongles_gainage">
-                    <input type="radio" name="service" value="ongles_gainage" style="margin-top:3px;accent-color:var(--accent)" />
+                    <input type="checkbox" name="service" value="ongles_gainage" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Gainage gel</strong>
                       <span class="service-description" style="font-size:0.78rem;color:var(--muted);display:block">Renfort sur ongle naturel fragile ou cassant.</span>
@@ -451,7 +461,7 @@
                     </div>
                   </label>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="ongles_semi">
-                    <input type="radio" name="service" value="ongles_semi" style="margin-top:3px;accent-color:var(--accent)" />
+                    <input type="checkbox" name="service" value="ongles_semi" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Semi-permanent</strong>
                       <span class="service-description" style="font-size:0.78rem;color:var(--muted);display:block">Vernis longue tenue.</span>
@@ -459,7 +469,7 @@
                     </div>
                   </label>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="ongles_manicare">
-                    <input type="radio" name="service" value="ongles_manicare" style="margin-top:3px;accent-color:var(--accent)" />
+                    <input type="checkbox" name="service" value="ongles_manicare" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Mani Care • Soin</strong>
                       <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">20 min · 19 €</span>
@@ -476,56 +486,56 @@
                 <div class="s2-group" data-s2cat="ongles">
                   <p style="font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--brun);font-family:var(--sans);font-weight:600;padding:12px 0 6px;border-bottom:1.5px solid var(--nude);margin-top:clamp(20px,3vw,32px);margin-bottom:8px">Suppléments &amp; Nail art — par ongle **</p>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="na_sticker">
-                    <input type="radio" name="service" value="na_sticker" style="margin-top:3px;accent-color:var(--accent)" />
+                    <input type="checkbox" name="service" value="na_sticker" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Sticker ou strass **</strong>
                       <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">5 min · 0,50 €</span>
                     </div>
                   </label>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="na_chrome">
-                    <input type="radio" name="service" value="na_chrome" style="margin-top:3px;accent-color:var(--accent)" />
+                    <input type="checkbox" name="service" value="na_chrome" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Chrome **</strong>
                       <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">5 min · 1 €</span>
                     </div>
                   </label>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="na_cat">
-                    <input type="radio" name="service" value="na_cat" style="margin-top:3px;accent-color:var(--accent)" />
+                    <input type="checkbox" name="service" value="na_cat" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Cat eye **</strong>
                       <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">5 min · 1 €</span>
                     </div>
                   </label>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="na_french">
-                    <input type="radio" name="service" value="na_french" style="margin-top:3px;accent-color:var(--accent)" />
+                    <input type="checkbox" name="service" value="na_french" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">French **</strong>
                       <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">5 min · 1 €</span>
                     </div>
                   </label>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="na_baby">
-                    <input type="radio" name="service" value="na_baby" style="margin-top:3px;accent-color:var(--accent)" />
+                    <input type="checkbox" name="service" value="na_baby" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Baby boomer **</strong>
                       <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">5 min · 1 €</span>
                     </div>
                   </label>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="na_marbre">
-                    <input type="radio" name="service" value="na_marbre" style="margin-top:3px;accent-color:var(--accent)" />
+                    <input type="checkbox" name="service" value="na_marbre" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Marbre / Animalier / 3D **</strong>
                       <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">5 min · 2 €</span>
                     </div>
                   </label>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="na_casse">
-                    <input type="radio" name="service" value="na_casse" style="margin-top:3px;accent-color:var(--accent)" />
+                    <input type="checkbox" name="service" value="na_casse" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Ongle cassé **</strong>
                       <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">5 min · 3 €</span>
                     </div>
                   </label>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="na_forme">
-                    <input type="radio" name="service" value="na_forme" style="margin-top:3px;accent-color:var(--accent)" />
+                    <input type="checkbox" name="service" value="na_forme" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Changement de forme</strong>
                       <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">10 min · 5 €</span>
@@ -554,21 +564,21 @@
                 <div class="s2-group" data-s2cat="ongles">
                   <p style="font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--brun);font-family:var(--sans);font-weight:600;padding:12px 0 6px;border-bottom:1.5px solid var(--nude);margin-top:clamp(20px,3vw,32px);margin-bottom:8px">Dépose manucure</p>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="dep_gel">
-                    <input type="radio" name="service" value="dep_gel" style="margin-top:3px;accent-color:var(--accent)" />
+                    <input type="checkbox" name="service" value="dep_gel" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Dépose gel &amp; soin</strong>
                       <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">30 min · 25 €</span>
                     </div>
                   </label>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="dep_semi">
-                    <input type="radio" name="service" value="dep_semi" style="margin-top:3px;accent-color:var(--accent)" />
+                    <input type="checkbox" name="service" value="dep_semi" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Dépose semi-permanent</strong>
                       <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">10 min · 7 €</span>
                     </div>
                   </label>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="dep_semi_repose">
-                    <input type="radio" name="service" value="dep_semi_repose" style="margin-top:3px;accent-color:var(--accent)" />
+                    <input type="checkbox" name="service" value="dep_semi_repose" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Dépose semi-permanent si repose</strong>
                       <span class="service-description" style="font-size:0.78rem;color:var(--muted);display:block">Dépose gratuite si repose de semi-permanent.</span>
@@ -581,7 +591,7 @@
                 <div class="s2-group" data-s2cat="pedicure">
                   <p style="font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--brun);font-family:var(--sans);font-weight:600;padding:12px 0 6px;border-bottom:1.5px solid var(--nude);margin-top:clamp(20px,3vw,32px);margin-bottom:8px">Pédicure — Un soin, une signature</p>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="pedi_calus">
-                    <input type="radio" name="service" value="pedi_calus" style="margin-top:3px;accent-color:var(--accent)" />
+                    <input type="checkbox" name="service" value="pedi_calus" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Calus N°1</strong>
                       <span class="service-description" style="font-size:0.78rem;color:var(--muted);display:block">Composé à 99 % d'origines naturelles. Le soin N°1 qui traite les callosités pour un résultat pieds de soie.</span>
@@ -589,7 +599,7 @@
                     </div>
                   </label>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="pedi_luxury">
-                    <input type="radio" name="service" value="pedi_luxury" style="margin-top:3px;accent-color:var(--accent)" />
+                    <input type="checkbox" name="service" value="pedi_luxury" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Pedi Luxury</strong>
                       <span class="service-description" style="font-size:0.78rem;color:var(--muted);display:block">Bain profond relaxant, gommage, masque et rituel crème.</span>
@@ -597,7 +607,7 @@
                     </div>
                   </label>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="pedi_care">
-                    <input type="radio" name="service" value="pedi_care" style="margin-top:3px;accent-color:var(--accent)" />
+                    <input type="checkbox" name="service" value="pedi_care" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Pedi Care</strong>
                       <span class="service-description" style="font-size:0.78rem;color:var(--muted);display:block">Bain avec émollient et rituel crème.</span>
@@ -609,21 +619,21 @@
                 <div class="s2-group" data-s2cat="pedicure">
                   <p style="font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--brun);font-family:var(--sans);font-weight:600;padding:12px 0 6px;border-bottom:1.5px solid var(--nude);margin-top:clamp(20px,3vw,32px);margin-bottom:8px">Duo — Soin &amp; ongles</p>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="pedi_duo_calus">
-                    <input type="radio" name="service" value="pedi_duo_calus" style="margin-top:3px;accent-color:var(--accent)" />
+                    <input type="checkbox" name="service" value="pedi_duo_calus" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Calus N°1 &amp; semi-permanent</strong>
                       <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">1h20 min · 85 €</span>
                     </div>
                   </label>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="pedi_duo_luxury">
-                    <input type="radio" name="service" value="pedi_duo_luxury" style="margin-top:3px;accent-color:var(--accent)" />
+                    <input type="checkbox" name="service" value="pedi_duo_luxury" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Pedi Luxury &amp; semi-permanent</strong>
                       <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">1h20 min · 77 €</span>
                     </div>
                   </label>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="pedi_duo_care">
-                    <input type="radio" name="service" value="pedi_duo_care" style="margin-top:3px;accent-color:var(--accent)" />
+                    <input type="checkbox" name="service" value="pedi_duo_care" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Pedi Care &amp; semi-permanent</strong>
                       <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">1h · 45 €</span>
@@ -634,7 +644,7 @@
                 <div class="s2-group" data-s2cat="pedicure">
                   <p style="font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--brun);font-family:var(--sans);font-weight:600;padding:12px 0 6px;border-bottom:1.5px solid var(--nude);margin-top:clamp(20px,3vw,32px);margin-bottom:8px">Pédicure — Beauté des ongles</p>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="pedi_gainage_new">
-                    <input type="radio" name="service" value="pedi_gainage_new" style="margin-top:3px;accent-color:var(--accent)" />
+                    <input type="checkbox" name="service" value="pedi_gainage_new" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Gainage gel (pieds)</strong>
                       <span class="service-description" style="font-size:0.78rem;color:var(--muted);display:block">Renfort sur ongle naturel fragile ou cassant.</span>
@@ -642,7 +652,7 @@
                     </div>
                   </label>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="pedi_semi_new">
-                    <input type="radio" name="service" value="pedi_semi_new" style="margin-top:3px;accent-color:var(--accent)" />
+                    <input type="checkbox" name="service" value="pedi_semi_new" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Semi-permanent (pieds)</strong>
                       <span class="service-description" style="font-size:0.78rem;color:var(--muted);display:block">Vernis longue tenue.</span>
@@ -650,14 +660,14 @@
                     </div>
                   </label>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="pedi_depose_gel">
-                    <input type="radio" name="service" value="pedi_depose_gel" style="margin-top:3px;accent-color:var(--accent)" />
+                    <input type="checkbox" name="service" value="pedi_depose_gel" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Dépose gainage gel (pieds)</strong>
                       <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">20 min · 14 €</span>
                     </div>
                   </label>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="pedi_depose_new">
-                    <input type="radio" name="service" value="pedi_depose_new" style="margin-top:3px;accent-color:var(--accent)" />
+                    <input type="checkbox" name="service" value="pedi_depose_new" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Dépose semi-permanent (pieds)</strong>
                       <span class="service-description" style="font-size:0.78rem;color:var(--muted);display:block">Dépose gratuite si repose de semi-permanent.</span>
@@ -1094,21 +1104,25 @@
 
     document.querySelectorAll('.service-option').forEach(function(el) {
       el.addEventListener('click', function() {
-        var prevSlot  = document.querySelector('#slotOptions .slot-option.is-selected');
-        var prevVal   = prevSlot ? prevSlot.dataset.value : null;
-        // Nail art qty selector visibility
-        var svcNow    = document.querySelector('input[name="service"]:checked');
-        var svcNowVal = svcNow ? svcNow.value : null;
-        var qtyEl     = document.getElementById('nailArtQuantitySelector');
+        // Sync is-selected class with checkbox state (toggle)
+        var chk = el.querySelector('input[name="service"]');
+        if (chk) {
+          el.classList.toggle('is-selected', chk.checked);
+        }
+        var prevSlot = document.querySelector('#slotOptions .slot-option.is-selected');
+        var prevVal  = prevSlot ? prevSlot.dataset.value : null;
+        // Nail art qty selector visibility — show if ANY selected key is per-nail
+        var qtyEl = document.getElementById('nailArtQuantitySelector');
         if (qtyEl) {
-          if (nailArtPerNailKeys.indexOf(svcNowVal) !== -1) {
+          var selectedNow = computeSelectedServices();
+          var hasNailArt  = selectedNow.some(function(k) { return nailArtPerNailKeys.indexOf(k) !== -1; });
+          if (hasNailArt) {
             qtyEl.style.display = 'block';
-            nailArtQuantity = 1;
-            var selReset = document.getElementById('nailQtySelect');
-            if (selReset) selReset.value = '1';
           } else {
             qtyEl.style.display = 'none';
             nailArtQuantity = 1;
+            var selReset = document.getElementById('nailQtySelect');
+            if (selReset) selReset.value = '1';
           }
         }
         refreshSlots();
@@ -1127,15 +1141,15 @@
         }
         updateSummaryFull();
       });
+    });
 
-    // ─ Nail art quantity select ─────────────────────────────────────────
+    // ─ Nail art quantity select ──────────────────────────────────────────
     var nailQtySelectEl = document.getElementById('nailQtySelect');
     if (nailQtySelectEl) {
       nailQtySelectEl.addEventListener('change', function() {
         updateNailArtQuantity(parseInt(this.value, 10));
       });
     }
-    });
 
 
     // ─── STEP 2 CATEGORY FILTER ─────────────────────────────
@@ -1155,17 +1169,9 @@
       });
     })();
 
-        function updateSummary() {
-      const svc = document.querySelector('input[name="service"]:checked')?.value;
-      const date = document.getElementById('bookDate').value;
-      const slot = document.querySelector('input[name="slot"]:checked')?.value;
-      if (svc) {
-        document.getElementById('summaryService').textContent = serviceLabels[svc] || svc;
-        document.getElementById('summaryPrice').textContent = servicePrices[svc] || '—';
-        document.getElementById('summaryDuration').textContent = serviceDurations[svc] || '—';
-      }
-      if (date) document.getElementById('summaryDate').textContent = new Date(date).toLocaleDateString('fr-FR', {weekday:'long',day:'numeric',month:'long'});
-      if (slot) document.getElementById('summarySlot').textContent = slot;
+    function updateSummary() {
+      // Déléguer à updateSummaryFull qui gère le multi-prestation
+      if (typeof updateSummaryFull === 'function') { updateSummaryFull(); }
     }
 
     function goStep(n) {
@@ -1180,19 +1186,21 @@
         if (i + 1 === n) d.classList.add('is-active');
       });
       if (n === 6) {
-        const svc = document.querySelector('input[name="service"]:checked')?.value;
-        const date = document.getElementById('bookDate').value;
-        const slot = document.querySelector('input[name="slot"]:checked')?.value;
-        const fn = document.getElementById('bFirstname')?.value;
-        const ln = document.getElementById('bLastname')?.value;
-        document.getElementById('confService').textContent = serviceLabels[svc] || '—';
-        document.getElementById('confDate').textContent = date ? new Date(date).toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long'}) : '—';
-        document.getElementById('confSlot').textContent = slot || '—';
-        document.getElementById('confName').textContent = (fn || '') + ' ' + (ln || '');
+        var selectedSvc = computeSelectedServices();
+        var confSvcLabel = selectedSvc.length === 1
+          ? (serviceLabels[selectedSvc[0]] || selectedSvc[0])
+          : (selectedSvc.length > 1 ? selectedSvc.length + ' prestations' : '—');
+        var confDate = document.getElementById('bookDate').value;
+        var confFn   = document.getElementById('bFirstname') ? document.getElementById('bFirstname').value : '';
+        var confLn   = document.getElementById('bLastname')  ? document.getElementById('bLastname').value  : '';
+        document.getElementById('confService').textContent = confSvcLabel;
+        document.getElementById('confDate').textContent = confDate ? new Date(confDate).toLocaleDateString('fr-FR',{weekday:'long',day:'numeric',month:'long'}) : '—';
+        document.getElementById('confName').textContent = (confFn || '') + ' ' + (confLn || '');
         // Quantité Nail Art dans la confirmation
         var confQtyLine = document.getElementById('confQuantityLine');
         var confQtySpan = document.getElementById('confQuantity');
-        if (confQtyLine && confQtySpan && svc && nailArtPerNailKeys.indexOf(svc) !== -1) {
+        var confHasNailArt = selectedSvc.some(function(k) { return nailArtPerNailKeys.indexOf(k) !== -1; });
+        if (confQtyLine && confQtySpan && confHasNailArt) {
           confQtyLine.style.display = 'flex';
           confQtySpan.textContent = nailArtQuantity === 1
             ? '1 doigt / ongle'
@@ -1200,10 +1208,10 @@
         } else if (confQtyLine) {
           confQtyLine.style.display = 'none';
         }
-        const alertBox = document.getElementById('confAlertBox');
-        if (window._careReviewRequired) {
+        var alertBox = document.getElementById('confAlertBox');
+        if (alertBox && window._careReviewRequired) {
           alertBox.style.display = 'block';
-          alertBox.innerHTML = `<span style="font-size:0.78rem;color:var(--accent-warm);">⚠ Votre demande fera l'objet d'une relecture spécifique par l'institut avant validation.</span>`;
+          alertBox.innerHTML = "<span style=\"font-size:0.78rem;color:var(--accent-warm);\">⚠ Votre demande fera l’objet d’une relecture spécifique par l’institut avant validation.</span>";
         }
       }
       updateSummary();
@@ -1212,12 +1220,20 @@
 
     document.getElementById('bookDate').addEventListener('change', updateSummary);
 
-    const params = new URLSearchParams(location.search);
-    const preService = params.get('service');
-    if (preService) {
-      const radio = document.querySelector(`input[name="service"][value="${preService}"]`);
-      if (radio) { radio.click(); }
-    }
+    (function() {
+      var params2 = new URLSearchParams(location.search);
+      var preService = params2.get('service');
+      if (preService) {
+        var chkPre = document.querySelector('input[name="service"][value="' + preService + '"]');
+        if (chkPre) {
+          chkPre.checked = true;
+          var labelPre = chkPre.closest('.service-option');
+          if (labelPre) labelPre.classList.add('is-selected');
+          refreshSlots();
+          updateSummaryFull();
+        }
+      }
+    })();
 
     // ---- BACKEND INTEGRATION ----
     // TODO SUPABASE: Créer table `reservations` avec colonnes :
@@ -1276,56 +1292,132 @@
       return s;
     }
 
+    // ── Multi-prestations — helpers ──────────────────────────────────────
+    function computeSelectedServices() {
+      var checked = document.querySelectorAll('input[name="service"]:checked');
+      var keys = [];
+      checked.forEach(function(inp) { if (inp.value) keys.push(inp.value); });
+      return keys;
+    }
+
+    function computeTotalDurationMinutes(selectedKeys) {
+      if (!selectedKeys || selectedKeys.length === 0) return 0;
+      var total = 0;
+      selectedKeys.forEach(function(key) {
+        var base = serviceDurationsMinutes[key] || 60;
+        if (nailArtPerNailKeys.indexOf(key) !== -1) {
+          total += base * nailArtQuantity;
+        } else {
+          total += base;
+        }
+      });
+      return total;
+    }
+
+    function computeTotalPriceText(selectedKeys) {
+      if (!selectedKeys || selectedKeys.length === 0) return '—';
+      var total = 0;
+      var hasApprox = false;
+      selectedKeys.forEach(function(key) {
+        var raw = servicePrices[key] || '0';
+        if (/à partir/i.test(raw)) { hasApprox = true; }
+        if (/gratuit/i.test(raw)) { return; }
+        var num = parseFloat(raw.replace(/[^0-9,\.]/g, '').replace(',', '.'));
+        if (!isNaN(num)) {
+          if (nailArtPerNailKeys.indexOf(key) !== -1) {
+            total += (nailArtBasePricesMap[key] || num) * nailArtQuantity;
+          } else {
+            total += num;
+          }
+        }
+      });
+      var formatted = total.toLocaleString('fr-FR', {minimumFractionDigits: 0, maximumFractionDigits: 2}) + ' €';
+      return hasApprox ? 'À partir de ' + formatted : formatted;
+    }
+
+    function formatTotalDuration(minutes) {
+      if (minutes <= 0) return '—';
+      if (minutes < 60) return minutes + ' min';
+      var h = Math.floor(minutes / 60);
+      var m = minutes % 60;
+      return h + 'h' + (m === 0 ? '00' : (m < 10 ? '0' : '') + m);
+    }
+
     function buildBookingPayload() {
-      const svcKey = document.querySelector('input[name="service"]:checked')?.value || '';
+      var selectedKeys = computeSelectedServices();
+      var totalDurMin  = computeTotalDurationMinutes(selectedKeys);
 
       // ── Créneau : les slots sont des <div class='slot-option'>, pas des radio ──
       var selSlotEl = document.querySelector('#slotOptions .slot-option.is-selected');
       var slotValue = selSlotEl ? (selSlotEl.dataset.value || '') : '';
 
       // ── Consentements obligatoires : RGPD + majeur + conditions annulation ──
-      const consentOk =
-        (document.getElementById('consentRgpd')?.checked || false) &&
-        (document.getElementById('consentAge')?.checked  || false) &&
-        (document.getElementById('consentInfo')?.checked || false);
+      var consentOk =
+        (document.getElementById('consentRgpd') ? document.getElementById('consentRgpd').checked : false) &&
+        (document.getElementById('consentAge')  ? document.getElementById('consentAge').checked  : false) &&
+        (document.getElementById('consentInfo') ? document.getElementById('consentInfo').checked : false);
 
       // Notes : combiner les champs questionnaire libre
-      const noteParts = [
-        document.getElementById('bObjectif')?.value   || '',
-        document.getElementById('bMotif')?.value      || '',
-        document.getElementById('bSensibilite')?.value || '',
-      ].map(s => s.trim()).filter(Boolean);
+      var noteParts = [
+        (document.getElementById('bObjectif')    ? document.getElementById('bObjectif').value    : '') || '',
+        (document.getElementById('bMotif')       ? document.getElementById('bMotif').value       : '') || '',
+        (document.getElementById('bSensibilite') ? document.getElementById('bSensibilite').value : '') || '',
+      ].map(function(s) { return s.trim(); }).filter(Boolean);
+
+      // Nail art note si au moins un supplément par ongle est sélectionné
+      var hasNailArtSelected = selectedKeys.some(function(k) { return nailArtPerNailKeys.indexOf(k) !== -1; });
+      if (hasNailArtSelected && nailArtQuantity > 0) {
+        noteParts.push('Quantité Nail Art / Supplément : ' + nailArtQuantity + ' doigt(s) / ongle(s).');
+      }
+
+      // services_json pour stockage multi-prestation
+      var servicesJson = selectedKeys.map(function(k) {
+        var isNA  = nailArtPerNailKeys.indexOf(k) !== -1;
+        var entry = {
+          key:              k,
+          label:            serviceLabels[k] || k,
+          price:            normalizeServicePrice(servicePrices[k]),
+          duration_minutes: isNA ? (serviceDurationsMinutes[k] || 5) * nailArtQuantity : (serviceDurationsMinutes[k] || 60)
+        };
+        if (isNA) { entry.quantity = nailArtQuantity; }
+        return entry;
+      });
+
+      // Champs compat backward (colonnes existantes Supabase)
+      var backCompatKey      = selectedKeys.join('+') || '';
+      var backCompatLabel    = selectedKeys.map(function(k) { return serviceLabels[k] || k; }).join(' + ') || '';
+      var backCompatDuration = formatTotalDuration(totalDurMin);
+      var backCompatPrice    = computeTotalPriceText(selectedKeys);
 
       return {
         // ── Identité ─────────────────────────────────────────────────
-        firstname:        document.getElementById('bFirstname')?.value?.trim() || '',
-        lastname:         document.getElementById('bLastname')?.value?.trim()  || '',
-        email:            document.getElementById('bEmail')?.value?.trim()     || '',
-        phone:            document.getElementById('bPhone')?.value?.trim()     || '',
-        // ── Prestation ───────────────────────────────────────────────
-        service_key:      svcKey,
-        service_label:    serviceLabels[svcKey]   || svcKey,
-        service_duration: serviceDurations[svcKey] || '',
-        service_price:    normalizeServicePrice(servicePrices[svcKey]),
+        firstname:              (document.getElementById('bFirstname') ? document.getElementById('bFirstname').value.trim() : '') || '',
+        lastname:               (document.getElementById('bLastname')  ? document.getElementById('bLastname').value.trim()  : '') || '',
+        email:                  (document.getElementById('bEmail')     ? document.getElementById('bEmail').value.trim()     : '') || '',
+        phone:                  (document.getElementById('bPhone')     ? document.getElementById('bPhone').value.trim()     : '') || '',
+        // ── Prestation (compat single + multi) ───────────────────────
+        service_key:            backCompatKey,
+        service_label:          backCompatLabel,
+        service_duration:       backCompatDuration,
+        service_price:          normalizeServicePrice(backCompatPrice),
+        // ── Multi-prestation (nouveaux champs BLOC 4) ─────────────────
+        services_json:          servicesJson,
+        services_count:         selectedKeys.length,
+        total_duration_minutes: totalDurMin,
         // ── Créneau ──────────────────────────────────────────────────
-        date:             document.getElementById('bookDate')?.value || '',
-        slot:             slotValue,
-        // ── Consentement (booléen plat requis par le backend) ─────────
-        consent:          consentOk,
-        // ── Questionnaire médical → champs plats backend ─────────────
-        health_issues:    document.getElementById('bAntecedents')?.value?.trim() || '',
-        allergies:        document.getElementById('bAllergies')?.value?.trim()   || '',
-        nails_condition:  document.getElementById('bZone')?.value?.trim()        || '',
-        preferences:      document.getElementById('bAttentes')?.value?.trim()    || '',
-        notes:            [
-          ...noteParts,
-          (nailArtPerNailKeys.indexOf(svcKey) !== -1 && nailArtQuantity > 0)
-            ? 'Quantité Nail Art / Supplément : ' + nailArtQuantity + ' doigt(s) / ongle(s).'
-            : ''
-        ].filter(Boolean).join('\n\n'),
+        date:                   (document.getElementById('bookDate') ? document.getElementById('bookDate').value : '') || '',
+        slot:                   slotValue,
+        // ── Consentement ─────────────────────────────────────────────
+        consent:                consentOk,
+        // ── Questionnaire médical ─────────────────────────────────────
+        health_issues:          (document.getElementById('bAntecedents') ? document.getElementById('bAntecedents').value.trim() : '') || '',
+        allergies:              (document.getElementById('bAllergies')   ? document.getElementById('bAllergies').value.trim()   : '') || '',
+        nails_condition:        (document.getElementById('bZone')        ? document.getElementById('bZone').value.trim()        : '') || '',
+        preferences:            (document.getElementById('bAttentes')    ? document.getElementById('bAttentes').value.trim()    : '') || '',
+        notes:                  noteParts.join('\n\n'),
         // ── Membre ───────────────────────────────────────────────────
-        member_code:      document.getElementById('bMemberCode')?.value?.trim() || '',
-        is_member:        Boolean(document.getElementById('bMemberCode')?.value?.trim()),
+        member_code:            (document.getElementById('bMemberCode') ? document.getElementById('bMemberCode').value.trim() : '') || '',
+        is_member:              Boolean(document.getElementById('bMemberCode') && document.getElementById('bMemberCode').value.trim()),
       };
     }
 
@@ -1629,13 +1721,16 @@
       }
     }
 
-    function generateSlots(dateString, serviceKey, blockedData) {
-      if (!dateString || !serviceKey) return [];
+    function generateSlots(dateString, serviceKeyOrDuration, blockedData) {
+      if (!dateString || !serviceKeyOrDuration) return [];
       var date     = new Date(dateString + 'T00:00:00');
       var dow      = date.getDay();
       var hours    = businessHours[dow];
       if (!hours) return [];
-      var duration = getServiceDurationMinutes(serviceKey);
+      var duration = typeof serviceKeyOrDuration === 'number'
+        ? serviceKeyOrDuration
+        : getServiceDurationMinutes(serviceKeyOrDuration);
+      if (duration <= 0) return [];
       var openMin  = timeToMinutes(hours.start);
       var closeMin = timeToMinutes(hours.end);
       var slots    = [];
@@ -1689,12 +1784,11 @@
     }
 
     async function refreshSlots() {
-      var svc       = document.querySelector('input[name="service"]:checked');
-      var svcVal    = svc ? svc.value : null;
-      var dateVal   = document.getElementById('bookDate').value;
-      var container = document.getElementById('slotOptions');
+      var selectedKeys = computeSelectedServices();
+      var dateVal      = document.getElementById('bookDate').value;
+      var container    = document.getElementById('slotOptions');
       if (!container) return;
-      if (!svcVal) {
+      if (selectedKeys.length === 0) {
         container.innerHTML = '<p class="slot-empty">Sélectionnez d’abord une prestation pour voir les créneaux compatibles.</p>';
         return;
       }
@@ -1708,9 +1802,10 @@
         container.innerHTML = '<p class="slot-empty">Aucun créneau disponible ce jour-là.</p>';
         return;
       }
+      var totalDur = computeTotalDurationMinutes(selectedKeys);
       container.innerHTML = '<p class="slot-empty" style="color:var(--muted);font-style:italic">Vérification des disponibilités…</p>';
       var blocked = await fetchBlockedSlots(dateVal);
-      renderSlots(generateSlots(dateVal, svcVal, blocked), container);
+      renderSlots(generateSlots(dateVal, totalDur, blocked), container);
     }
 
     function updateNailArtQuantity(val) {
@@ -1725,35 +1820,33 @@
     }
 
     function updateSummaryFull() {
-      var svc    = document.querySelector('input[name="service"]:checked');
-      var svcVal = svc ? svc.value : null;
-      var date    = document.getElementById('bookDate').value;
-      var selSlot = document.querySelector('#slotOptions .slot-option.is-selected');
-      if (svcVal) {
-        var isPerNail = nailArtPerNailKeys.indexOf(svcVal) !== -1;
-        var priceText, durText;
-        if (isPerNail && nailArtQuantity > 1) {
-          var basePrice  = nailArtBasePricesMap[svcVal] || 0;
-          var total      = Math.round(basePrice * nailArtQuantity * 100) / 100;
-          priceText = total.toLocaleString('fr-FR', {minimumFractionDigits:0, maximumFractionDigits:2}) + ' €';
-          var baseDurMin  = serviceDurationsMinutes[svcVal] || 10;
-          var totalDurMin = baseDurMin * nailArtQuantity;
-          durText = totalDurMin >= 60
-            ? Math.floor(totalDurMin / 60) + 'h' + (totalDurMin % 60 ? (totalDurMin % 60 < 10 ? '0' : '') + (totalDurMin % 60) : '00')
-            : totalDurMin + ' min';
+      var selectedKeys = computeSelectedServices();
+      var date         = document.getElementById('bookDate').value;
+      var selSlot      = document.querySelector('#slotOptions .slot-option.is-selected');
+
+      if (selectedKeys.length > 0) {
+        var hasNailArt = selectedKeys.some(function(k) { return nailArtPerNailKeys.indexOf(k) !== -1; });
+        var priceText  = computeTotalPriceText(selectedKeys);
+        var totalDurM  = computeTotalDurationMinutes(selectedKeys);
+        var durText    = formatTotalDuration(totalDurM);
+
+        // Affichage prestation : liste si multiple, nom simple si unique
+        var serviceDisplay;
+        if (selectedKeys.length === 1) {
+          serviceDisplay = serviceLabels[selectedKeys[0]] || selectedKeys[0];
         } else {
-          priceText = servicePrices[svcVal] || '—';
-          durText   = serviceDurations[svcVal] || '—';
+          serviceDisplay = selectedKeys.length + ' prestations sélectionnées';
         }
-        document.getElementById('summaryService').textContent  = serviceLabels[svcVal] || svcVal;
+
+        document.getElementById('summaryService').textContent  = serviceDisplay;
         document.getElementById('summaryPrice').textContent    = priceText;
         document.getElementById('summaryDuration').textContent = durText;
-        // Ligne Quantité : visible uniquement pour les prestations par ongle
+
+        // Ligne Quantité : visible si au moins un supplément par ongle sélectionné
         var qtyLine = document.getElementById('summaryQuantityLine');
         var qtySpan = document.getElementById('summaryQuantity');
         if (qtyLine && qtySpan) {
-          var isPerNailNow = nailArtPerNailKeys.indexOf(svcVal) !== -1;
-          if (isPerNailNow) {
+          if (hasNailArt) {
             qtyLine.style.display = '';
             qtySpan.textContent = nailArtQuantity === 1
               ? '1 doigt / ongle'
@@ -1765,7 +1858,7 @@
         }
       }
       if (date) {
-        document.getElementById('summaryDate').textContent = new Date(date + 'T00:00:00').toLocaleDateString('fr-FR', {weekday:'long',day:'numeric',month:'long'});
+        document.getElementById('summaryDate').textContent = new Date(date + 'T00:00:00').toLocaleDateString('fr-FR', {weekday:'long', day:'numeric', month:'long'});
       }
       if (selSlot) {
         document.getElementById('summarySlot').textContent    = selSlot.dataset.value ? selSlot.dataset.value.replace(':', 'h') : '—';
