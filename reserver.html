@@ -913,12 +913,13 @@
   </main>
 
 
-  <!-- MEMBRES ONLY — Préparatoire -->
-  <section class="section fade-up" style="background:var(--ivory);border-top:1px solid var(--nude);padding-top:clamp(32px,5vw,60px);padding-bottom:clamp(32px,5vw,60px)">
+  <!-- MEMBRES ONLY — Lien rapide -->
+  <section class="section" style="background:var(--ivory);border-top:1px solid var(--nude);padding-top:clamp(24px,4vw,40px);padding-bottom:clamp(24px,4vw,40px)">
     <div class="container" style="max-width:640px;margin:0 auto;text-align:center">
       <p class="section-label">Espace membre</p>
-      <h2 style="font-size:clamp(1.4rem,2.5vw,2.2rem);margin-bottom:12px">Members only</h2>
-      <p style="color:var(--muted);font-size:0.88rem;max-width:480px;margin:0 auto">Bientôt disponible : retrouvez vos informations, vos demandes et vos suivis.</p>
+      <h2 style="font-size:clamp(1.2rem,2.5vw,1.8rem);margin-bottom:12px">Members Only</h2>
+      <p style="color:var(--muted);font-size:0.88rem;max-width:480px;margin:0 auto 20px">Créez votre espace membre pour retrouver vos informations et gagner du temps lors de vos prochaines réservations.</p>
+      <a href="members.html" class="btn btn-secondary" style="display:inline-block;text-decoration:none">Accéder à mon espace membre</a>
     </div>
   </section>
 
@@ -1993,7 +1994,7 @@
 
   // ─── POPUP MEMBERS ONLY ──────────────────────────────────────────────────
   (function initMembersPopup() {
-    var STORAGE_KEY = 'pom_members_popup_shown';
+    var STORAGE_KEY = 'peaceofmind_members_popup_closed';
     if (sessionStorage.getItem(STORAGE_KEY)) return;
     var popup    = document.getElementById('pomMembersPopup');
     var btnClose = document.getElementById('pomPopupClose');
@@ -2029,14 +2030,14 @@
     <div id="pomMembersPopupInner">
       <button id="pomPopupClose" aria-label="Fermer" type="button">&times;</button>
       <div class="popup-header">
-        <p class="section-label" style="margin-bottom:4px">Members Only</p>
+        <p class="section-label" style="margin-bottom:4px">Espace membre</p>
         <h3 id="pomPopupTitle">Gagnez du temps lors de vos prochaines réservations</h3>
       </div>
       <p class="popup-body">Vous pouvez créer un compte membre afin d&apos;enregistrer vos informations et retrouver plus rapidement votre parcours lors d&apos;une prochaine réservation.</p>
       <p class="popup-note">La création de compte est facultative. Vous pouvez aussi continuer votre réservation sans compte.</p>
       <div class="popup-actions">
         <a href="members.html" class="btn btn-primary" id="pomPopupCta">Créer mon compte membre</a>
-        <button type="button" class="btn btn-secondary" id="pomPopupSkip">Continuer sans compte</button>
+        <button type="button" class="btn btn-secondary" id="pomPopupSkip">Continuer ma réservation</button>
       </div>
     </div>
   </div>
