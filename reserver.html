@@ -71,6 +71,56 @@
     .service-option.is-selected strong {
       color: var(--accent);
     }
+
+    /* ── Popup Members Only ──────────────────────────────────── */
+    #pomMembersPopup {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: rgba(42, 26, 14, 0.55);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      animation: pomFadeIn 0.25s ease;
+    }
+    @keyframes pomFadeIn { from { opacity: 0; } to { opacity: 1; } }
+    #pomMembersPopupInner {
+      background: #FAF6F1;
+      border: 1px solid #e0d4c8;
+      padding: 36px 32px 28px;
+      max-width: 480px;
+      width: 100%;
+      position: relative;
+      border-radius: 2px;
+    }
+    #pomPopupClose {
+      position: absolute; top: 14px; right: 18px;
+      background: none; border: none; font-size: 1.4rem;
+      color: #8a7060; cursor: pointer; line-height: 1; padding: 4px 6px;
+    }
+    #pomPopupClose:hover { color: #2A1A0E; }
+    .popup-header { margin-bottom: 16px; }
+    .popup-header h3 {
+      font-family: Georgia, serif;
+      font-size: clamp(1rem, 3vw, 1.2rem);
+      font-weight: normal; color: #2A1A0E; margin-top: 6px;
+    }
+    .popup-body {
+      font-family: Georgia, serif; font-size: 0.88rem;
+      line-height: 1.75; color: #3a2a1a; margin-bottom: 12px;
+    }
+    .popup-note {
+      font-size: 0.75rem; color: #8a7060;
+      font-style: italic; margin-bottom: 24px; line-height: 1.6;
+    }
+    .popup-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+    .popup-actions .btn { flex: 1; min-width: 140px; text-align: center; font-size: 0.82rem; padding: 10px 16px; }
+    @media (max-width: 480px) {
+      #pomMembersPopupInner { padding: 28px 20px 22px; }
+      .popup-actions { flex-direction: column; }
+      .popup-actions .btn { min-width: 0; }
+    }
   </style>
 </head>
 <body>
@@ -824,6 +874,10 @@
                 <button type="button" class="btn btn-secondary" onclick="goStep(5)">Modifier</button>
                 <button type="submit" class="btn btn-primary" id="confirmBtn">Envoyer ma demande de réservation</button>
               </div>
+              <p style="font-size:0.75rem;color:var(--muted);margin-top:10px;line-height:1.6;text-align:center">
+                Votre carte n&apos;est pas débitée maintenant. L&apos;empreinte sert uniquement à garantir votre rendez-vous.<br>
+                <em>Le traitement peut prendre quelques secondes selon votre banque ou votre connexion.</em>
+              </p>
               <p id="bookingResult" style="margin-top:12px;font-size:0.82rem" aria-live="polite"></p>
             </div>
 
@@ -1937,6 +1991,55 @@
       } catch(e) { console.warn('[POM] Prefill error:', e); }
     })();
 
+  // ─── POPUP MEMBERS ONLY ──────────────────────────────────────────────────
+  (function initMembersPopup() {
+    var STORAGE_KEY = 'pom_members_popup_shown';
+    if (sessionStorage.getItem(STORAGE_KEY)) return;
+    var popup    = document.getElementById('pomMembersPopup');
+    var btnClose = document.getElementById('pomPopupClose');
+    var btnSkip  = document.getElementById('pomPopupSkip');
+    if (!popup) return;
+
+    function closePopup() {
+      popup.style.display = 'none';
+      sessionStorage.setItem(STORAGE_KEY, '1');
+      var firstInput = document.querySelector('#step1 input:not([disabled]):not([type="hidden"])');
+      if (firstInput) { try { firstInput.focus(); } catch(_) {} }
+    }
+
+    setTimeout(function() {
+      popup.style.display = 'flex';
+      if (btnClose) { try { btnClose.focus(); } catch(_) {} }
+    }, 700);
+
+    if (btnClose) btnClose.addEventListener('click', closePopup);
+    if (btnSkip)  btnSkip.addEventListener('click',  closePopup);
+    popup.addEventListener('click', function(e) { if (e.target === popup) closePopup(); });
+    document.addEventListener('keydown', function escHandler(e) {
+      if (e.key === 'Escape' && popup.style.display !== 'none') {
+        closePopup();
+        document.removeEventListener('keydown', escHandler);
+      }
+    });
+  })();
+
   </script>
+  <!-- ── POPUP MEMBERS ONLY ──────────────────────────────────────── -->
+  <div id="pomMembersPopup" role="dialog" aria-modal="true" aria-labelledby="pomPopupTitle" style="display:none">
+    <div id="pomMembersPopupInner">
+      <button id="pomPopupClose" aria-label="Fermer" type="button">&times;</button>
+      <div class="popup-header">
+        <p class="section-label" style="margin-bottom:4px">Members Only</p>
+        <h3 id="pomPopupTitle">Gagnez du temps lors de vos prochaines réservations</h3>
+      </div>
+      <p class="popup-body">Vous pouvez créer un compte membre afin d&apos;enregistrer vos informations et retrouver plus rapidement votre parcours lors d&apos;une prochaine réservation.</p>
+      <p class="popup-note">La création de compte est facultative. Vous pouvez aussi continuer votre réservation sans compte.</p>
+      <div class="popup-actions">
+        <a href="members.html" class="btn btn-primary" id="pomPopupCta">Créer mon compte membre</a>
+        <button type="button" class="btn btn-secondary" id="pomPopupSkip">Continuer sans compte</button>
+      </div>
+    </div>
+  </div>
+
 </body>
 </html>
