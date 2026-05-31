@@ -8,6 +8,17 @@
   <link rel="icon" href="assets/logo-peace-of-mind-final.png" type="image/png" />
   <link rel="stylesheet" href="assets/styles.css" />
   <style>
+    /* ── Créneaux bloqués ─────────────────────────────────────────── */
+    .slot-option.is-blocked {
+      opacity: 0.4;
+      cursor: not-allowed;
+      background: var(--nude, #e8ddd4) !important;
+      color: var(--muted, #8a7060) !important;
+      text-decoration: line-through;
+      border-color: transparent !important;
+    }
+    .slot-option.is-blocked:hover { opacity: 0.45; }
+
     /* Step 6 — mobile responsive */
     @media (max-width: 640px) {
       #step6 {
@@ -748,11 +759,12 @@
                 <div id="slotOptions" class="slot-options">
                   <p class="slot-empty">Sélectionnez d'abord une prestation pour voir les créneaux compatibles.</p>
                 </div>
+                <p id="slotBlockedMsg" role="alert" style="display:none;font-size:0.82rem;color:var(--accent-warm,#c0392b);margin-top:8px;line-height:1.5">Ce créneau est déjà réservé ou en cours de validation. Merci de choisir un autre horaire.</p>
                 <p id="slotChangedNotice" style="display:none;font-size:0.8rem;color:var(--accent-warm);margin-top:8px;line-height:1.6">La durée de cette prestation nécessite un nouveau créneau. Merci de sélectionner une disponibilité compatible.</p>
               </div>
               <div style="margin-top:24px;display:flex;gap:12px;justify-content:space-between">
                 <button type="button" class="btn btn-secondary" onclick="goStep(2)">Retour</button>
-                <button type="button" class="btn btn-primary" onclick="goStep(4)">Vos coordonnées →</button>
+                <button type="button" class="btn btn-primary" id="btnGoStep4" onclick="validateSlotAndProceed()">Vos coordonnées →</button>
               </div>
             </div>
 
@@ -1818,10 +1830,18 @@
       slots.forEach(function(slot) {
         var div = document.createElement('div');
         if (slot.blocked) {
-          div.className = 'slot-option slot-option--blocked';
+          div.className = 'slot-option slot-option--blocked is-blocked';
           div.textContent = slot.label;
-          div.title = 'Ce créneau est déjà en cours de réservation ou confirmé.';
-          div.style.cssText = 'opacity:.4;cursor:not-allowed;pointer-events:none;background:var(--nude);color:var(--muted);text-decoration:line-through;';
+          div.setAttribute('aria-disabled', 'true');
+          div.setAttribute('title', 'Ce créneau est déjà réservé ou en cours de validation.');
+          /* Clic → message immédiat, pas de sélection */
+          (function(d) {
+            d.addEventListener('click', function() {
+              document.querySelectorAll('.slot-option').forEach(function(s) { s.classList.remove('is-selected'); });
+              var msg = document.getElementById('slotBlockedMsg');
+              if (msg) { msg.style.display = 'block'; }
+            });
+          })(div);
         } else {
           div.className = 'slot-option';
           div.textContent = slot.label;
@@ -1831,6 +1851,8 @@
             container.querySelectorAll('.slot-option').forEach(function(s) { s.classList.remove('is-selected'); });
             div.classList.add('is-selected');
             document.getElementById('slotChangedNotice').style.display = 'none';
+            var blkMsg = document.getElementById('slotBlockedMsg');
+            if (blkMsg) blkMsg.style.display = 'none';
             updateSummaryFull();
           });
         }
@@ -1991,6 +2013,36 @@
         document.getElementById('memberPrefillNotice').style.display = 'block';
       } catch(e) { console.warn('[POM] Prefill error:', e); }
     })();
+
+  // ─── VALIDATION CRÉNEAU AVANT ÉTAPE 4 ──────────────────────────────────────
+  function validateSlotAndProceed() {
+    var selSlot = document.querySelector('#slotOptions .slot-option.is-selected');
+    var msg     = document.getElementById('slotBlockedMsg');
+    var notice  = document.getElementById('slotChangedNotice');
+
+    /* Aucun créneau sélectionné */
+    if (!selSlot) {
+      if (msg) {
+        msg.textContent = 'Merci de sélectionner un créneau disponible avant de continuer.';
+        msg.style.display = 'block';
+      }
+      var slotZone = document.getElementById('slotOptions');
+      if (slotZone) slotZone.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+    /* Créneau bloqué sélectionné (double sécurité) */
+    if (selSlot.classList.contains('is-blocked')) {
+      if (msg) {
+        msg.textContent = 'Ce créneau est déjà réservé ou en cours de validation. Merci de choisir un autre horaire.';
+        msg.style.display = 'block';
+      }
+      selSlot.classList.remove('is-selected');
+      return;
+    }
+    /* OK — on continue */
+    if (msg) msg.style.display = 'none';
+    goStep(4);
+  }
 
   // ─── POPUP MEMBERS ONLY ──────────────────────────────────────────────────
   (function initMembersPopup() {
