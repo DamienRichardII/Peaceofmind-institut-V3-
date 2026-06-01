@@ -1326,28 +1326,44 @@
       if (_stripeCard) return; // déjà monté
       if (typeof Stripe === 'undefined') {
         console.error('[POM] Stripe.js n\'est pas chargé.');
+        var errBox = document.getElementById('card-errors');
+        if (errBox) errBox.textContent = 'Le module de paiement ne peut pas charger. Vérifiez votre connexion ou désactivez votre bloqueur de publicités, puis rechargez la page.';
         return;
       }
-      _stripeInstance = Stripe(STRIPE_PUBLIC_KEY);
-      _stripeElements = _stripeInstance.elements();
-      _stripeCard = _stripeElements.create('card', {
-        hidePostalCode: true,
-        style: {
-          base: {
-            fontSize: '16px',
-            color: '#4b2c20',
-            fontFamily: 'Raleway, sans-serif',
-            '::placeholder': { color: '#b8a79c' }
-          },
-          invalid: { color: '#8b1e1e' }
-        }
-      });
-      _stripeCard.mount('#card-element');
-      _stripeCard.on('change', function(event) {
-        var errorBox = document.getElementById('card-errors');
-        if (!errorBox) return;
-        errorBox.textContent = event.error ? event.error.message : '';
-      });
+      var cardEl = document.getElementById('card-element');
+      if (!cardEl) { console.error('[POM] #card-element introuvable.'); return; }
+      try {
+        _stripeInstance = Stripe(STRIPE_PUBLIC_KEY);
+        _stripeElements = _stripeInstance.elements();
+        _stripeCard = _stripeElements.create('card', {
+          hidePostalCode: true,
+          style: {
+            base: {
+              fontSize: '16px',
+              color: '#4b2c20',
+              fontFamily: 'Raleway, sans-serif',
+              '::placeholder': { color: '#b8a79c' }
+            },
+            invalid: { color: '#8b1e1e' }
+          }
+        });
+        _stripeCard.mount('#card-element');
+        _stripeCard.on('change', function(event) {
+          var errorBox = document.getElementById('card-errors');
+          if (!errorBox) return;
+          if (event.error) {
+            errorBox.textContent = event.error.message || 'Erreur de saisie carte.';
+          } else {
+            errorBox.textContent = '';
+          }
+        });
+        console.log('[POM] Stripe Elements monté avec succès.');
+      } catch (stripeInitErr) {
+        console.error('[POM] Erreur initialisation Stripe:', stripeInitErr.message);
+        _stripeCard = null;
+        var errBox2 = document.getElementById('card-errors');
+        if (errBox2) errBox2.textContent = 'Impossible de charger le module de paiement sécurisé. Rechargez la page.';
+      }
     }
 
 
@@ -1495,14 +1511,23 @@
         body: JSON.stringify(payload)
       });
       if (resp.status === 409) {
-        // Créneau pris entre-temps — invalider le cache et rafraîchir
+        const err409 = await resp.json().catch(() => ({}));
+        /* Journée fermée côté admin */
+        if (err409.code === 'DAY_CLOSED') {
+          var dateKey409 = payload.date;
+          if (dateKey409 && typeof _blockedSlotsCache !== 'undefined') {
+            delete _blockedSlotsCache[dateKey409];
+            await refreshSlots();
+          }
+          throw new Error(err409.message || "Cette journée n'est pas disponible à la réservation.");
+        }
+        /* Créneau pris entre-temps */
         var dateKey = payload.date;
         if (dateKey && typeof _blockedSlotsCache !== 'undefined') {
           delete _blockedSlotsCache[dateKey];
           await refreshSlots();
         }
-        const err = await resp.json().catch(() => ({}));
-        throw new Error(err.message || "Ce créneau n'est plus disponible. Merci de choisir un autre horaire.");
+        throw new Error(err409.message || "Ce créneau n'est plus disponible. Merci de choisir un autre horaire.");
       }
       if (!resp.ok) {
         const err = await resp.json().catch(() => ({}));
@@ -1778,13 +1803,17 @@
       if (_blockedSlotsCache[dateString]) return _blockedSlotsCache[dateString];
       try {
         var resp = await fetch(API_BASE_URL + '/reservations/availability?date=' + dateString);
-        if (!resp.ok) { _blockedSlotsCache[dateString] = []; return []; }
+        if (!resp.ok) { _blockedSlotsCache[dateString] = { closed: false, slots: [] }; return _blockedSlotsCache[dateString]; }
         var data = await resp.json();
-        _blockedSlotsCache[dateString] = data.blocked_slots || [];
+        /* Stocker l'info closed + les slots bloqués */
+        _blockedSlotsCache[dateString] = {
+          closed: data.closed === true,
+          slots:  data.blocked_slots || [],
+        };
         return _blockedSlotsCache[dateString];
       } catch (e) {
         console.warn('[POM] fetchBlockedSlots error:', e.message);
-        return [];
+        return { closed: false, slots: [] };
       }
     }
 
@@ -1881,8 +1910,17 @@
       }
       var totalDur = computeTotalDurationMinutes(selectedKeys);
       container.innerHTML = '<p class="slot-empty" style="color:var(--muted);font-style:italic">Vérification des disponibilités…</p>';
-      var blocked = await fetchBlockedSlots(dateVal);
-      renderSlots(generateSlots(dateVal, totalDur, blocked), container);
+      var availData = await fetchBlockedSlots(dateVal);
+
+      /* Journée entièrement fermée côté admin */
+      if (availData.closed) {
+        container.innerHTML = '<p class="slot-empty" style="color:var(--accent-warm)">Cette journée n&apos;est pas disponible à la réservation. Merci de choisir une autre date.</p>';
+        var blkMsg = document.getElementById('slotBlockedMsg');
+        if (blkMsg) blkMsg.style.display = 'none';
+        return;
+      }
+
+      renderSlots(generateSlots(dateVal, totalDur, availData.slots), container);
     }
 
     function updateNailArtQuantity(val) {
@@ -2019,6 +2057,18 @@
     var selSlot = document.querySelector('#slotOptions .slot-option.is-selected');
     var msg     = document.getElementById('slotBlockedMsg');
     var notice  = document.getElementById('slotChangedNotice');
+
+    /* Journée fermée — vérifier le cache */
+    var dateVal = document.getElementById('bookDate') ? document.getElementById('bookDate').value : '';
+    if (dateVal && _blockedSlotsCache && _blockedSlotsCache[dateVal] && _blockedSlotsCache[dateVal].closed) {
+      if (msg) {
+        msg.textContent = "Cette journée n'est pas disponible à la réservation. Merci de choisir une autre date.";
+        msg.style.display = 'block';
+      }
+      var slotZone = document.getElementById('slotOptions');
+      if (slotZone) slotZone.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
 
     /* Aucun créneau sélectionné */
     if (!selSlot) {
