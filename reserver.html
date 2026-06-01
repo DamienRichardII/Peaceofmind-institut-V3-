@@ -1753,15 +1753,16 @@
     };
 
     // ─── Horaires d'ouverture ──────────────────────────────────────────
-    // Pour activer le samedi : 6: { start: "11:30", end: "15:30" }
+    // Horaires d'ouverture par jour de semaine (0=dim, 1=lun, ..., 6=sam)
+    // Pour fermer un samedi specifique, utiliser un bloc full_day dans l'admin.
     const businessHours = {
       1: { start: "10:00", end: "17:30" },
       2: { start: "10:00", end: "17:30" },
       3: { start: "10:00", end: "17:30" },
       4: { start: "10:00", end: "17:30" },
       5: { start: "10:00", end: "17:30" },
-      6: null,
-      0: null
+      6: { start: "11:30", end: "15:30" }, // Samedi
+      0: null // Dimanche
     };
 
     const slotStepMinutes      = 30;
@@ -1813,7 +1814,7 @@
         return _blockedSlotsCache[dateString];
       } catch (e) {
         console.warn('[POM] fetchBlockedSlots error:', e.message);
-        return { closed: false, slots: [] };
+        return { closed: false, slots: [], error: true };
       }
     }
 
@@ -1850,11 +1851,11 @@
       container.innerHTML = '';
       var available = slots.filter(function(s) { return !s.blocked; });
       if (!slots || slots.length === 0) {
-        container.innerHTML = '<p class="slot-empty">Aucun créneau compatible avec la durée de cette prestation sur cette date.</p>';
+        container.innerHTML = '<p class="slot-empty">Aucun créneau n&apos;est compatible avec la durée de votre prestation pour cette date. Essayez une autre date ou une prestation plus courte.</p>';
         return;
       }
       if (available.length === 0) {
-        container.innerHTML = '<p class="slot-empty">Tous les créneaux de ce jour sont déjà réservés. Merci de choisir une autre date.</p>';
+        container.innerHTML = '<p class="slot-empty">Tous les créneaux sont déjà réservés pour cette journée. Merci de choisir une autre date.</p>';
       }
       slots.forEach(function(slot) {
         var div = document.createElement('div');
@@ -1905,16 +1906,22 @@
       var date = new Date(dateVal + 'T00:00:00');
       var dow  = date.getDay();
       if (!businessHours[dow]) {
-        container.innerHTML = '<p class="slot-empty">Aucun créneau disponible ce jour-là.</p>';
+        container.innerHTML = '<p class="slot-empty">Cette journée n&apos;est pas un jour d&apos;ouverture du salon. Merci de choisir un autre jour.</p>';
         return;
       }
       var totalDur = computeTotalDurationMinutes(selectedKeys);
       container.innerHTML = '<p class="slot-empty" style="color:var(--muted);font-style:italic">Vérification des disponibilités…</p>';
       var availData = await fetchBlockedSlots(dateVal);
 
+      /* Erreur réseau lors du chargement */
+      if (availData.error) {
+        container.innerHTML = '<p class="slot-empty" style="color:var(--accent-warm)">Impossible de charger les disponibilités pour le moment. Merci de réessayer.</p>';
+        return;
+      }
+
       /* Journée entièrement fermée côté admin */
       if (availData.closed) {
-        container.innerHTML = '<p class="slot-empty" style="color:var(--accent-warm)">Cette journée n&apos;est pas disponible à la réservation. Merci de choisir une autre date.</p>';
+        container.innerHTML = '<p class="slot-empty" style="color:var(--accent-warm)">Cette journée est fermée à la réservation par l&apos;institut.</p>';
         var blkMsg = document.getElementById('slotBlockedMsg');
         if (blkMsg) blkMsg.style.display = 'none';
         return;
