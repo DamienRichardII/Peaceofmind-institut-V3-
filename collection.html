@@ -7,6 +7,52 @@
   <meta name="description" content="Peace of Mind Institut — Formation &amp; Collection. L'héritage Peace of Mind : collection limitée Jar of Softness, formation The Essentials. Gradignan, Bordeaux." />
   <link rel="icon" href="assets/logo-peace-of-mind-final.png" type="image/png" />
   <link rel="stylesheet" href="assets/styles.css" />
+  <style>
+    /* ===== The Jar of Softness — parcours d'achat (scoppe) ===== */
+    .jar-buy-section{padding-top:0;}
+    .jar-buy{max-width:760px;margin:0 auto;background:var(--ivory);border:1px solid var(--nude);padding:clamp(24px,4vw,40px);}
+    .jar-buy__head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;}
+    .jar-buy__sub{font-family:var(--sans);font-size:.95rem;color:var(--brun-soft);margin-top:6px;}
+    .jar-buy__price{font-family:var(--serif);font-size:2rem;color:var(--brun);white-space:nowrap;}
+    .jar-buy__avail{font-family:var(--sans);font-size:.85rem;color:var(--muted);margin:10px 0 20px;}
+    .jar-banner{margin-bottom:20px;padding:16px 20px;font-family:var(--sans);font-size:.92rem;border-left:3px solid var(--accent-warm);background:#fff;line-height:1.6;}
+    .jar-banner--ok{border-color:#4a7c59;}
+    .jar-banner--warn{border-color:#b07040;}
+    .jar-order{margin-top:24px;border-top:1px solid var(--nude);padding-top:24px;}
+    .jar-steps{display:flex;gap:8px;margin-bottom:24px;}
+    .jar-step-dot{flex:1;height:3px;background:var(--nude);transition:background .25s;}
+    .jar-step-dot.is-active{background:var(--accent-warm);}
+    .jar-step h3{font-family:var(--serif);font-size:1.3rem;font-weight:400;color:var(--brun);margin-bottom:4px;}
+    .jar-step-hint{font-family:var(--sans);font-size:.82rem;color:var(--muted);margin-bottom:18px;}
+    .jar-field{display:flex;flex-direction:column;gap:6px;margin-bottom:14px;}
+    .jar-field label{font-family:var(--sans);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
+    .jar-field input,.jar-field textarea{font-family:var(--sans);font-size:.95rem;padding:11px 14px;border:1px solid var(--nude);background:var(--cream);color:var(--text);outline:none;width:100%;}
+    .jar-field input:focus,.jar-field textarea:focus{border-color:var(--accent-warm);}
+    .jar-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+    .jar-grid-3{display:grid;grid-template-columns:1fr 1fr 2fr;gap:14px;}
+    .jar-pickup{display:flex;flex-direction:column;gap:12px;margin-bottom:16px;}
+    .jar-radio{display:flex;gap:12px;align-items:flex-start;padding:16px;border:1px solid var(--nude);background:var(--cream);cursor:pointer;}
+    .jar-radio input{margin-top:3px;flex-shrink:0;}
+    .jar-radio strong{font-family:var(--sans);font-weight:600;color:var(--brun);}
+    .jar-radio em{display:block;font-style:normal;font-family:var(--sans);font-size:.82rem;color:var(--muted);margin-top:2px;}
+    .jar-relay{border:1px dashed var(--nude);padding:18px;margin-bottom:8px;background:#fff;}
+    .jar-relay__intro{font-family:var(--sans);font-size:.85rem;color:var(--brun-soft);line-height:1.6;margin-bottom:14px;}
+    .jar-networks{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px;}
+    .jar-net{flex:1;min-width:120px;text-align:center;padding:12px;border:1px solid var(--nude);background:var(--cream);cursor:pointer;font-family:var(--sans);font-size:.9rem;color:var(--brun);}
+    .jar-net input{margin-right:6px;}
+    .jar-recap{margin-bottom:6px;}
+    .jar-recap-row{display:flex;justify-content:space-between;gap:16px;padding:9px 0;border-bottom:1px solid var(--nude);font-family:var(--sans);font-size:.92rem;}
+    .jar-recap-row span{color:var(--muted);}
+    .jar-recap-row strong{color:var(--brun);text-align:right;font-weight:600;}
+    .jar-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px;}
+    .jar-actions .btn{cursor:pointer;}
+    .jar-pay-note{font-family:var(--sans);font-size:.78rem;color:var(--muted);margin-top:14px;line-height:1.6;}
+    @media(max-width:600px){
+      .jar-grid,.jar-grid-3{grid-template-columns:1fr;}
+      .jar-buy__price{font-size:1.7rem;}
+      .jar-buy__head{flex-direction:column;}
+    }
+  </style>
 </head>
 <body>
 
@@ -77,6 +123,97 @@
       </div>
     </section>
 
+    <!-- SECTION I.b — COMMANDE THE JAR OF SOFTNESS -->
+    <section class="section jar-buy-section">
+      <div class="jar-buy fade-up">
+        <div id="jarReturnBanner" class="jar-banner" hidden></div>
+
+        <div class="jar-buy__head">
+          <div>
+            <p class="section-label">The Jar of Softness</p>
+            <p class="jar-buy__sub">Coffret de 3 chouchous &mdash; un petit, un moyen et un grand.</p>
+          </div>
+          <div class="jar-buy__price">39 &euro;</div>
+        </div>
+        <p class="jar-buy__avail">Disponible en salon ou via point relais.</p>
+        <button type="button" class="btn btn-primary" id="jarOrderToggle">Commander en ligne</button>
+
+        <div class="jar-order" id="jarOrderPanel" hidden>
+          <div class="jar-steps" aria-hidden="true">
+            <div class="jar-step-dot" data-dot="1"></div>
+            <div class="jar-step-dot" data-dot="2"></div>
+            <div class="jar-step-dot" data-dot="3"></div>
+          </div>
+
+          <!-- Etape 1 : informations client -->
+          <div class="jar-step" data-step="1">
+            <h3>Vos informations</h3>
+            <p class="jar-step-hint">&Eacute;tape 1 sur 3 &mdash; Renseignez vos coordonn&eacute;es.</p>
+            <div class="jar-grid">
+              <div class="jar-field"><label for="jarFirst">Pr&eacute;nom *</label><input type="text" id="jarFirst" autocomplete="given-name" /></div>
+              <div class="jar-field"><label for="jarLast">Nom *</label><input type="text" id="jarLast" autocomplete="family-name" /></div>
+            </div>
+            <div class="jar-grid">
+              <div class="jar-field"><label for="jarEmail">Email *</label><input type="email" id="jarEmail" autocomplete="email" /></div>
+              <div class="jar-field"><label for="jarPhone">T&eacute;l&eacute;phone *</label><input type="tel" id="jarPhone" autocomplete="tel" /></div>
+            </div>
+            <div class="jar-field"><label for="jarAddress">Adresse</label><input type="text" id="jarAddress" autocomplete="street-address" placeholder="N&deg; et rue" /></div>
+            <div class="jar-grid">
+              <div class="jar-field"><label for="jarZip">Code postal</label><input type="text" id="jarZip" autocomplete="postal-code" /></div>
+              <div class="jar-field"><label for="jarCity">Ville</label><input type="text" id="jarCity" autocomplete="address-level2" /></div>
+            </div>
+            <div class="jar-actions">
+              <button type="button" class="btn btn-primary" data-next="1">Continuer</button>
+            </div>
+          </div>
+
+          <!-- Etape 2 : mode de retrait -->
+          <div class="jar-step" data-step="2" hidden>
+            <h3>Mode de retrait</h3>
+            <p class="jar-step-hint">&Eacute;tape 2 sur 3 &mdash; Choisissez comment recevoir votre coffret.</p>
+            <div class="jar-pickup">
+              <label class="jar-radio">
+                <input type="radio" name="jarPickup" value="salon" />
+                <span><strong>Retrait en salon</strong><em>Votre commande sera pr&eacute;par&eacute;e et disponible au salon Peace of Mind.</em></span>
+              </label>
+              <label class="jar-radio">
+                <input type="radio" name="jarPickup" value="relais" />
+                <span><strong>Retrait en point relais</strong><em>Choisissez un r&eacute;seau de point relais proche de votre domicile.</em></span>
+              </label>
+            </div>
+
+            <div class="jar-relay" id="jarRelayWrap" hidden>
+              <p class="jar-relay__intro">Choisissez votre r&eacute;seau pr&eacute;f&eacute;r&eacute; : Chronopost, Amazon ou Mondial Relay. Renseignez votre adresse afin que le point relais le plus adapt&eacute; puisse &ecirc;tre confirm&eacute;.</p>
+              <div class="jar-networks">
+                <label class="jar-net"><input type="radio" name="jarNetwork" value="chronopost" />Chronopost</label>
+                <label class="jar-net"><input type="radio" name="jarNetwork" value="amazon" />Amazon</label>
+                <label class="jar-net"><input type="radio" name="jarNetwork" value="mondial_relay" />Mondial Relay</label>
+              </div>
+              <div class="jar-field"><label for="jarRelaySelected">Point relais souhait&eacute; (si d&eacute;j&agrave; connu)</label><input type="text" id="jarRelaySelected" placeholder="Nom / adresse du point relais" /></div>
+              <div class="jar-field"><label for="jarNote">Commentaire (optionnel)</label><textarea id="jarNote" rows="2"></textarea></div>
+            </div>
+
+            <div class="jar-actions">
+              <button type="button" class="btn btn-secondary" data-prev="2">Retour</button>
+              <button type="button" class="btn btn-primary" data-next="2">Continuer</button>
+            </div>
+          </div>
+
+          <!-- Etape 3 : recapitulatif + paiement -->
+          <div class="jar-step" data-step="3" hidden>
+            <h3>R&eacute;capitulatif</h3>
+            <p class="jar-step-hint">&Eacute;tape 3 sur 3 &mdash; V&eacute;rifiez votre commande puis r&eacute;glez en ligne.</p>
+            <div class="jar-recap" id="jarRecap"></div>
+            <div class="jar-actions">
+              <button type="button" class="btn btn-secondary" data-prev="3">Retour</button>
+              <button type="button" class="btn btn-primary" id="jarPayBtn">Payer 39 &euro;</button>
+            </div>
+            <p class="jar-pay-note">Paiement s&eacute;curis&eacute; par carte via Stripe. Vous serez redirig&eacute; vers la page de paiement. Pour un point relais, nous confirmerons avec vous le point le plus adapt&eacute; apr&egrave;s la commande.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- SECTION II — FORMATION -->
     <section class="section training-section">
       <div class="grid-2 fade-up">
@@ -136,5 +273,149 @@
   </footer>
 
   <script src="assets/app.js"></script>
+  <script>
+  (function(){
+    var panel  = document.getElementById('jarOrderPanel');
+    var toggle = document.getElementById('jarOrderToggle');
+    if (!toggle || !panel) return;
+    var API = (typeof API_BASE_URL !== 'undefined') ? API_BASE_URL : (window.POM_API_BASE_URL || 'https://peaceofmind-backend-production.up.railway.app/api');
+    function $(id){ return document.getElementById(id); }
+    function toast(m){ if (window.POM && window.POM.showToast) window.POM.showToast(m); }
+    function val(id){ var e=$(id); return e ? e.value.trim() : ''; }
+    function emailOk(e){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e); }
+    function esc(s){ return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
+    function networkLabel(n){ return n==='chronopost'?'Chronopost':n==='amazon'?'Amazon':n==='mondial_relay'?'Mondial Relay':''; }
+
+    var steps = panel.querySelectorAll('.jar-step');
+    var dots  = panel.querySelectorAll('.jar-step-dot');
+    function gotoStep(n){
+      steps.forEach(function(s){ s.hidden = (parseInt(s.dataset.step,10) !== n); });
+      dots.forEach(function(d){ d.classList.toggle('is-active', parseInt(d.dataset.dot,10) <= n); });
+      if (n === 3) renderRecap();
+    }
+
+    toggle.addEventListener('click', function(){
+      if (panel.hasAttribute('hidden')) {
+        panel.removeAttribute('hidden');
+        toggle.textContent = 'Fermer le formulaire';
+        gotoStep(1);
+      } else {
+        panel.setAttribute('hidden','');
+        toggle.textContent = 'Commander en ligne';
+      }
+    });
+
+    var relayWrap = $('jarRelayWrap');
+    panel.querySelectorAll('input[name="jarPickup"]').forEach(function(r){
+      r.addEventListener('change', function(){ if (relayWrap) relayWrap.hidden = (this.value !== 'relais'); });
+    });
+    panel.querySelectorAll('.jar-net').forEach(function(n){
+      n.addEventListener('click', function(){
+        panel.querySelectorAll('.jar-net').forEach(function(x){ x.style.borderColor='var(--nude)'; });
+        n.style.borderColor='var(--accent-warm)';
+      });
+    });
+
+    function pickupMode(){ var c=panel.querySelector('input[name="jarPickup"]:checked'); return c?c.value:''; }
+    function relayNetwork(){ var c=panel.querySelector('input[name="jarNetwork"]:checked'); return c?c.value:''; }
+
+    function validateStep1(){
+      if(!val('jarFirst')){ toast('Le prénom est requis.'); return false; }
+      if(!val('jarLast')){ toast('Le nom est requis.'); return false; }
+      if(!emailOk(val('jarEmail'))){ toast('Adresse email invalide.'); return false; }
+      if(!val('jarPhone')){ toast('Le téléphone est requis.'); return false; }
+      return true;
+    }
+    function validateStep2(){
+      var p=pickupMode();
+      if(!p){ toast('Choisissez un mode de retrait.'); return false; }
+      if(p==='relais'){
+        if(!relayNetwork()){ toast('Choisissez un réseau de point relais.'); return false; }
+        if(!val('jarAddress')||!val('jarZip')||!val('jarCity')){ toast('Adresse, code postal et ville sont requis pour un point relais.'); return false; }
+      }
+      return true;
+    }
+
+    panel.querySelectorAll('[data-next]').forEach(function(b){
+      b.addEventListener('click', function(){
+        var cur=parseInt(b.dataset.next,10);
+        if(cur===1 && !validateStep1()) return;
+        if(cur===2 && !validateStep2()) return;
+        gotoStep(cur+1);
+      });
+    });
+    panel.querySelectorAll('[data-prev]').forEach(function(b){
+      b.addEventListener('click', function(){ gotoStep(parseInt(b.dataset.prev,10)-1); });
+    });
+
+    function row(l,v){ return '<div class="jar-recap-row"><span>'+l+'</span><strong>'+esc(v||'—')+'</strong></div>'; }
+    function renderRecap(){
+      var p=pickupMode();
+      var addr=(val('jarAddress')+' '+val('jarZip')+' '+val('jarCity')).trim();
+      var html='';
+      html+=row('Produit','The Jar of Softness');
+      html+=row('Composition','un petit, un moyen, un grand chouchou');
+      html+=row('Prix','39 €');
+      html+=row('Client', (val('jarFirst')+' '+val('jarLast')).trim());
+      html+=row('Email', val('jarEmail'));
+      html+=row('Téléphone', val('jarPhone'));
+      html+=row('Mode de retrait', p==='relais'?'Retrait en point relais':'Retrait en salon Peace of Mind');
+      if(p==='relais'){
+        html+=row('Réseau', networkLabel(relayNetwork()));
+        if(addr) html+=row('Adresse', addr);
+        if(val('jarRelaySelected')) html+=row('Point relais souhaité', val('jarRelaySelected'));
+        if(val('jarNote')) html+=row('Commentaire', val('jarNote'));
+      } else if(addr){
+        html+=row('Adresse', addr);
+      }
+      $('jarRecap').innerHTML=html;
+    }
+
+    var payBtn=$('jarPayBtn');
+    payBtn.addEventListener('click', async function(){
+      if(!validateStep1()||!validateStep2()) return;
+      payBtn.disabled=true; payBtn.textContent='Redirection…';
+      var p=pickupMode();
+      var addr=(val('jarAddress')+' '+val('jarZip')+' '+val('jarCity')).trim();
+      var payload={
+        firstname:val('jarFirst'), lastname:val('jarLast'), email:val('jarEmail'), phone:val('jarPhone'),
+        address:val('jarAddress'), zip:val('jarZip'), city:val('jarCity'),
+        pickup_mode:p,
+        relay_network: p==='relais'?relayNetwork():'',
+        relay_address_reference: p==='relais'?addr:'',
+        relay_selected: p==='relais'?val('jarRelaySelected'):'',
+        note: val('jarNote')
+      };
+      try{
+        var resp=await fetch(API+'/collection/orders',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+        var data=await resp.json();
+        if(data.success && data.checkout_url){ window.location.href=data.checkout_url; return; }
+        toast(data.message||'Erreur lors de la commande.');
+      }catch(e){ toast('Erreur réseau. Merci de réessayer.'); }
+      payBtn.disabled=false; payBtn.textContent='Payer 39 €';
+    });
+
+    /* Retour de paiement (success / cancel) */
+    (function handleReturn(){
+      var q=new URLSearchParams(window.location.search);
+      var success=q.get('order_success'), session=q.get('session_id'), cancel=q.get('order_cancel');
+      var banner=$('jarReturnBanner');
+      if(!banner) return;
+      if(success){
+        banner.hidden=false;
+        banner.className='jar-banner jar-banner--ok';
+        banner.innerHTML='<strong>Merci !</strong> Votre commande The Jar of Softness est confirmée. Un email de confirmation vous a été envoyé.';
+        try{ fetch(API+'/collection/orders/'+encodeURIComponent(success)+'/confirm?session_id='+encodeURIComponent(session||''),{method:'POST'}); }catch(e){}
+        history.replaceState({},'',window.location.pathname);
+        banner.scrollIntoView({behavior:'smooth',block:'center'});
+      } else if(cancel){
+        banner.hidden=false;
+        banner.className='jar-banner jar-banner--warn';
+        banner.innerHTML='Paiement annulé. Votre commande n\'a pas été finalisée — vous pouvez réessayer quand vous le souhaitez.';
+        history.replaceState({},'',window.location.pathname);
+      }
+    })();
+  })();
+  </script>
 </body>
 </html>
