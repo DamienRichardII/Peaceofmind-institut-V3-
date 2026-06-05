@@ -52,6 +52,18 @@
       .jar-buy__price{font-size:1.7rem;}
       .jar-buy__head{flex-direction:column;}
     }
+
+    /* ===== Image produit Collection : afficher ENTIEREMENT, sans coupe ===== */
+    .collection-feature__media{ min-height:0; background:transparent; overflow:visible; }
+    .collection-feature__media img.collection-jar-img{
+      position:static; inset:auto;
+      width:100%; height:auto;
+      object-fit:contain; object-position:center;
+      display:block;
+    }
+    @media (max-width:900px){
+      .collection-feature__media{ min-height:0; }
+    }
   </style>
 </head>
 <body>
@@ -114,8 +126,8 @@
         </div>
         <div class="collection-feature__media">
           <img
-            src="assets/collection/jar-of-softness.jpeg"
-            alt="Jar of Softness — coffret fait main Peace of Mind Signature"
+            src="assets/collection/jar-of-softness-collection.jpg"
+            alt="The Jar of Softness — coffret de chouchous Peace of Mind"
             loading="lazy"
             class="collection-jar-img"
           />
