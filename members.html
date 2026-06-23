@@ -156,6 +156,25 @@
             <a class="btn btn-primary" href="reserver.html?member=1">Réserver avec mes informations</a>
             <button class="btn btn-secondary" id="btnEditProfile">Modifier mes informations</button>
             <button class="btn btn-secondary" id="btnDeleteProfile" style="border-color:var(--accent-warm);color:var(--accent-warm)">Supprimer mes informations locales</button>
+            <button class="btn btn-secondary" id="btnChangePwToggle">Modifier mon mot de passe</button>
+          </div>
+          <div id="changePwForm" style="display:none;margin-top:18px;max-width:440px;background:var(--ivory);border:1px solid var(--nude);padding:20px">
+            <p class="section-label" style="margin-bottom:14px">Modifier mon mot de passe</p>
+            <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:14px">
+              <label for="cpCurrent">Mot de passe actuel</label>
+              <input id="cpCurrent" type="password" autocomplete="current-password" placeholder="••••••••" />
+            </div>
+            <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:14px">
+              <label for="cpNew">Nouveau mot de passe</label>
+              <input id="cpNew" type="password" autocomplete="new-password" placeholder="••••••••" />
+            </div>
+            <div style="display:flex;flex-direction:column;gap:6px;margin-bottom:8px">
+              <label for="cpConfirm">Confirmer le nouveau mot de passe</label>
+              <input id="cpConfirm" type="password" autocomplete="new-password" placeholder="••••••••" />
+            </div>
+            <p style="font-size:0.74rem;color:var(--muted);line-height:1.6;margin-bottom:14px">Au moins 8 caractères, avec une majuscule, une minuscule et un chiffre.</p>
+            <button class="btn btn-primary" id="btnChangePw" type="button">Modifier mon mot de passe</button>
+            <p id="changePwMsg" style="font-size:0.82rem;margin-top:10px;line-height:1.5" aria-live="polite"></p>
           </div>
           <p style="font-size:0.72rem;color:var(--muted);margin-top:12px;line-height:1.65">Les informations sensibles du questionnaire ne sont jamais enregistrées dans le navigateur. Seules vos coordonnées de contact sont conservées localement.</p>
         </div>
@@ -186,6 +205,7 @@
               </p>
               <button class="btn btn-primary" id="btnLogin" style="margin-top:20px;width:100%">Se connecter</button>
               <p id="loginResult" style="font-size:0.8rem;margin-top:10px" aria-live="polite"></p>
+              <p style="margin-top:12px;text-align:center"><a href="forgot-password.html" style="font-size:0.82rem;color:var(--accent)">Mot de passe oublié ?</a></p>
             </div>
 
             <!-- CRÉATION DE COMPTE -->
@@ -682,6 +702,55 @@
     // ─── Chargement initial des réservations ──────────────────────────
     loadMemberReservations();
 
+  </script>
+  <script>
+  (function(){
+    var API = (typeof API_BASE_URL !== 'undefined') ? API_BASE_URL : (window.POM_API_BASE_URL || 'https://peaceofmind-backend-production.up.railway.app/api');
+    var toggle = document.getElementById('btnChangePwToggle');
+    var form   = document.getElementById('changePwForm');
+    var btn    = document.getElementById('btnChangePw');
+    var msg    = document.getElementById('changePwMsg');
+    if (!toggle || !form || !btn) return;
+    toggle.addEventListener('click', function(){ form.style.display = (form.style.display === 'none' || !form.style.display) ? 'block' : 'none'; });
+    function show(t, ok){ msg.textContent = t; msg.style.color = ok ? '#4a7c59' : 'var(--accent-warm)'; }
+    function pwError(pw){
+      if (pw.length < 8) return 'Le mot de passe doit contenir au moins 8 caractères.';
+      if (!/[A-Z]/.test(pw)) return 'Une majuscule est requise.';
+      if (!/[a-z]/.test(pw)) return 'Une minuscule est requise.';
+      if (!/[0-9]/.test(pw)) return 'Un chiffre est requis.';
+      return null;
+    }
+    btn.addEventListener('click', async function(){
+      var emailEl = document.getElementById('profileEmail');
+      var email   = emailEl ? (emailEl.textContent || '').trim() : '';
+      var cur = document.getElementById('cpCurrent').value || '';
+      var nw  = document.getElementById('cpNew').value || '';
+      var cf  = document.getElementById('cpConfirm').value || '';
+      if (!email || email === '—') { show('Veuillez vous connecter d\'abord.', false); return; }
+      if (!cur) { show('Saisissez votre mot de passe actuel.', false); return; }
+      var err = pwError(nw); if (err) { show(err, false); return; }
+      if (nw !== cf) { show('Les deux nouveaux mots de passe ne sont pas identiques.', false); return; }
+      btn.disabled = true; var old = btn.textContent; btn.textContent = 'Modification…';
+      try {
+        var resp = await fetch(API + '/members/change-password', {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: email, current_password: cur, new_password: nw })
+        });
+        var data = await resp.json();
+        if (data.success) {
+          show('Votre mot de passe a bien été modifié. Un email de confirmation vous a été envoyé.', true);
+          document.getElementById('cpCurrent').value = '';
+          document.getElementById('cpNew').value = '';
+          document.getElementById('cpConfirm').value = '';
+        } else {
+          show(data.message || 'Erreur lors de la modification.', false);
+        }
+      } catch (e) {
+        show('Erreur réseau. Merci de réessayer.', false);
+      }
+      btn.disabled = false; btn.textContent = old;
+    });
+  })();
   </script>
 </body>
 </html>

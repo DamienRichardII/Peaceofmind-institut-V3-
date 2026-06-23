@@ -328,6 +328,19 @@
                 </div>
 
                 <div class="s2-group" data-s2cat="soins">
+                  <p style="font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--brun);font-family:var(--sans);font-weight:600;padding:12px 0 6px;border-bottom:1.5px solid var(--nude);margin-top:clamp(20px,3vw,32px);margin-bottom:8px">Soins cheveux</p>
+                  <label style="display:flex;align-items:flex-start;gap:14px;padding:18px;border:1.5px solid var(--accent-warm);background:linear-gradient(180deg,rgba(200,160,122,0.10),rgba(200,160,122,0.02));cursor:pointer;transition:border-color .2s;border-radius:3px;position:relative" class="service-option service-option--featured" data-value="soin_hairgrowth">
+                    <input type="checkbox" name="service" value="soin_hairgrowth" style="margin-top:3px;accent-color:var(--accent)" />
+                    <div style="flex:1">
+                      <span style="display:inline-block;font-family:var(--sans);font-size:0.6rem;letter-spacing:0.16em;text-transform:uppercase;color:#fff;background:var(--accent-warm);padding:3px 10px;border-radius:20px;margin-bottom:8px">Soin phare de l'institut</span>
+                      <strong style="font-family:var(--serif);font-size:1.15rem;display:block;margin-bottom:2px">Hair Growth</strong>
+                      <span class="service-description" style="font-size:0.8rem;color:var(--brun-soft);display:block;line-height:1.6">Un soin ciblé conçu pour stimuler la pousse des cheveux et accompagner la revitalisation du cuir chevelu.</span>
+                      <span class="service-meta" style="font-size:0.82rem;color:var(--brun);font-weight:600;display:block;margin-top:6px">80 € · 1H · 1 séance</span>
+                    </div>
+                  </label>
+                </div>
+
+                <div class="s2-group" data-s2cat="soins">
                   <p style="font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--brun);font-family:var(--sans);font-weight:600;padding:12px 0 6px;border-bottom:1.5px solid var(--nude);margin-top:clamp(20px,3vw,32px);margin-bottom:8px">Soins profonds · Corps</p>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="corps_jellyv">
                     <input type="checkbox" name="service" value="corps_jellyv" style="margin-top:3px;accent-color:var(--accent)" />
@@ -650,7 +663,8 @@
 
 
                 <div class="s2-group" data-s2cat="pedicure">
-                  <p style="font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--brun);font-family:var(--sans);font-weight:600;padding:12px 0 6px;border-bottom:1.5px solid var(--nude);margin-top:clamp(20px,3vw,32px);margin-bottom:8px">Pédicure — Un soin, une signature</p>
+                  <p style="font-size:0.78rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--brun);font-family:var(--sans);font-weight:700;padding:12px 0 6px;border-bottom:1.5px solid var(--nude);margin-top:clamp(20px,3vw,32px);margin-bottom:14px">Pédicure — Soins signature &amp; Duo ongles</p>
+                  <p style="font-size:0.7rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);font-family:var(--sans);font-weight:600;margin-bottom:8px">Soins signature</p>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="pedi_calus">
                     <input type="checkbox" name="service" value="pedi_calus" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
@@ -675,10 +689,7 @@
                       <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">20 min · 19 €</span>
                     </div>
                   </label>
-                </div>
-
-                <div class="s2-group" data-s2cat="pedicure">
-                  <p style="font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--brun);font-family:var(--sans);font-weight:600;padding:12px 0 6px;border-bottom:1.5px solid var(--nude);margin-top:clamp(20px,3vw,32px);margin-bottom:8px">Duo — Soin &amp; ongles</p>
+                  <p style="font-size:0.7rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);font-family:var(--sans);font-weight:600;margin-top:18px;margin-bottom:8px">Duo soin &amp; ongles</p>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="pedi_duo_calus">
                     <input type="checkbox" name="service" value="pedi_duo_calus" style="margin-top:3px;accent-color:var(--accent)" />
                     <div>
@@ -979,6 +990,7 @@
       'soin_aquagold': 'Aqua gold',
       'soin_newskin': 'New skin',
       'soin_plasmalift_face': 'Plasma lift',
+      'soin_hairgrowth': 'Hair Growth',
       'corps_jellyv': 'Jelly V • Soin pubis',
       'corps_jellyb': 'Jelly B • Soin fessier',
       'corps_nanotherapy': 'Nano therapy corps',
@@ -1047,6 +1059,7 @@
       'soin_aquagold': '120 €',
       'soin_newskin': '150 €',
       'soin_plasmalift_face': '190 €',
+      'soin_hairgrowth': '80 €',
       'corps_jellyv': '85 €',
       'corps_jellyb': '90 €',
       'corps_nanotherapy': '100 €',
@@ -1102,6 +1115,7 @@
       'soin_aquagold': '50 min',
       'soin_newskin': '1h20',
       'soin_plasmalift_face': '1h',
+      'soin_hairgrowth': '1h',
       'corps_jellyv': '45 min',
       'corps_jellyb': '45 min',
       'corps_nanotherapy': '1h',
@@ -1706,6 +1720,7 @@
       'soin_aquagold':              50,
       'soin_newskin':               80,
       'soin_plasmalift_face':       60,
+      'soin_hairgrowth':            60,
       'corps_jellyv':               45,
       'corps_jellyb':               45,
       'corps_nanotherapy':          60,
