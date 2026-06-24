@@ -334,8 +334,8 @@
                     <div style="flex:1">
                       <span style="display:inline-block;font-family:var(--sans);font-size:0.6rem;letter-spacing:0.16em;text-transform:uppercase;color:#fff;background:var(--accent-warm);padding:3px 10px;border-radius:20px;margin-bottom:8px">Soin phare de l'institut</span>
                       <strong style="font-family:var(--serif);font-size:1.15rem;display:block;margin-bottom:2px">Hair Growth</strong>
-                      <span class="service-description" style="font-size:0.8rem;color:var(--brun-soft);display:block;line-height:1.6">Un soin ciblé conçu pour stimuler la pousse des cheveux et accompagner la revitalisation du cuir chevelu.</span>
-                      <span class="service-meta" style="font-size:0.82rem;color:var(--brun);font-weight:600;display:block;margin-top:6px">80 € · 1H · 1 séance</span>
+                      <span class="service-description" style="font-size:0.8rem;color:var(--brun-soft);display:block;line-height:1.6">Un soin ciblé conçu pour stimuler la pousse des cheveux</span>
+                      <span class="service-meta" style="font-size:0.82rem;color:var(--brun);font-weight:600;display:block;margin-top:6px">80 € · 1H</span>
                     </div>
                   </label>
                 </div>
@@ -539,7 +539,7 @@
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Semi-permanent</strong>
                       <span class="service-description" style="font-size:0.78rem;color:var(--muted);display:block">Vernis longue tenue.</span>
-                      <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">35 min · 35 €</span>
+                      <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">30 min · 36 €</span>
                     </div>
                   </label>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="ongles_manicare">
@@ -728,7 +728,7 @@
                     <div>
                       <strong style="font-family:var(--serif);font-size:1.05rem;display:block;margin-bottom:2px">Semi-permanent (pieds)</strong>
                       <span class="service-description" style="font-size:0.78rem;color:var(--muted);display:block">Vernis longue tenue.</span>
-                      <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">30 min · 35 €</span>
+                      <span class="service-meta" style="font-size:0.78rem;color:var(--brun);font-weight:500;display:block;margin-top:4px">30 min · 36 €</span>
                     </div>
                   </label>
                   <label style="display:flex;align-items:flex-start;gap:14px;padding:16px;border:1px solid var(--nude);cursor:pointer;transition:border-color .2s;border-radius:2px" class="service-option" data-value="pedi_depose_gel">
@@ -981,60 +981,60 @@
   <script src="assets/app.js"></script>
   <script>
     const serviceLabels = {
-      'soin_nanotherapy_face': 'Nano therapy visage',
-      'soin_nanotherapy_face_neck': 'Nano therapy visage et cou',
-      'soin_peeling_acne': 'Peeling : No more acne',
-      'soin_peeling_glow': 'Peeling : Glow peel',
-      'soin_peeling_melano': 'Peeling : Melano peel',
-      'soin_peeling_rice': 'Peeling : Rice peel',
-      'soin_aquagold': 'Aqua gold',
-      'soin_newskin': 'New skin',
-      'soin_plasmalift_face': 'Plasma lift',
-      'soin_hairgrowth': 'Hair Growth',
-      'corps_jellyv': 'Jelly V • Soin pubis',
-      'corps_jellyb': 'Jelly B • Soin fessier',
-      'corps_nanotherapy': 'Nano therapy corps',
-      'corps_aquagold': 'Aqua gold corps',
-      'corps_plasmalift': 'Plasma lift corps',
-      'blanchiment_1': 'Blanchiment dentaire · 1 séance',
-      'pig_grain': 'Grains de beauté',
-      'pig_freckles_nez': 'Freckles NEZ',
-      'pig_freckles_nez_pom': 'Freckles NEZ & POMMETTES',
-      'pig_freckles_visage': 'Freckles VISAGE',
-      'pig_ret_grain': 'Retouche grains de beauté',
-      'pig_ret_nez': 'Retouche NEZ',
-      'pig_ret_nez_pom': 'Retouche NEZ & POMMETTES',
-      'pig_ret_visage': 'Retouche VISAGE',
-      'ongles_pose_sm': 'Taille S ou M — pose complète',
-      'ongles_pose_l': 'Taille L — pose complète',
-      'ongles_pose_xl': 'Taille XL &+ — pose complète',
-      'ongles_fill_sm': 'Taille S ou M — remplissage',
-      'ongles_fill_l': 'Taille L — remplissage',
-      'ongles_fill_xl': 'Taille XL &+ — remplissage',
-      'ongles_gainage': 'Gainage gel',
-      'ongles_semi': 'Semi-permanent',
-      'ongles_manicare': 'Mani Care • Soin',
-      'na_sticker': 'Sticker ou strass (par ongle)',
-      'na_chrome': 'Chrome (par ongle)',
-      'na_cat': 'Cat eye (par ongle)',
-      'na_french': 'French (par ongle)',
-      'na_baby': 'Baby boomer (par ongle)',
-      'na_marbre': 'Marbre / Animalier / 3D (par ongle)',
-      'na_casse': 'Ongle cassé',
-      'na_forme': 'Changement de forme',
-      'dep_gel': 'Dépose gel avec soin',
-      'dep_semi_repose': 'Dépose semi-permanent si repose',
-      'dep_semi': 'Dépose semi-permanent sans repose',
-      'pedi_calus': 'Calus N°1',
-      'pedi_luxury': 'Pedi Luxury',
-      'pedi_care': 'Pedi Care',
-      'pedi_duo_calus': 'Calus N°1 & semi-permanent',
-      'pedi_duo_luxury': 'Pedi Luxury & semi-permanent',
-      'pedi_duo_care': 'Pedi Care & semi-permanent',
-      'pedi_gainage_new': 'Gainage gel (pieds)',
-      'pedi_semi_new': 'Semi-permanent (pieds)',
-      'pedi_depose_gel': 'Dépose gainage gel (pieds)',
-      'pedi_depose_new': 'Dépose semi-permanent (pieds)',
+      'soin_nanotherapy_face': 'Soins du visage > Nano therapy visage',
+      'soin_nanotherapy_face_neck': 'Soins du visage > Nano therapy visage et cou',
+      'soin_peeling_acne': 'Soins du visage > Peeling : No more acne',
+      'soin_peeling_glow': 'Soins du visage > Peeling : Glow peel',
+      'soin_peeling_melano': 'Soins du visage > Peeling : Melano peel',
+      'soin_peeling_rice': 'Soins du visage > Peeling : Rice peel',
+      'soin_aquagold': 'Soins du visage > Aqua gold',
+      'soin_newskin': 'Soins du visage > New skin',
+      'soin_plasmalift_face': 'Soins du visage > Plasma lift',
+      'soin_hairgrowth': 'Soins cheveux > Hair Growth',
+      'corps_jellyv': 'Soins du corps > Jelly V • Soin pubis',
+      'corps_jellyb': 'Soins du corps > Jelly B • Soin fessier',
+      'corps_nanotherapy': 'Soins du corps > Nano therapy corps',
+      'corps_aquagold': 'Soins du corps > Aqua gold corps',
+      'corps_plasmalift': 'Soins du corps > Plasma lift corps',
+      'blanchiment_1': 'Blanchiment dentaire > 1 séance',
+      'pig_grain': 'Pigmentation > Freckles & grains de beauté > Grains de beauté',
+      'pig_freckles_nez': 'Pigmentation > Freckles & grains de beauté > Freckles NEZ',
+      'pig_freckles_nez_pom': 'Pigmentation > Freckles & grains de beauté > Freckles NEZ & POMMETTES',
+      'pig_freckles_visage': 'Pigmentation > Freckles & grains de beauté > Freckles VISAGE',
+      'pig_ret_grain': 'Pigmentation > Retouches > Retouche grains de beauté',
+      'pig_ret_nez': 'Pigmentation > Retouches > Retouche NEZ',
+      'pig_ret_nez_pom': 'Pigmentation > Retouches > Retouche NEZ & POMMETTES',
+      'pig_ret_visage': 'Pigmentation > Retouches > Retouche VISAGE',
+      'ongles_pose_sm': 'Ongles > Manucure > Taille S ou M — pose complète',
+      'ongles_pose_l': 'Ongles > Manucure > Taille L — pose complète',
+      'ongles_pose_xl': 'Ongles > Manucure > Taille XL &+ — pose complète',
+      'ongles_fill_sm': 'Ongles > Manucure > Taille S ou M — remplissage',
+      'ongles_fill_l': 'Ongles > Manucure > Taille L — remplissage',
+      'ongles_fill_xl': 'Ongles > Manucure > Taille XL &+ — remplissage',
+      'ongles_gainage': 'Ongles > Manucure > Gainage gel',
+      'ongles_semi': 'Ongles > Manucure > Semi-permanent',
+      'ongles_manicare': 'Ongles > Manucure > Mani Care • Soin',
+      'na_sticker': 'Ongles > Nail art > Sticker ou strass (par ongle)',
+      'na_chrome': 'Ongles > Nail art > Chrome (par ongle)',
+      'na_cat': 'Ongles > Nail art > Cat eye (par ongle)',
+      'na_french': 'Ongles > Nail art > French (par ongle)',
+      'na_baby': 'Ongles > Nail art > Baby boomer (par ongle)',
+      'na_marbre': 'Ongles > Nail art > Marbre / Animalier / 3D (par ongle)',
+      'na_casse': 'Ongles > Nail art > Ongle cassé',
+      'na_forme': 'Ongles > Nail art > Changement de forme',
+      'dep_gel': 'Ongles > Dépose > Dépose gel avec soin',
+      'dep_semi_repose': 'Ongles > Dépose > Dépose semi-permanent si repose',
+      'dep_semi': 'Ongles > Dépose > Dépose semi-permanent sans repose',
+      'pedi_calus': 'Pédicure > Soins signature > Calus N°1',
+      'pedi_luxury': 'Pédicure > Soins signature > Pedi Luxury',
+      'pedi_care': 'Pédicure > Soins signature > Pedi Care',
+      'pedi_duo_calus': 'Pédicure > Duo soin & ongles > Calus N°1 & semi-permanent',
+      'pedi_duo_luxury': 'Pédicure > Duo soin & ongles > Pedi Luxury & semi-permanent',
+      'pedi_duo_care': 'Pédicure > Duo soin & ongles > Pedi Care & semi-permanent',
+      'pedi_gainage_new': 'Pédicure > Beauté des ongles > Gainage gel (pieds)',
+      'pedi_semi_new': 'Pédicure > Beauté des ongles > Semi-permanent (pieds)',
+      'pedi_depose_gel': 'Pédicure > Beauté des ongles > Dépose gainage gel (pieds)',
+      'pedi_depose_new': 'Pédicure > Beauté des ongles > Dépose semi-permanent (pieds)',
     };
 
     // ─ Nail art : clés avec tarif par ongle ──────────────────
@@ -1081,7 +1081,7 @@
       'ongles_fill_l': '65 €',
       'ongles_fill_xl': '75 €',
       'ongles_gainage': '45 €',
-      'ongles_semi': '35 €',
+      'ongles_semi': '36 €',
       'ongles_manicare': '19 €',
       'na_sticker': '0,50 €',
       'na_chrome': '1 €',
@@ -1101,7 +1101,7 @@
       'pedi_duo_luxury': '77 €',
       'pedi_duo_care': '45 €',
       'pedi_gainage_new': '45 €',
-      'pedi_semi_new': '35 €',
+      'pedi_semi_new': '36 €',
       'pedi_depose_gel': '14 €',
       'pedi_depose_new': '7 €',
     };
@@ -1137,7 +1137,7 @@
       'ongles_fill_l': '1h30',
       'ongles_fill_xl': '1h30',
       'ongles_gainage': '1h15',
-      'ongles_semi': '35 min',
+      'ongles_semi': '30 min',
       'ongles_manicare': '20 min',
       'na_sticker': '5 min',
       'na_chrome': '5 min',
@@ -1742,7 +1742,7 @@
       'ongles_fill_l':              90,
       'ongles_fill_xl':             90,
       'ongles_gainage':             75,
-      'ongles_semi':                35,
+      'ongles_semi':                30,
       'ongles_manicare':            20,
       'na_sticker':                 5,
       'na_chrome':                  5,
